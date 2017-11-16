@@ -1,6 +1,6 @@
-#GXT Examples
+# GXT Examples Explorer
 
-##Running Examples Jetty
+## Running Examples Jetty
 Maven can run the examples locally.
 
 1. Run `mvn jetty:run-war`
