@@ -1,0 +1,13 @@
+
+.text {
+  font: 11px arial, tahoma, helvetica, sans-serif;
+}
+
+.textLarge {
+  font: 14px arial, tahoma, helvetica, sans-serif;
+}
+
+.paddedText {
+  padding: 5px;
+  font: 11px arial, tahoma, helvetica, sans-serif;
+}

@@ -1,0 +1,350 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder 
+    xmlns:ui='urn:ui:com.google.gwt.uibinder' 
+    xmlns:g="urn:import:com.google.gwt.user.client.ui"
+    xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client" 
+    xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
+    xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button">
+
+  <ui:with type="java.lang.String" field="toolbarStyle" />
+
+  <ui:with type="com.sencha.gxt.core.client.util.Margins" field="margins5">
+    <ui:attributes top="5" right="5" bottom="5" left="5" />
+  </ui:with>
+  <ui:with type="com.sencha.gxt.core.client.util.Margins" field="margins0">
+    <ui:attributes top="0" right="0" bottom="0" left="0" />
+  </ui:with>
+  <ui:with type="com.sencha.gxt.core.client.util.Margins" field="margins0050">
+    <ui:attributes top="0" right="0" bottom="5" left="0" />
+  </ui:with>
+  <ui:with type="com.sencha.gxt.core.client.util.Padding" field="padding5">
+    <ui:attributes top="5" right="5" bottom="5" left="5" />
+  </ui:with>
+
+  <ui:with type="com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData" field="westData">
+    <ui:attributes size="150" margins="{margins5}" />
+  </ui:with>
+
+  <ui:with type="com.sencha.gxt.widget.core.client.container.BoxLayoutContainer.BoxLayoutData" field="buttonBoxLayoutData">
+    <ui:attributes margins="{margins5}" flex="1" />
+  </ui:with>
+
+  <ui:with type="com.sencha.gxt.widget.core.client.container.BoxLayoutContainer.BoxLayoutData" field="boxLayoutDataMargins0050">
+    <ui:attributes margins="{margins0050}" />
+  </ui:with>
+  <ui:with type="com.sencha.gxt.widget.core.client.container.BoxLayoutContainer.BoxLayoutData" field="boxLayoutDataMargins0050Flex1">
+    <ui:attributes margins="{margins0050}" flex="1" />
+  </ui:with>
+  <ui:with type="com.sencha.gxt.widget.core.client.container.BoxLayoutContainer.BoxLayoutData" field="boxLayoutDataMargins0">
+    <ui:attributes margins="{margins0}" />
+  </ui:with>
+  <ui:with type="com.sencha.gxt.widget.core.client.container.BoxLayoutContainer.BoxLayoutData" field="boxLayoutDataMargins0Flex1">
+    <ui:attributes margins="{margins0}" flex="1" />
+  </ui:with>
+  <ui:with type="com.sencha.gxt.widget.core.client.container.BoxLayoutContainer.BoxLayoutData" field="boxLayoutDataMargins0Flex3">
+    <ui:attributes margins="{margins0}" flex="3" />
+  </ui:with>
+
+
+
+  <gxt:ContentPanel heading="Vertical Box Layout">
+    <container:BorderLayoutContainer>
+      <container:west layoutData="{westData}">
+        <container:VBoxLayoutContainer ui:field="buttonBox" padding="{padding5}"
+          VBoxLayoutAlign="STRETCH" addStyleNames="{toolbarStyle}">
+          <container:child layoutData="{buttonBoxLayoutData}">
+            <button:ToggleButton ui:field="spaced" allowDepress="false" text="Spaced" />
+          </container:child>
+          <container:child layoutData="{buttonBoxLayoutData}">
+            <button:ToggleButton ui:field="multiSpaced" allowDepress="false" text="Multi-Spaced" />
+          </container:child>
+          <container:child layoutData="{buttonBoxLayoutData}">
+            <button:ToggleButton ui:field="alignLeft" allowDepress="false" text="Align: left" />
+          </container:child>
+          <container:child layoutData="{buttonBoxLayoutData}">
+            <button:ToggleButton ui:field="alignCenter" allowDepress="false" text="Align: center" />
+          </container:child>
+          <container:child layoutData="{buttonBoxLayoutData}">
+            <button:ToggleButton ui:field="alignRight" allowDepress="false" text="Align: right" />
+          </container:child>
+          <container:child layoutData="{buttonBoxLayoutData}">
+            <button:ToggleButton ui:field="alignStretch" allowDepress="false" text="Align: stretch" />
+          </container:child>
+          <container:child layoutData="{buttonBoxLayoutData}">
+            <button:ToggleButton ui:field="alignStretchMax" allowDepress="false" text="Align: stretchmax" />
+          </container:child>
+          <container:child layoutData="{buttonBoxLayoutData}">
+            <button:ToggleButton ui:field="flexAllEven" allowDepress="false" text="Flex: All even" />
+          </container:child>
+          <container:child layoutData="{buttonBoxLayoutData}">
+            <button:ToggleButton ui:field="flexRatio" allowDepress="false" text="Flex: ratio" />
+          </container:child>
+          <container:child layoutData="{buttonBoxLayoutData}">
+            <button:ToggleButton ui:field="flexStretch" allowDepress="false" text="Flex + Stretch" />
+          </container:child>
+          <container:child layoutData="{buttonBoxLayoutData}">
+            <button:ToggleButton ui:field="packStart" allowDepress="false" text="Pack: start" />
+          </container:child>
+          <container:child layoutData="{buttonBoxLayoutData}">
+            <button:ToggleButton ui:field="packCenter" allowDepress="false" text="Pack: center" />
+          </container:child>
+          <container:child layoutData="{buttonBoxLayoutData}">
+            <button:ToggleButton ui:field="packEnd" allowDepress="false" text="Pack: end" />
+          </container:child>
+        </container:VBoxLayoutContainer>
+      </container:west>
+
+
+      <container:center>
+
+        <gxt:ContentPanel headerVisible="false">
+          <container:CardLayoutContainer ui:field="layout">
+            <g:HTML>
+              <p style="padding:10px;color:#556677;font-size:11px;">Select a configuration on the left</p>
+            </g:HTML>
+
+            <!-- Spaced -->
+            <container:VBoxLayoutContainer padding="{padding5}" VBoxLayoutAlign="LEFT">
+              <container:child layoutData="{boxLayoutDataMargins0050}">
+                <button:TextButton text="Button 1" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0050Flex1}">
+                <g:Label />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0050}">
+                <button:TextButton text="Button 2" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0050}">
+                <button:TextButton text="Button 3" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0}">
+                <button:TextButton text="Button Long 4" />
+              </container:child>
+            </container:VBoxLayoutContainer>
+
+
+            <!-- Multi-Spaced -->
+            <container:VBoxLayoutContainer padding="{padding5}" VBoxLayoutAlign="LEFT">
+              <container:child layoutData="{boxLayoutDataMargins0050}">
+                <button:TextButton text="Button 1" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0050Flex1}">
+                <g:Label />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0050}">
+                <button:TextButton text="Button 2" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0050Flex1}">
+                <g:Label />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0050}">
+                <button:TextButton text="Button 3" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0050Flex1}">
+                <g:Label />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0}">
+                <button:TextButton text="Button Long 4" />
+              </container:child>
+            </container:VBoxLayoutContainer>
+
+
+            <!-- Align: left -->
+            <container:VBoxLayoutContainer padding="{padding5}" VBoxLayoutAlign="LEFT">
+              <container:child layoutData="{boxLayoutDataMargins0050}">
+                <button:TextButton text="Button 1" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0050}">
+                <button:TextButton text="Button 2" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0050}">
+                <button:TextButton text="Button 3" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0}">
+                <button:TextButton text="Button Long 4" />
+              </container:child>
+            </container:VBoxLayoutContainer>
+
+
+            <!-- Align: center -->
+            <container:VBoxLayoutContainer padding="{padding5}" VBoxLayoutAlign="CENTER">
+              <container:child layoutData="{boxLayoutDataMargins0050}">
+                <button:TextButton text="Button 1" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0050}">
+                <button:TextButton text="Button 2" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0050}">
+                <button:TextButton text="Button 3" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0}">
+                <button:TextButton text="Button Long 4" />
+              </container:child>
+            </container:VBoxLayoutContainer>
+
+
+            <!-- Align: right -->
+            <container:VBoxLayoutContainer padding="{padding5}" VBoxLayoutAlign="RIGHT">
+              <container:child layoutData="{boxLayoutDataMargins0050}">
+                <button:TextButton text="Button 1" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0050}">
+                <button:TextButton text="Button 2" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0050}">
+                <button:TextButton text="Button 3" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0}">
+                <button:TextButton text="Button Long 4" />
+              </container:child>
+            </container:VBoxLayoutContainer>
+
+
+            <!-- Align: stretch -->
+            <container:VBoxLayoutContainer padding="{padding5}" VBoxLayoutAlign="STRETCH">
+              <container:child layoutData="{boxLayoutDataMargins0050}">
+                <button:TextButton text="Button 1" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0050}">
+                <button:TextButton text="Button 2" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0050}">
+                <button:TextButton text="Button 3" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0}">
+                <button:TextButton text="Button Long 4" />
+              </container:child>
+            </container:VBoxLayoutContainer>
+
+
+            <!-- Align: stretchmax -->
+            <container:VBoxLayoutContainer padding="{padding5}" VBoxLayoutAlign="STRETCHMAX">
+              <container:child layoutData="{boxLayoutDataMargins0050}">
+                <button:TextButton text="Button 1" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0050}">
+                <button:TextButton text="Button 2" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0050}">
+                <button:TextButton text="Button 3" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0}">
+                <button:TextButton text="Button Long 4" />
+              </container:child>
+            </container:VBoxLayoutContainer>
+
+
+            <!-- Flex: All even -->
+            <container:VBoxLayoutContainer padding="{padding5}" VBoxLayoutAlign="CENTER">
+              <container:child layoutData="{boxLayoutDataMargins0050Flex1}">
+                <button:TextButton text="Button 1" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0050Flex1}">
+                <button:TextButton text="Button 2" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0050Flex1}">
+                <button:TextButton text="Button 3" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0Flex1}">
+                <button:TextButton text="Button Long 4" />
+              </container:child>
+            </container:VBoxLayoutContainer>
+
+
+            <!-- Flex: ratio -->
+            <container:VBoxLayoutContainer padding="{padding5}" VBoxLayoutAlign="CENTER">
+              <container:child layoutData="{boxLayoutDataMargins0050Flex1}">
+                <button:TextButton text="Button 1" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0050Flex1}">
+                <button:TextButton text="Button 2" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0050Flex1}">
+                <button:TextButton text="Button 3" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0Flex3}">
+                <button:TextButton text="Button Long 4" />
+              </container:child>
+            </container:VBoxLayoutContainer>
+
+
+            <!-- Flex + Stretch -->
+            <container:VBoxLayoutContainer padding="{padding5}" VBoxLayoutAlign="STRETCH">
+              <container:child layoutData="{boxLayoutDataMargins0050Flex1}">
+                <button:TextButton text="Button 1" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0050Flex1}">
+                <button:TextButton text="Button 2" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0050Flex1}">
+                <button:TextButton text="Button 3" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0Flex3}">
+                <button:TextButton text="Button Long 4" />
+              </container:child>
+            </container:VBoxLayoutContainer>
+
+
+            <!-- Pack: start -->
+            <container:VBoxLayoutContainer padding="{padding5}" VBoxLayoutAlign="CENTER"
+              pack="START">
+              <container:child layoutData="{boxLayoutDataMargins0050}">
+                <button:TextButton text="Button 1" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0050}">
+                <button:TextButton text="Button 2" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0050}">
+                <button:TextButton text="Button 3" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0}">
+                <button:TextButton text="Button Long 4" />
+              </container:child>
+            </container:VBoxLayoutContainer>
+
+
+            <!-- Pack: center -->
+            <container:VBoxLayoutContainer padding="{padding5}" VBoxLayoutAlign="CENTER"
+              pack="CENTER">
+              <container:child layoutData="{boxLayoutDataMargins0050}">
+                <button:TextButton text="Button 1" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0050}">
+                <button:TextButton text="Button 2" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0050}">
+                <button:TextButton text="Button 3" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0}">
+                <button:TextButton text="Button Long 4" />
+              </container:child>
+            </container:VBoxLayoutContainer>
+
+
+            <!-- Pack: end -->
+            <container:VBoxLayoutContainer padding="{padding5}" VBoxLayoutAlign="CENTER"
+              pack="END">
+              <container:child layoutData="{boxLayoutDataMargins0050}">
+                <button:TextButton text="Button 1" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0050}">
+                <button:TextButton text="Button 2" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0050}">
+                <button:TextButton text="Button 3" />
+              </container:child>
+              <container:child layoutData="{boxLayoutDataMargins0}">
+                <button:TextButton text="Button Long 4" />
+              </container:child>
+            </container:VBoxLayoutContainer>
+
+
+          </container:CardLayoutContainer>
+        </gxt:ContentPanel>
+
+      </container:center>
+
+    </container:BorderLayoutContainer>
+  </gxt:ContentPanel>
+
+</ui:UiBinder>

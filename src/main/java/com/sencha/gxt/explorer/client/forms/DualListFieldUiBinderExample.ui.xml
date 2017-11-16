@@ -1,0 +1,63 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder 
+    xmlns:ui='urn:ui:com.google.gwt.uibinder' 
+    xmlns:c="urn:import:com.sencha.gxt.widget.core.client"
+    xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container" 
+    xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button"
+    xmlns:form="urn:import:com.sencha.gxt.widget.core.client.form">
+
+  <ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="inputLayoutData">
+    <ui:attributes width="1" height="-1" />
+  </ui:with>
+
+  <ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="stateLayoutData">
+    <ui:attributes width="1" height="1" />
+  </ui:with>
+
+  <ui:with type="com.sencha.gxt.core.client.util.Margins" field="margins">
+    <ui:attributes top="10" right="10" bottom="10" left="10" />
+  </ui:with>
+  
+  <ui:with type="com.sencha.gxt.widget.core.client.container.MarginData" field="marginData">
+    <ui:attributes margins="{margins}" />
+  </ui:with>
+
+  <c:FramedPanel ui:field="panel" heading="Dual List Field">
+
+    <container:VerticalLayoutContainer layoutData="{marginData}">
+
+      <container:child layoutData="{inputLayoutData}">
+        <form:FieldLabel text="Name">
+          <form:widget>
+            <form:TextField ui:field="firstName" allowBlank="false" />
+          </form:widget>
+        </form:FieldLabel>
+      </container:child>
+
+      <container:child layoutData="{stateLayoutData}">
+        <form:FieldLabel text="States">
+          <form:widget>
+            <form:DualListField ui:field="field" />
+          </form:widget>
+        </form:FieldLabel>
+      </container:child>
+
+      <container:child layoutData="{inputLayoutData}">
+        <form:FieldLabel text="Email">
+          <form:widget>
+            <form:TextField ui:field="email" allowBlank="false" />
+          </form:widget>
+        </form:FieldLabel>
+      </container:child>
+
+    </container:VerticalLayoutContainer>
+
+    <c:button>
+      <button:TextButton text="Cancel" />
+    </c:button>
+    <c:button>
+      <button:TextButton text="Save" />
+    </c:button>
+  </c:FramedPanel>
+
+</ui:UiBinder>

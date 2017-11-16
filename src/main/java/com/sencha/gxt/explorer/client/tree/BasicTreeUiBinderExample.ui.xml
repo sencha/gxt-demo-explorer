@@ -1,0 +1,45 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+  xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client"
+  xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
+  xmlns:toolbar="urn:import:com.sencha.gxt.widget.core.client.toolbar"
+  xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button"
+  xmlns:tree="urn:import:com.sencha.gxt.widget.core.client.tree">
+
+  <ui:with type="com.sencha.gxt.data.shared.TreeStore" field="store" />
+  <ui:with type="com.sencha.gxt.core.client.ValueProvider" field="valueProvider" />
+
+  <ui:with type="com.sencha.gxt.core.client.util.Margins" field="margins">
+    <ui:attributes top="4" right="4" bottom="4" left="4" />
+  </ui:with>
+  <ui:with type="com.sencha.gxt.widget.core.client.container.MarginData" field="layoutData">
+    <ui:attributes margins="{margins}" />
+  </ui:with>
+
+  <ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="vertLayoutData">
+    <ui:attributes width="1" height="-1" />
+  </ui:with>
+  <!-- height = 1 necessary for scroll -->
+  <ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="treeLayoutData">
+    <ui:attributes width="1" height="1" />
+  </ui:with>
+
+
+  <gxt:ContentPanel ui:field="panel" heading="Basic Tree">
+    <container:VerticalLayoutContainer>
+      <container:child layoutData="{vertLayoutData}">
+
+        <toolbar:ToolBar layoutData="{layoutData}">
+          <button:TextButton text="Expand All" ui:field="expandAll" />
+          <button:TextButton text="Collapse All" ui:field="collapseAll" />
+        </toolbar:ToolBar>
+      </container:child>
+      <container:child layoutData="{treeLayoutData}">
+        <tree:Tree ui:field="tree" width="300" valueProvider="{valueProvider}" store="{store}">
+        </tree:Tree>
+      </container:child>
+
+    </container:VerticalLayoutContainer>
+  </gxt:ContentPanel>
+
+</ui:UiBinder>

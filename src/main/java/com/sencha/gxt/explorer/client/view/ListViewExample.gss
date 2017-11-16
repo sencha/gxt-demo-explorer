@@ -1,0 +1,66 @@
+.courtesy {
+  border: 1px solid white;
+  margin: 4px 0 4px 4px;
+  padding: 5px;
+  font: 13px Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-style: italic;
+  text-align: center;
+}
+
+.detail {
+  border: 1px solid white;
+  margin: 4px 0 4px 4px;
+  padding: 5px;
+  font: 13px Arial, Helvetica, sans-serif;
+  white-space: nowrap;
+}
+
+.detail img {
+  width: 100%;
+}
+
+.detailInfo span {
+  margin: 0 0 0 5px;
+}
+
+.thumb {
+  background: none repeat scroll 0 0 #ddd;
+  padding: 3px;
+}
+
+.thumb img {
+  height: 100px;
+  width: 100px;
+  object-fit: contain;
+}
+
+.thumbWrap {
+  border: 1px solid white;
+  float: left;
+  margin: 4px 0 4px 4px;
+  padding: 5px;
+  font: 11px Arial, Helvetica, sans-serif;
+}
+
+.thumbWrap span {
+  display: block;
+  overflow: hidden;
+  text-align: center;
+}
+
+.over {
+  background: repeat-x scroll left top #efefef;
+  border: 1px solid #ddd !important;
+  padding: 5px;
+}
+
+.select {
+  background: none repeat scroll 0 50% #dfe8f6;
+  border: 1px dotted #a3bae9 !important;
+  cursor: pointer;
+}
+
+.select .thumb {
+  background: none repeat scroll 0 0 transparent;
+}

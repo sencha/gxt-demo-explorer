@@ -1,0 +1,23 @@
+
+.searchItem {
+  font: normal 11px tahoma, arial, helvetica, sans-serif;
+  padding: 3px 10px 3px 10px;
+  white-space: normal;
+  color: #555;
+}
+
+.searchItem h3 {
+  display: block;
+  font: inherit;
+  font-weight: bold;
+  color: #222;
+}
+
+.searchItem h3 span {
+  float: right;
+  font-weight: normal;
+  margin: 0 0 5px 5px;
+  width: 100px;
+  display: block;
+  clear: none;
+}

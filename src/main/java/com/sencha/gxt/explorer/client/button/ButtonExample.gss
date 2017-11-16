@@ -1,0 +1,13 @@
+
+.header {
+  background-color: #ddd;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 4px;
+}
+
+.section {
+  padding: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder 
+    xmlns:ui='urn:ui:com.google.gwt.uibinder' 
+    xmlns:g="urn:import:com.google.gwt.user.client.ui"
+    xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client"
+    xmlns:tabs="urn:import:com.sencha.gxt.widget.core.client">
+
+  <ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig" field="tab1Config">
+    <ui:attributes text="Hello World 1" />
+  </ui:with>
+  <ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig" field="tab2Config">
+    <ui:attributes text="Hello World 2" />
+  </ui:with>
+
+  <gxt:Window ui:field="window" pixelSize="640, 480" heading="Hello World" resizable="false" closable="false">
+    <tabs:TabPanel borders="false">
+      <tabs:child config="{tab1Config}">
+        <g:Label text="Hello..." addStyleNames="pad-text" />
+      </tabs:child>
+      <tabs:child config="{tab2Config}">
+        <g:Label text="World..." addStyleNames="pad-text" />
+      </tabs:child>
+    </tabs:TabPanel>
+  </gxt:Window>
+
+</ui:UiBinder>

@@ -1,0 +1,117 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder 
+    xmlns:ui='urn:ui:com.google.gwt.uibinder'
+    xmlns:g="urn:import:com.google.gwt.user.client.ui"
+    xmlns:c="urn:import:com.sencha.gxt.widget.core.client"
+    xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button" 
+    xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
+    xmlns:form="urn:import:com.sencha.gxt.widget.core.client.form">
+
+  <ui:with type="com.sencha.gxt.core.client.util.Margins" field="leftMargin">
+    <ui:attributes top="0" right="10" bottom="0" left="0" />
+  </ui:with>
+
+  <ui:with type="com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer.HorizontalLayoutData" field="leftLayout">
+    <ui:attributes width="200" height="1" margins="{leftMargin}" />
+  </ui:with>
+
+  <ui:with type="com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer.HorizontalLayoutData" field="rightLayout">
+    <ui:attributes width="1" height="1" />
+  </ui:with>
+
+  <ui:with type="com.sencha.gxt.core.client.util.Margins" field="outerMargin">
+    <ui:attributes top="5" right="5" bottom="5" left="5" />
+  </ui:with>
+
+  <ui:with type="com.sencha.gxt.widget.core.client.container.MarginData" field="outerLayout">
+    <ui:attributes margins="{outerMargin}" />
+  </ui:with>
+
+  <ui:with type="com.sencha.gxt.widget.core.client.container.CssFloatLayoutContainer.CssFloatData" field="floatData">
+    <ui:attributes size="1" />
+  </ui:with>
+
+  <ui:with type="com.google.gwt.i18n.client.NumberFormat" field="numberFormat" />
+  <ui:with type="com.sencha.gxt.data.shared.ListStore" field="stockStore" />
+  <ui:with type="com.sencha.gxt.data.shared.LabelProvider" field="stockLabelProvider" />
+
+  <c:ContentPanel heading="Basic Data Binding">
+  <container:HorizontalLayoutContainer ui:field="hp">
+
+    <container:child layoutData="{leftLayout}">
+      <g:HTML ui:field="display"/>
+    </container:child>
+
+    <container:child layoutData="{rightLayout}">
+      <c:FramedPanel headerVisible="false" borders="false">
+        <container:CssFloatLayoutContainer layoutData="{outerLayout}">
+
+          <container:child layoutData="{floatData}">
+            <form:FieldLabel text="Select Company">
+              <form:widget>
+                <form:ComboBox ui:field="scb" store="{stockStore}" labelProvider="{stockLabelProvider}"
+                  forceSelection="true" editable="false" typeAhead="true" name="company" triggerAction="ALL" />
+              </form:widget>
+            </form:FieldLabel>
+          </container:child>
+
+          <container:child layoutData="{floatData}">
+            <container:CssFloatLayoutContainer ui:field="inner">
+              <container:child layoutData="{floatData}">
+                <form:FieldLabel text="Name">
+                  <form:widget>
+                    <form:TextField ui:field="name" allowBlank="false" />
+                  </form:widget>
+                </form:FieldLabel>
+              </container:child>
+
+              <container:child layoutData="{floatData}">
+                <form:FieldLabel text="Symbol">
+                  <form:widget>
+                    <form:TextField ui:field="symbol" name="symbol" />
+                  </form:widget>
+                </form:FieldLabel>
+              </container:child>
+
+              <container:child layoutData="{floatData}">
+                <form:FieldLabel text="Last">
+                  <form:widget>
+                    <form:DoubleField ui:field="last" allowBlank="false"
+                      allowNegative="false" name="last" format="{numberFormat}" />
+                  </form:widget>
+                </form:FieldLabel>
+              </container:child>
+
+              <container:child layoutData="{floatData}">
+                <form:FieldLabel text="Change">
+                  <form:widget>
+                    <form:DoubleField ui:field="change" allowBlank="false"
+                      name="change" format="{numberFormat}" />
+                  </form:widget>
+                </form:FieldLabel>
+              </container:child>
+
+              <container:child layoutData="{floatData}">
+                <form:FieldLabel text="Updated">
+                  <form:widget>
+                    <form:DateField ui:field="lastTrans" name="date" />
+                  </form:widget>
+                </form:FieldLabel>
+              </container:child>
+            </container:CssFloatLayoutContainer>
+          </container:child>
+        </container:CssFloatLayoutContainer>
+
+        <c:button>
+          <button:TextButton ui:field="reset" text="Cancel" />
+        </c:button>
+
+        <c:button>
+          <button:TextButton ui:field="save" text="Save" />
+        </c:button>
+      </c:FramedPanel>
+    </container:child>
+
+  </container:HorizontalLayoutContainer>
+  </c:ContentPanel>
+</ui:UiBinder>

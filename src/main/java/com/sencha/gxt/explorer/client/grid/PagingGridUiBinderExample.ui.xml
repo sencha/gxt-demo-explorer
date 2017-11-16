@@ -1,0 +1,54 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder 
+    xmlns:ui='urn:ui:com.google.gwt.uibinder'
+    xmlns:g="urn:import:com.google.gwt.user.client.ui" 
+    xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client"
+    xmlns:row="urn:import:com.sencha.gxt.widget.core.client.container" 
+    xmlns:toolbar="urn:import:com.sencha.gxt.widget.core.client.toolbar"
+    xmlns:grid="urn:import:com.sencha.gxt.widget.core.client.grid" 
+    xmlns:form="urn:import:com.sencha.gxt.widget.core.client.form">
+
+  <ui:with type="com.sencha.gxt.widget.core.client.grid.ColumnModel" field="cm" />
+  <ui:with type="com.sencha.gxt.widget.core.client.grid.CheckBoxSelectionModel" field="selectionModel" />
+  <ui:with type="com.sencha.gxt.explorer.client.grid.PagingGridConfirmableLoader" field="loader" />
+  <ui:with type="com.sencha.gxt.data.shared.ListStore" field="store" />
+
+  <ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="gridLayoutData">
+    <ui:attributes width="1" height="1" />
+  </ui:with>
+
+  <ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="toolBarLayoutData">
+    <ui:attributes width="1" height="-1" />
+  </ui:with>
+
+  <ui:with type="com.sencha.gxt.core.client.util.Margins" field="checboxMargin">
+    <ui:attributes top="0" right="0" bottom="3" left="3" />
+  </ui:with>
+
+  <ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="checkboxLayoutData">
+    <ui:attributes width="-1" height="-1" margins="{checboxMargin}" />
+  </ui:with>
+
+  <ui:with type="com.sencha.gxt.widget.core.client.grid.GridView" field="view">
+    <ui:attributes stripeRows="true" />
+  </ui:with>
+
+  <gxt:ContentPanel ui:field="panel" heading="Paging Grid">
+    <row:VerticalLayoutContainer>
+      <row:child layoutData="{gridLayoutData}">
+        <grid:Grid ui:field="grid" cm="{cm}" store="{store}" view="{view}" loader="{loader}" loadMask="true" columnReordering="true"
+          selectionModel="{selectionModel}">
+        </grid:Grid>
+
+      </row:child>
+      <row:child layoutData="{toolBarLayoutData}">
+        <toolbar:PagingToolBar pageSize="50" ui:field="toolBar" borders="false"></toolbar:PagingToolBar>
+      </row:child>
+      
+      <row:child layoutData="{checkboxLayoutData}">
+      	<form:CheckBox ui:field="warnLoad" boxLabel="Warn before loading new data" value="false" />
+      </row:child>
+    </row:VerticalLayoutContainer>
+  </gxt:ContentPanel>
+
+</ui:UiBinder>

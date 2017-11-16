@@ -1,0 +1,31 @@
+</textarea>
+
+<script src="../../samples/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+  var type = "{type}";
+  if (type == ("{" + "type}")) {
+    // something went wrong, use java as default
+    type = "java";
+  }
+  var editor = ace.edit("source");
+  var mode = "ace/mode/" + type;
+  var theme = "ace/theme/chrome";
+  var readOnly = true;
+  editor.getSession().setMode(mode);
+  editor.getSession().setUseWorker(false);
+  editor.setTheme(theme);
+  editor.setShowPrintMargin(false);
+  editor.renderer.setShowGutter(true);
+  editor.setHighlightActiveLine(false);
+  editor.setDisplayIndentGuides(true);
+  editor.setReadOnly(readOnly);
+  editor.renderer.setPadding(10);
+  editor.renderer.setScrollMargin(10, 10, 0, 0);
+  editor.getSession().setOptions({
+    tabSize: 8,
+    useSoftTabs: true,
+    useWrapMode: false,
+  });
+</script>
+</body>
+</html>

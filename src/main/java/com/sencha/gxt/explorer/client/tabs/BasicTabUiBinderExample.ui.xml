@@ -1,0 +1,76 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder 
+    xmlns:ui='urn:ui:com.google.gwt.uibinder' 
+    xmlns:g="urn:import:com.google.gwt.user.client.ui"
+    xmlns:tabs="urn:import:com.sencha.gxt.widget.core.client" 
+    xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container">
+
+  <ui:with type="java.lang.String" field="txt" />
+  <ui:with type="com.sencha.gxt.examples.resources.client.images.ExampleImages" field="images" />
+
+  <ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig" field="shortTextTabConfig">
+    <ui:attributes text="Short Text" />
+  </ui:with>
+  <ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig" field="longTextTabConfig">
+    <ui:attributes text="Long Text" />
+  </ui:with>
+  <ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig" field="normalTabConfig">
+    <ui:attributes text="Normal" />
+  </ui:with>
+  <ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig" field="iconTabConfig">
+    <ui:attributes text="Icon Tab" icon="{images.table}" />
+  </ui:with>
+  <ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig" field="disabledTabConfig">
+    <ui:attributes text="Disabled" enabled="false" />
+  </ui:with>
+
+  <ui:with type="com.sencha.gxt.core.client.util.Margins" field="topMargin">
+    <ui:attributes top="0" right="0" bottom="10" left="0" />
+  </ui:with>
+
+  <ui:with type="com.sencha.gxt.core.client.util.Margins" field="bottomMargin">
+    <ui:attributes top="10" right="0" bottom="0" left="0" />
+  </ui:with>
+
+  <ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="topLayout">
+    <ui:attributes width="1" height="0.5" margins="{topMargin}" />
+  </ui:with>
+
+  <ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="bottomLayout">
+    <ui:attributes width="1" height="0.5" margins="{bottomMargin}" />
+  </ui:with>
+
+  <container:VerticalLayoutContainer>
+    <container:child layoutData="{topLayout}">
+      <tabs:TabPanel ui:field="folder">
+        <tabs:child config="{shortTextTabConfig}">
+          <g:Label addStyleNames="pad-text" text="{txt}" />
+        </tabs:child>
+
+        <tabs:child config="{longTextTabConfig}">
+          <container:FlowLayoutContainer>
+            <g:Label text="{txt}" addStyleNames="pad-text"  />
+            <g:Label text="{txt}" addStyleNames="pad-text" />
+          </container:FlowLayoutContainer>
+        </tabs:child>
+      </tabs:TabPanel>
+    </container:child>
+
+    <container:child layoutData="{bottomLayout}">
+      <tabs:PlainTabPanel ui:field="panel">
+        <tabs:child config="{normalTabConfig}">
+          <g:Label text="Just a plain old tab" addStyleNames="pad-text" />
+        </tabs:child>
+
+        <tabs:child config="{iconTabConfig}">
+          <g:Label text="Just a plain old tab with an icon" addStyleNames="pad-text" />
+        </tabs:child>
+
+        <tabs:child config="{disabledTabConfig}">
+          <g:Label text="This tab should be disabled" addStyleNames="pad-text" />
+        </tabs:child>
+      </tabs:PlainTabPanel>
+    </container:child>
+  </container:VerticalLayoutContainer>
+
+</ui:UiBinder>

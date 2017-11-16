@@ -1,0 +1,312 @@
+{
+	"stocks": [
+		{
+			"name": "Apple Inc.",
+			"symbol": "AAPL",
+			"open": 125.64,
+			"last": 123.43,
+			"date": "1301604543796"
+		},
+		{
+			"name": "Cisco Systems, Inc.",
+			"symbol": "CSCO",
+			"open": 25.84,
+			"last": 26.3,
+			"date": "1301604511857"
+		},
+		{
+			"name": "Google Inc.",
+			"symbol": "GOOG",
+			"open": 516.2,
+			"last": 512.6,
+			"date": "1301592053022"
+		},
+		{
+			"name": "Intel Corporation",
+			"symbol": "INTC",
+			"open": 21.36,
+			"last": 21.53,
+			"date": "1301604543796"
+		},
+		{
+			"name": "Level 3 Communications, Inc.",
+			"symbol": "LVLT",
+			"open": 5.55,
+			"last": 5.54,
+			"date": "1301604511857"
+		},
+		{
+			"name": "Microsoft Corporation",
+			"symbol": "MSFT",
+			"open": 29.56,
+			"last": 29.72,
+			"date": "1301604603164"
+		},
+		{
+			"name": "Nokia Corporation (ADR)",
+			"symbol": "NOK",
+			"open": 27.83,
+			"last": 27.93,
+			"date": "1301604511857"
+		},
+		{
+			"name": "Oracle Corporation",
+			"symbol": "ORCL",
+			"open": 18.73,
+			"last": 18.98,
+			"date": "1301592053022"
+		},
+		{
+			"name": "Starbucks Corporation",
+			"symbol": "SBUX",
+			"open": 27.33,
+			"last": 27.36,
+			"date": "1301592053022"
+		},
+		{
+			"name": "Yahoo! Inc.",
+			"symbol": "YHOO",
+			"open": 26.97,
+			"last": 27.29,
+			"date": "1301592053022"
+		},
+		{
+			"name": "Applied Materials, Inc.",
+			"symbol": "AMAT",
+			"open": 18.4,
+			"last": 18.66,
+			"date": "1301604439452"
+		},
+		{
+			"name": "Comcast Corporation",
+			"symbol": "CMCSA",
+			"open": 25.9,
+			"last": 26.4,
+			"date": "1301592053022"
+		},
+		{
+			"name": "Sirius Satellite",
+			"symbol": "SIRI",
+			"open": 2.77,
+			"last": 2.74,
+			"date": "1301604511857"
+		},
+		{
+			"name": "Tellabs, Inc.",
+			"symbol": "TLAB",
+			"open": 10.64,
+			"last": 10.75,
+			"date": "1301604543796"
+		},
+		{
+			"name": "eBay Inc.",
+			"symbol": "EBAY",
+			"open": 30.43,
+			"last": 31.21,
+			"date": "1301604439452"
+		},
+		{
+			"name": "Broadcom Corporation",
+			"symbol": "BRCM",
+			"open": 30.88,
+			"last": 30.48,
+			"date": "1301592053022"
+		},
+		{
+			"name": "CMGI Inc.",
+			"symbol": "CMGI",
+			"open": 2.14,
+			"last": 2.13,
+			"date": "1301592053022"
+		},
+		{
+			"name": "Amgen, Inc.",
+			"symbol": "AMGN",
+			"open": 56.22,
+			"last": 57.02,
+			"date": "1301604603164"
+		},
+		{
+			"name": "Limelight Networks",
+			"symbol": "LLNW",
+			"open": 23,
+			"last": 22.11,
+			"date": "1301604511857"
+		},
+		{
+			"name": "Amazon.com, Inc.",
+			"symbol": "AMZN",
+			"open": 72.47,
+			"last": 72.23,
+			"date": 1301604439452
+		},
+		{
+			"name": "E TRADE Financial Corporation",
+			"symbol": "ETFC",
+			"open": 24.32,
+			"last": 24.58,
+			"date": 1301592053022
+		},
+		{
+			"name": "AVANIR Pharmaceuticals",
+			"symbol": "AVNR",
+			"open": 3.7,
+			"last": 3.52,
+			"date": "1301592053022"
+		},
+		{
+			"name": "Gemstar-TV Guide, Inc.",
+			"symbol": "GMST",
+			"open": 4.41,
+			"last": 4.55,
+			"date": "1301604511857"
+		},
+		{
+			"name": "Akamai Technologies, Inc.",
+			"symbol": "AKAM",
+			"open": 43.08,
+			"last": 45.32,
+			"date": "1301592053022"
+		},
+		{
+			"name": "Motorola, Inc.",
+			"symbol": "MOT",
+			"open": 17.74,
+			"last": 17.69,
+			"date": "1301604543796"
+		},
+		{
+			"name": "Advanced Micro Devices, Inc.",
+			"symbol": "AMD",
+			"open": 13.77,
+			"last": 13.98,
+			"date": "1301604603164"
+		},
+		{
+			"name": "General Electric Company",
+			"symbol": "GE",
+			"open": 36.8,
+			"last": 36.91,
+			"date": "1301592053022"
+		},
+		{
+			"name": "Texas Instruments Incorporated",
+			"symbol": "TXN",
+			"open": 35.02,
+			"last": 35.7,
+			"date": "1301604439452"
+		},
+		{
+			"name": "Qwest Communications",
+			"symbol": "Q",
+			"open": 9.9,
+			"last": 10.03,
+			"date": "1301604603164"
+		},
+		{
+			"name": "Tyco International Ltd.",
+			"symbol": "TYC",
+			"open": 33.48,
+			"last": 33.26,
+			"date": "1301604511857"
+		},
+		{
+			"name": "Pfizer Inc.",
+			"symbol": "PFE",
+			"open": 26.21,
+			"last": 26.19,
+			"date": "1301592053022"
+		},
+		{
+			"name": "Time Warner Inc.",
+			"symbol": "TWX",
+			"open": 20.3,
+			"last": 20.45,
+			"date": "1301604543796"
+		},
+		{
+			"name": "Sprint Nextel Corporation",
+			"symbol": "S",
+			"open": 21.85,
+			"last": 21.76,
+			"date": "1301604439452"
+		},
+		{
+			"name": "Bank of America Corporation",
+			"symbol": "BAC",
+			"open": 49.92,
+			"last": 49.73,
+			"date": "1301592053022"
+		},
+		{
+			"name": "Taiwan Semiconductor",
+			"symbol": "TSM",
+			"open": 10.4,
+			"last": 10.52,
+			"date": "1301592053022"
+		},
+		{
+			"name": "AT&T Inc.",
+			"symbol": "T",
+			"open": 39.7,
+			"last": 39.66,
+			"date": "1301604511857"
+		},
+		{
+			"name": "United States Steel Corporation",
+			"symbol": "X",
+			"open": 115.81,
+			"last": 114.62,
+			"date": "1301604603164"
+		},
+		{
+			"name": "Exxon Mobil Corporation",
+			"symbol": "XOM",
+			"open": 81.77,
+			"last": 81.86,
+			"date": "1301604543796"
+		},
+		{
+			"name": "Valero Energy Corporation",
+			"symbol": "VLO",
+			"open": 72.46,
+			"last": 72.6,
+			"date": "1301604603164"
+		},
+		{
+			"name": "Micron Technology, Inc.",
+			"symbol": "MU",
+			"open": 12.02,
+			"last": 12.27,
+			"date": "1301604439452"
+		},
+		{
+			"name": "Verizon Communications Inc.",
+			"symbol": "VZ",
+			"open": 42.5,
+			"last": 42.61,
+			"date": "1301592053022"
+		},
+		{
+			"name": "Avaya Inc.",
+			"symbol": "AV",
+			"open": 16.96,
+			"last": 16.96,
+			"date": "1301592053022"
+		},
+		{
+			"name": "The Home Depot, Inc.",
+			"symbol": "HD",
+			"open": 37.66,
+			"last": 37.79,
+			"date": "1301604543796"
+		},
+		{
+			"name": "First Data Corporation",
+			"symbol": "FDC",
+			"open": 32.7,
+			"last": 32.65,
+			"date": "1301604511857"
+		}
+	]
+}

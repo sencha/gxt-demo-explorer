@@ -1,0 +1,41 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder 
+    xmlns:ui='urn:ui:com.google.gwt.uibinder' 
+    xmlns:g="urn:import:com.google.gwt.user.client.ui"
+    xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client"
+    xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container">
+
+
+  <ui:with type="com.sencha.gxt.core.client.util.Margins" field="margin">
+    <ui:attributes top="10" right="10" bottom="10" left="10" />
+  </ui:with>
+
+  <ui:with type="com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer.HorizontalLayoutData" field="layoutData">
+    <ui:attributes width="0.33" height="-1" margins="{margin}" />
+  </ui:with>
+
+  <ui:with type="java.lang.String" field="dummyTextShort" />
+
+  <container:HorizontalLayoutContainer>
+
+    <container:child layoutData="{layoutData}">
+      <gxt:ContentPanel ui:field="cp1" bodyStyleName="pad-text" heading="Draggable — Proxy Drag">
+        <g:Label text="{dummyTextShort}" />
+      </gxt:ContentPanel>
+    </container:child>
+
+    <container:child layoutData="{layoutData}">
+      <gxt:ContentPanel ui:field="cp2" bodyStyleName="pad-text" heading="Draggable — Direct Drag">
+        <g:Label text="Drags can only be started from the header." />
+      </gxt:ContentPanel>
+    </container:child>
+
+    <container:child layoutData="{layoutData}">
+      <gxt:ContentPanel ui:field="cp3" bodyStyleName="pad-text" heading="Draggable — Constrain">
+        <g:Label text="Can only be dragged vertically." />
+      </gxt:ContentPanel>
+    </container:child>
+
+  </container:HorizontalLayoutContainer>
+
+</ui:UiBinder>

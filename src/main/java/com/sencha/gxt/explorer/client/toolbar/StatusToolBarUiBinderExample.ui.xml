@@ -1,0 +1,36 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder 
+    xmlns:ui='urn:ui:com.google.gwt.uibinder' 
+    xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client"
+    xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container" 
+    xmlns:form="urn:import:com.sencha.gxt.widget.core.client.form"
+    xmlns:toolbar="urn:import:com.sencha.gxt.widget.core.client.toolbar">
+
+  <ui:with type="com.sencha.gxt.core.client.util.Margins" field="margins5">
+    <ui:attributes top="5" right="5" bottom="5" left="5" />
+  </ui:with>
+  <ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="mainRow">
+    <ui:attributes width="1" height="1" margins="{margins5}" />
+  </ui:with>
+  <ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="toolbarRow">
+    <ui:attributes width="1" height="-1" />
+  </ui:with>
+
+  <gxt:ContentPanel ui:field="panel" heading="Status Tool Bar">
+    <container:VerticalLayoutContainer ui:field="form">
+      <container:child layoutData="{mainRow}">
+        <form:TextArea ui:field="textArea" />
+      </container:child>
+      <container:child layoutData="{toolbarRow}">
+        <toolbar:ToolBar borders="false">
+          <gxt:Status ui:field="status" text="Not writing" width="150" />
+          <toolbar:FillToolItem />
+          <gxt:Status ui:field="charCount" text="0 Chars" width="100" />
+          <toolbar:LabelToolItem label="&nbsp;" />
+          <gxt:Status ui:field="wordCount" text="0 Words" width="100" />
+        </toolbar:ToolBar>
+      </container:child>
+    </container:VerticalLayoutContainer>
+  </gxt:ContentPanel>
+
+</ui:UiBinder>

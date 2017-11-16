@@ -1,0 +1,9 @@
+<p>Name: {data.name}</p>
+<p>Company: {data.company}</p>
+<p>Location: {data.location}</p>
+<p>Salary: {data.income:currency}</p>
+<br/>
+<p>Kids:</p>
+<tpl for="data.kids">
+<tpl if="age < 100"><p>{#}. {parent.name}'s kid - {name} - {bday:date("M/d/yyyy")}</p></tpl>
+</tpl>

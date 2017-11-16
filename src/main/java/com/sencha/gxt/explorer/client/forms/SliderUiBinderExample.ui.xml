@@ -1,0 +1,18 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder 
+    xmlns:ui='urn:ui:com.google.gwt.uibinder' 
+    xmlns:g="urn:import:com.google.gwt.user.client.ui"
+    xmlns:client="urn:import:com.sencha.gxt.widget.core.client" 
+    xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button">
+
+  <client:ContentPanel heading="Slider">
+    <g:VerticalPanel spacing="10">
+      <client:Slider ui:field="slider1" />
+      <button:TextButton text="Set value to 40" ui:field="slider1Button" />
+
+      <client:Slider ui:field="slider2" increment="1" />
+      <button:TextButton text="Set value to 20" ui:field="slider2Button" />
+    </g:VerticalPanel>
+  </client:ContentPanel>
+
+</ui:UiBinder>

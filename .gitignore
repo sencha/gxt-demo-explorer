@@ -1,22 +1,24 @@
-# Compiled class file
-*.class
+# OS X
+.DS_Store
 
-# Log file
-*.log
+# Migrated from Subversion
+# Eclipse metadata
+.project
+.settings
+.classpath
 
-# BlueJ files
-*.ctxt
+# Build output
+target/
+war/
+doc/
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+# Working directories
+.gwt/
+.gwt-tmp/
+gwt-unitCache/
+www-test/
+tomcat/
 
-# Package Files #
-*.jar
-*.war
-*.ear
-*.zip
-*.tar.gz
-*.rar
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+#IntelliJ IDEA metadata
+*.iml
+.idea

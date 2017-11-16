@@ -1,0 +1,6 @@
+.toolButton {
+}
+
+.toolButtonOver {
+	opacity: .5;
+}

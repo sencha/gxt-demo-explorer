@@ -1,0 +1,47 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+  xmlns:g="urn:import:com.google.gwt.user.client.ui"
+  xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client"
+  xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
+  xmlns:b="urn:import:com.sencha.gxt.widget.core.client.button"
+  xmlns:tool="urn:import:com.sencha.gxt.widget.core.client.toolbar">
+
+  <ui:style gss="true">
+  .text {
+    font: 11px arial, tahoma, helvetica, sans-serif;
+  }
+  </ui:style>
+
+  <ui:with type="com.sencha.gxt.core.client.util.Margins" field="margins">
+    <ui:attributes top="20" right="20" bottom="20" left="20" />
+  </ui:with>
+
+  <ui:with type="com.sencha.gxt.widget.core.client.container.MarginData" field="marginData">
+    <ui:attributes margins="{margins}" />
+  </ui:with>
+
+  <gxt:ContentPanel ui:field="panel" heading="Card Layout">
+    <container:CardLayoutContainer ui:field="layout" layoutData="{marginData}">
+      <g:Label styleName="{style.text}" text="Pellentesque elementum a nisl a cursus. Maecenas quis nibh nisl. Etiam interdum a leo eget ultricies. Vivamus eu diam tincidunt, convallis lacus non, euismod eros." />
+      <g:Label styleName="{style.text}" text="Fusce tristique blandit finibus. Integer eget vestibulum est. Duis maximus quis eros sit amet bibendum. Cras et nisi a ante semper vestibulum. In hac habitasse platea dictumst. Phasellus tempus dui vel velit sollicitudin, quis cursus turpis luctus. Aenean convallis varius cursus. Nunc ut eros quis neque semper aliquam id nec." />
+      <g:Label styleName="{style.text}" text="Quisque nec facilisis lectus. Morbi nunc augue, commodo et cursus ut, viverra non dolor. Nam id magna rhoncus, porta libero condimentum, facilisis magna. Donec convallis ex id libero mollis, vel dignissim augue ultrices. Integer pulvinar sapien eget sapien lobortis, vel lobortis tellus pulvinar. Vestibulum non feugiat mi. Morbi pellentesque molestie vestibulum. Mauris gravida libero sit amet nunc varius mattis. Nam a justo ac nulla blandit ullamcorper ac sit amet lectus. Nulla imperdiet et eros et." />
+      <g:Label styleName="{style.text}" text="Nam sit amet mauris quis mi ornare sollicitudin. Duis vitae nisi pellentesque, consequat nisi nec, mattis lorem. Vivamus et pretium ex. Mauris posuere in ante rutrum hendrerit. Ut malesuada libero turpis, sit amet sodales dui blandit nec. Integer vitae lorem congue, consequat risus vel, blandit nulla. Nulla sagittis nibh felis. Sed non auctor nulla, et dapibus orci. Vestibulum dapibus erat eu laoreet interdum. Morbi mollis orci elit, vel condimentum ante fermentum sed. Nunc dapibus arcu diam, non tristique ligula mollis nec. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin et vulputate magna, vitae tristique felis." />
+    </container:CardLayoutContainer>
+    <gxt:button>
+      <tool:LabelToolItem label="Switch Cards:"></tool:LabelToolItem>
+    </gxt:button>
+    <gxt:button>
+      <b:TextButton ui:field="card1Button" text="Card 1" />
+    </gxt:button>
+    <gxt:button>
+      <b:TextButton ui:field="card2Button" text="Card 2" />
+    </gxt:button>
+    <gxt:button>
+      <b:TextButton ui:field="card3Button" text="Card 3" />
+    </gxt:button>
+    <gxt:button>
+      <b:TextButton ui:field="card4Button" text="Card 4" />
+    </gxt:button>
+  </gxt:ContentPanel>
+
+</ui:UiBinder>

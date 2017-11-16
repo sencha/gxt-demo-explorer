@@ -1,0 +1,46 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder 
+    xmlns:ui='urn:ui:com.google.gwt.uibinder' 
+    xmlns:g="urn:import:com.google.gwt.user.client.ui"
+    xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client" 
+    xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
+    xmlns:tree="urn:import:com.sencha.gxt.widget.core.client.tree">
+
+  <ui:with type="java.lang.String" field="dummyTextShort" />
+  <ui:with type="com.sencha.gxt.widget.core.client.ContentPanel.ContentPanelAppearance" field="contentPanelAppearance" />
+  <ui:with type="com.sencha.gxt.widget.core.client.container.AccordionLayoutContainer.AccordionLayoutAppearance"
+    field="accordionLayoutAppearance" />
+
+  <ui:with type="com.sencha.gxt.data.shared.TreeStore" field="store" />
+  <ui:with type="com.sencha.gxt.core.client.ValueProvider" field="valueProvider" />
+  <ui:with type="com.sencha.gxt.data.shared.IconProvider" field="iconProvider" />
+
+  <gxt:ContentPanel ui:field="panel" appearance="{contentPanelAppearance}" heading="Accordion Layout" bodyBorder="false">
+    <container:AccordionLayoutContainer ui:field="con" expandMode="SINGLE_FILL">
+
+      <gxt:ContentPanel ui:field="users" appearance="{accordionLayoutAppearance}" animCollapse="false"
+        heading="Online Users">
+
+        <tree:Tree ui:field="tree" store="{store}" valueProvider="{valueProvider}" iconProvider="{iconProvider}" />
+
+      </gxt:ContentPanel>
+
+      <gxt:ContentPanel appearance="{accordionLayoutAppearance}" animCollapse="false" bodyStyleName="pad-text"
+        heading="Settings">
+        <g:Label text="{dummyTextShort}" />
+      </gxt:ContentPanel>
+
+      <gxt:ContentPanel appearance="{accordionLayoutAppearance}" animCollapse="false" bodyStyleName="pad-text"
+        heading="Stuff">
+        <g:Label text="{dummyTextShort}" />
+      </gxt:ContentPanel>
+
+      <gxt:ContentPanel appearance="{accordionLayoutAppearance}" animCollapse="false" bodyStyleName="pad-text"
+        heading="More Stuff">
+        <g:Label text="{dummyTextShort}" />
+      </gxt:ContentPanel>
+
+    </container:AccordionLayoutContainer>
+  </gxt:ContentPanel>
+
+</ui:UiBinder>

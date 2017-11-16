@@ -1,0 +1,22 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder 
+    xmlns:ui='urn:ui:com.google.gwt.uibinder'
+    xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client" 
+    xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
+    xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button">
+
+  <container:FlowLayoutContainer>
+      <button:ButtonBar>
+        <button:TextButton ui:field="slide" text="Slide In / Out" />
+        <button:TextButton ui:field="fade" text="Fade In / Out" />
+        <button:TextButton ui:field="move" text="Move" />
+        <button:TextButton ui:field="blink" text="Blink" />
+        <button:TextButton ui:field="event" text="Event" />
+        <button:TextButton ui:field="reset" text="Reset" />
+      </button:ButtonBar>
+
+    <gxt:ContentPanel ui:field="cp" heading="Animation" pixelSize="200, 200" position="115, 70" />
+
+  </container:FlowLayoutContainer>
+
+</ui:UiBinder>

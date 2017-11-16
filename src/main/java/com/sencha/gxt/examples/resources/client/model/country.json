@@ -1,0 +1,49 @@
+{
+	"countries": [
+		{
+			"abbr": "ad",
+			"name": "Andora",
+			"value": 103
+		},
+		{
+			"abbr": "ae",
+			"name": "Arab Emirates",
+			"value": 183
+		},
+		{
+			"abbr": "ag",
+			"name": "Antigua And Barbuda",
+			"value": 173
+		},
+		{
+			"abbr": "ai",
+			"name": "Anguilla",
+			"value": 123
+		},
+		{
+			"abbr": "al",
+			"name": "Albania",
+			"value": 197
+		},
+		{
+			"abbr": "am",
+			"name": "Armenia",
+			"value": 156
+		},
+		{
+			"abbr": "an",
+			"name": "Neth. Antilles",
+			"value": 108
+		},
+		{
+			"abbr": "ao",
+			"name": "Angola",
+			"value": 145
+		},
+		{
+			"abbr": "ar",
+			"name": "Argentina",
+			"value": 185
+		}
+	]
+}

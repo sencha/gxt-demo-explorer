@@ -1,0 +1,10 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder 
+    xmlns:ui='urn:ui:com.google.gwt.uibinder' 
+    xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client">
+
+  <ui:with field="minDate" type="java.util.Date" />
+
+  <gxt:DatePicker ui:field="picker" minDate="{minDate}" />
+
+</ui:UiBinder>

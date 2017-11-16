@@ -1,0 +1,202 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder 
+    xmlns:ui='urn:ui:com.google.gwt.uibinder' 
+    xmlns:g="urn:import:com.google.gwt.user.client.ui"
+    xmlns:c="urn:import:com.sencha.gxt.widget.core.client" 
+    xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
+    xmlns:form="urn:import:com.sencha.gxt.widget.core.client.form" 
+    xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button">
+
+  <ui:with type="com.sencha.gxt.core.client.util.Margins" field="outerMargins">
+    <ui:attributes top="0" right="0" bottom="20" left="0" />
+  </ui:with>
+
+  <ui:with type="com.sencha.gxt.widget.core.client.container.BoxLayoutContainer.BoxLayoutData" field="outerLayout">
+    <ui:attributes flex="1" margins="{outerMargins}" />
+  </ui:with>
+
+  <ui:with type="com.sencha.gxt.widget.core.client.container.BoxLayoutContainer.BoxLayoutData" field="nostretch">
+    <ui:attributes maxSize="-1" />
+  </ui:with>
+
+  <ui:with type="com.sencha.gxt.widget.core.client.container.BoxLayoutContainer.BoxLayoutData" field="flex">
+    <ui:attributes flex="1" />
+  </ui:with>
+
+  <ui:with type="com.sencha.gxt.core.client.util.Margins" field="form1Margins">
+    <ui:attributes top="15" right="15" bottom="0" left="15" />
+  </ui:with>
+
+  <ui:with type="com.sencha.gxt.widget.core.client.container.MarginData" field="form1MarginData">
+    <ui:attributes margins="{form1Margins}" />
+  </ui:with>
+
+  <ui:with type="com.sencha.gxt.core.client.util.Margins" field="form2Margins">
+    <ui:attributes top="15" right="15" bottom="15" left="15" />
+  </ui:with>
+
+  <ui:with type="com.sencha.gxt.widget.core.client.container.MarginData" field="form2MarginData">
+    <ui:attributes margins="{form2Margins}" />
+  </ui:with>
+
+  <ui:with type="java.util.Date" field="minValue" />
+  <ui:with type="java.util.Date" field="maxValue" />
+  
+  <container:VBoxLayoutContainer VBoxLayoutAlign="STRETCH">
+
+    <container:child layoutData="{outerLayout}">
+      <c:FramedPanel heading="Forms Example — Simple">
+        <container:VBoxLayoutContainer VBoxLayoutAlign="STRETCH" layoutData="{form1MarginData}">
+
+          <container:child>
+            <form:FieldLabel text="Name">
+              <form:widget>
+                <form:TextField ui:field="firstName" allowBlank="false" emptyText="Enter your name..." />
+              </form:widget>
+            </form:FieldLabel>
+          </container:child>
+
+          <container:child>
+            <form:FieldLabel text="Email">
+              <form:widget>
+                <form:TextField ui:field="email" allowBlank="false" />
+              </form:widget>
+            </form:FieldLabel>
+          </container:child>
+
+          <container:child>
+            <form:FieldLabel text="Password">
+              <form:widget>
+                <form:PasswordField ui:field="password" />
+              </form:widget>
+            </form:FieldLabel>
+          </container:child>
+
+          <container:child>
+            <form:FieldLabel text="Age">
+              <form:widget>
+                <form:IntegerField ui:field="age" allowBlank="false" />
+              </form:widget>
+            </form:FieldLabel>
+          </container:child>
+
+          <container:child>
+            <form:FieldLabel text="Company">
+              <form:widget>
+                <form:ComboBox ui:field="combo" allowBlank="true" forceSelection="true" triggerAction="ALL" />
+              </form:widget>
+            </form:FieldLabel>
+          </container:child>
+
+          <container:child>
+            <form:FieldLabel text="Birthday">
+              <form:widget>
+                <form:DateField ui:field="date" />
+              </form:widget>
+            </form:FieldLabel>
+          </container:child>
+
+          <container:child>
+            <form:FieldLabel text="Time">
+              <form:widget>
+                <form:TimeField ui:field="time" minValue="{minValue}" maxValue="{maxValue}" triggerAction="ALL" />
+              </form:widget>
+            </form:FieldLabel>
+          </container:child>
+
+          <container:child>
+            <form:FieldLabel text="Size">
+              <form:widget>
+                <c:Slider minValue="40" maxValue="90" value="0" increment="5" message="{0} inches tall" />
+              </form:widget>
+            </form:FieldLabel>
+          </container:child>
+
+          <container:child layoutData="{nostretch}">
+            <form:FieldLabel text="Music">
+              <form:widget>
+                <g:HorizontalPanel>
+                  <form:CheckBox ui:field="check1" enabled="false" boxLabel="Classical" />
+                  <form:CheckBox ui:field="check2" boxLabel="Rock" value="true" />
+                  <form:CheckBox ui:field="check3" boxLabel="Blues" />
+                </g:HorizontalPanel>
+              </form:widget>
+            </form:FieldLabel>
+          </container:child>
+
+          <container:child layoutData="{nostretch}">
+            <form:FieldLabel text="Color">
+              <form:widget>
+                <g:HorizontalPanel>
+                  <form:Radio ui:field="radio" boxLabel="Red" />
+                  <form:Radio ui:field="radio2" boxLabel="Blue" value="true" />
+                </g:HorizontalPanel>
+              </form:widget>
+            </form:FieldLabel>
+          </container:child>
+
+          <container:child layoutData="{flex}">
+            <form:FieldLabel text="Description">
+              <form:widget>
+                <form:TextArea ui:field="description" allowBlank="false" />
+              </form:widget>
+            </form:FieldLabel>
+          </container:child>
+
+          <container:child>
+            <form:FieldLabel text="Duration(s)">
+              <form:widget>
+                <form:DoubleSpinnerField ui:field="spinnerField" allowNegative="true" allowBlank="false" />
+              </form:widget>
+            </form:FieldLabel>
+          </container:child>
+
+        </container:VBoxLayoutContainer>
+
+        <c:button>
+          <button:TextButton text="Save" />
+        </c:button>
+        <c:button>
+          <button:TextButton text="Cancel" />
+        </c:button>
+
+      </c:FramedPanel>
+    </container:child>
+
+
+    <c:FramedPanel ui:field="form2" heading="Forms Example — FieldSet">
+
+      <form:FieldSet ui:field="fieldSet" heading="User Information" collapsible="true" layoutData="{form2MarginData}">
+        <container:VBoxLayoutContainer VBoxLayoutAlign="STRETCH">
+
+          <form:FieldLabel text="First Name">
+            <form:widget>
+              <form:TextField allowBlank="false" />
+            </form:widget>
+          </form:FieldLabel>
+          <form:FieldLabel text="Last Name">
+            <form:widget>
+              <form:TextField allowBlank="false" />
+            </form:widget>
+          </form:FieldLabel>
+          <form:FieldLabel text="Email">
+            <form:widget>
+              <form:TextField allowBlank="false" />
+            </form:widget>
+          </form:FieldLabel>
+
+        </container:VBoxLayoutContainer>
+      </form:FieldSet>
+
+      <c:button>
+        <button:TextButton text="Save" />
+      </c:button>
+      <c:button>
+        <button:TextButton text="Cancel" />
+      </c:button>
+
+    </c:FramedPanel>
+
+  </container:VBoxLayoutContainer>
+
+</ui:UiBinder>

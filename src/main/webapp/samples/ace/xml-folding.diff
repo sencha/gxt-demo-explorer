@@ -1,0 +1,58 @@
+diff --git a/build b/build
+deleted file mode 160000
+index e94cb3c..0000000
+--- a/build
++++ /dev/null
+@@ -1 +0,0 @@
+-Subproject commit e94cb3c7ffccfb2e565cc857f07a988c0989e527
+diff --git a/lib/ace/mode/folding/xml.js b/lib/ace/mode/folding/xml.js
+index 7565bf1..09ee253 100644
+--- a/lib/ace/mode/folding/xml.js
++++ b/lib/ace/mode/folding/xml.js
+@@ -88,7 +88,12 @@ function is(token, type) {
+ 
+         for (var i = 0; i < tokens.length; i++) {
+             var token = tokens[i];
+-            if (is(token, "tag-open")) {
++            if (is(token, "comment") && (token.value == '<!--' || token.value == '-->')) {
++                tag.end.column = tag.start.column + token.value.length;
++                tag.closing = token.value == '-->';
++                tag.tagName = 'comment';
++                return tag;
++            } else if (is(token, "tag-open")) {
+                 tag.end.column = tag.start.column + token.value.length;
+                 tag.closing = is(token, "end-tag-open");
+                 token = tokens[++i];
+@@ -123,7 +128,9 @@ function is(token, type) {
+             column += token.value.length;
+             if (column < startColumn)
+                 continue;
+-            if (is(token, "end-tag-open")) {
++            if (is(token, "comment") && token.value == "-->") {
++                return true;
++            } else if (is(token, "end-tag-open")) {
+                 token = tokens[i + 1];
+                 if (token && token.value == tagName)
+                     return true;
+@@ -139,10 +146,19 @@ function is(token, type) {
+         var token = iterator.getCurrentToken();
+         if (!token)
+             return null;
+-
+         var tag = new Tag();
+         do {
+-            if (is(token, "tag-open")) {
++            if (is(token, "comment") && token.value == "<!--") {
++                tag.start.row = iterator.getCurrentTokenRow();
++                tag.start.column = iterator.getCurrentTokenColumn();
++            } else if (is(token, "comment") && token.value == "-->") {
++                tag.closing = true;
++                tag.selfClosing = true;
++                tag.end.row = iterator.getCurrentTokenRow();
++                tag.end.column = iterator.getCurrentTokenColumn() + token.value.length;
++                iterator.stepForward();
++                return tag;
++            } else if (is(token, "tag-open")) {
+                 tag.closing = is(token, "end-tag-open");
+                 tag.start.row = iterator.getCurrentTokenRow();
+                 tag.start.column = iterator.getCurrentTokenColumn();

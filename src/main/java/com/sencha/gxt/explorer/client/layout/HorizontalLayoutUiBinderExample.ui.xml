@@ -1,0 +1,45 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder 
+    xmlns:ui='urn:ui:com.google.gwt.uibinder' 
+    xmlns:g="urn:import:com.google.gwt.user.client.ui"
+    xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client" 
+    xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container">
+
+  <ui:with type="java.lang.String" field="borderStyle" />
+
+  <ui:with type="com.sencha.gxt.core.client.util.Margins" field="sideMargins">
+    <ui:attributes top="10" right="10" bottom="10" left="10" />
+  </ui:with>
+
+  <ui:with type="com.sencha.gxt.core.client.util.Margins" field="centerMargins">
+    <ui:attributes top="10" right="0" bottom="10" left="0" />
+  </ui:with>
+
+  <ui:with type="com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer.HorizontalLayoutData"
+    field="centerLayoutData">
+    <ui:attributes width="0.5" height="1" margins="{centerMargins}" />
+  </ui:with>
+
+  <ui:with type="com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer.HorizontalLayoutData"
+    field="sideLayoutData">
+    <ui:attributes width="0.25" height="1" margins="{sideMargins}" />
+  </ui:with>
+
+  <gxt:ContentPanel heading="Horizontal Layout">
+    <container:HorizontalLayoutContainer>
+      <container:child layoutData="{sideLayoutData}">
+        <g:Label text="Test Label 1" addStyleNames="pad-text, gray-bg, {borderStyle}" />
+      </container:child>
+
+      <container:child layoutData="{centerLayoutData}">
+        <g:Label text="Test Label 2" addStyleNames="pad-text, gray-bg, {borderStyle}" />
+      </container:child>
+
+      <container:child layoutData="{sideLayoutData}">
+        <g:Label text="Test Label 3" addStyleNames="pad-text, gray-bg, {borderStyle}" />
+      </container:child>
+
+    </container:HorizontalLayoutContainer>
+  </gxt:ContentPanel>
+
+</ui:UiBinder>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.7.0//EN"
+  "http://gwtproject.org/doctype/2.7.0/gwt-module.dtd">
+<module rename-to='explorer'>
+  <inherits name='com.google.gwt.activity.Activity' />
+  <inherits name='com.google.gwt.place.Place' />
+  <inherits name="com.google.gwt.inject.Inject" />
+
+  <inherits name='com.sencha.gxt.examples.resources.Resources' />
+  <inherits name='com.sencha.gxt.chart.Chart' />
+  
+  <!-- Testing -->
+  <inherits name="com.google.gwt.user.Debug"/>
+  <inherits name="org.senchalabs.gwt.gwtdriver.gxt.TestableGXT" />
+
+  <!-- https://docs.sencha.com/gxt/4.x/guides/concepts/Logging.html -->
+  <set-property name="gwt.logging.logLevel" value="SEVERE" />
+  <set-property name="gwt.logging.enabled" value="TRUE" />
+  <set-property name="gxt.logging.enabled" value="false" />
+
+  <!-- Include all base GXT themes and set the app to check for url params to activate a different one -->
+  <inherits name="com.sencha.gxt.theme.blue.Blue" />
+  <inherits name="com.sencha.gxt.theme.gray.Gray" />
+  <inherits name="com.sencha.gxt.theme.neptune.Theme" />
+  <inherits name="com.sencha.gxt.theme.triton.Theme" />
+  <set-property name="gxt.theme" value="blue,gray,neptune,triton" />
+  <property-provider name="gxt.theme"><![CDATA[
+    if (window.location.pathname.indexOf('blue') != -1 || window.location.search.indexOf('blue') != -1) {
+      return "blue";
+    }
+    if (window.location.pathname.indexOf('gray') != -1 || window.location.search.indexOf('gray') != -1) {
+      return "gray";
+    }
+    if (window.location.pathname.indexOf('neptune') != -1 || window.location.search.indexOf('neptune') != -1) {
+      return "neptune";
+    }
+    return "triton";
+  ]]></property-provider>
+
+  <set-property name="gxt.css3.enabled" value="false">
+    <any>
+      <when-property-is name="gxt.theme" value="blue" />
+      <when-property-is name="gxt.theme" value="gray" />
+    </any>
+  </set-property>
+
+  <set-configuration-property name="CssResource.enableGss" value="true" />
+  <set-configuration-property name="CssResource.style" value="pretty" />
+
+  <replace-with class='com.sencha.gxt.explorer.client.chart.BlueThemedChartAppearance'>
+    <when-type-is class='com.sencha.gxt.explorer.client.chart.ThemedChartExample.ThemedChartAppearance'/>
+    <when-property-is name="gxt.theme" value="blue" />
+  </replace-with>
+  <replace-with class='com.sencha.gxt.explorer.client.chart.GrayThemedChartAppearance'>
+    <when-type-is class='com.sencha.gxt.explorer.client.chart.ThemedChartExample.ThemedChartAppearance'/>
+    <when-property-is name="gxt.theme" value="gray" />
+  </replace-with>
+  <replace-with class='com.sencha.gxt.explorer.client.chart.NeptuneThemedChartAppearance'>
+    <when-type-is class='com.sencha.gxt.explorer.client.chart.ThemedChartExample.ThemedChartAppearance'/>
+    <when-property-is name="gxt.theme" value="neptune" />
+  </replace-with>
+  <replace-with class='com.sencha.gxt.explorer.client.chart.TritonThemedChartAppearance'>
+    <when-type-is class='com.sencha.gxt.explorer.client.chart.ThemedChartExample.ThemedChartAppearance'/>
+    <when-property-is name="gxt.theme" value="triton" />
+  </replace-with>
+
+  <!-- Specify the paths for translatable code -->
+  <source path='client' />
+  <source path='shared' />
+
+  <generate-with class="com.sencha.gxt.explorer.rebind.SampleGenerator">
+    <when-type-assignable class="com.sencha.gxt.explorer.client.model.ExampleModel" />
+  </generate-with>
+
+  <set-configuration-property name="GXT.state.autoBeanFactory" value="com.sencha.gxt.explorer.client.window.WindowStateExample.ExampleAutoBeanFactory" />
+
+  <entry-point class='com.sencha.gxt.explorer.client.Explorer' />
+
+  <stylesheet src="reset.css"/>
+
+  <!-- collapse properties for fewer permutations -->
+  <collapse-property name="gxt.device" values="phone, tablet" />
+  <collapse-property name="gxt.theme" values="blue, gray" />
+  <collapse-property name="gxt.user.agent" values="air, safari*, chrome*, gecko*, ie11" />
+  <collapse-property name="user.agent" values="safari*, gecko*" />
+  <collapse-property name="gxt.user.agent" values="ie8, ie9, ie10" />
+  <collapse-property name="user.agent" values="ie*" />
+  
+  <!-- The property below is replaced from maven profile mvn install -Pfast-build -->
+  <!--{profile.fast.build}-->
+</module>
