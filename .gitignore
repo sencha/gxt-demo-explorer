@@ -1,11 +1,11 @@
 # OS X
 .DS_Store
 
-# Migrated from Subversion
-# Eclipse metadata
+# Eclipse
 .project
 .settings
 .classpath
+persistence.xml
 
 # Build output
 target/
@@ -19,6 +19,8 @@ gwt-unitCache/
 www-test/
 tomcat/
 
-#IntelliJ IDEA metadata
+#IntelliJ IDEA
 *.iml
 .idea
+
+*.zip
