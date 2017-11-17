@@ -9,7 +9,7 @@
 
 ## Demo
 
-* [Example Explorer Demo](http://examples.sencha.com/gxt/)
+* [Example Explorer Demo](http://examples.sencha.com/gxt/latest)
 
 ## Import
 
