@@ -9,7 +9,7 @@
 
 ## Demo
 
-* [EDash Demo](http://examples.sencha.com/gxt-edash/)
+* [Example Explorer Demo](http://examples.sencha.com/gxt/)
 
 ## Import
 
