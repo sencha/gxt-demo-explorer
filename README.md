@@ -1,7 +1,23 @@
 # GXT Examples Explorer
 
-## Running Examples Jetty
-Maven can run the examples locally.
+<img src='./theapp.png' width='400px' />
 
-1. Run `mvn jetty:run-war`
-2. Goto http://127.0.0.1:8080
+## GXT 
+
+* [Sencha GXT Product Info](https://www.sencha.com/products/gxt/)
+* [GXT Guides](http://docs.sencha.com/gxt/4.x/)
+
+## Demo
+
+* [EDash Demo](http://examples.sencha.com/gxt-edash/)
+
+## Import
+
+* Import the project as an existing maven project. 
+
+## Debugging
+
+### Debugging in Eclipse
+
+1. Right click on the project and Debug As `GWT Development Mode with Jetty`
+2. Double click on the url in the `Development Mode` web url.  
