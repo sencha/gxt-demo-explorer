@@ -219,10 +219,10 @@
       <properties>
         <profile.fast.build>
           &lt;set-property name="user.agent" value="safari" /&gt;
-          &lt;set-property
-          name="gxt.user.agent" value="chrome" /&gt;
+          &lt;set-property name="gxt.user.agent" value="chrome" /&gt;
           &lt;set-property name="gxt.device" value="desktop" /&gt;
-          &lt;set-property name="gxt.theme" value="triton" /&gt; </profile.fast.build>
+          &lt;set-property name="gxt.theme" value="triton" /&gt; 
+        </profile.fast.build>
       </properties>
       <build>
         <resources>
