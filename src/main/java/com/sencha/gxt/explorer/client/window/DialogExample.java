@@ -88,9 +88,7 @@ public class DialogExample implements IsWidget, EntryPoint {
 
       final Dialog autoSize = new Dialog();
       autoSize.setHeading("Dialog — Auto Size");
-      autoSize.setPixelSize(-1, -1);
-      autoSize.setMinWidth(0);
-      autoSize.setMinHeight(0);
+      autoSize.autoSize();
       autoSize.setResizable(false);
       autoSize.setBodyBorder(false);
       autoSize.setHideOnButtonClick(true);
