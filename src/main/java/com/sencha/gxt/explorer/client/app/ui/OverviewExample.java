@@ -35,7 +35,6 @@ import com.sencha.gxt.widget.core.client.ListView;
 )
 public class OverviewExample implements IsWidget, EntryPoint {
 
-
   public interface Renderer extends XTemplates {
     @XTemplate(source = "template.html")
     public SafeHtml renderItem(Example items);
@@ -76,16 +75,13 @@ public class OverviewExample implements IsWidget, EntryPoint {
         }
       }, appearance);
       overviewView.setCell(new SimpleSafeHtmlCell<Example>(new AbstractSafeHtmlRenderer<Example>() {
-
         @Override
         public SafeHtml render(Example object) {
           return r.renderItem(object);
         }
-
       }));
       overviewView.addStyleName("overview-page");
       overviewView.setBorders(false);
-
       overviewView.getSelectionModel().addSelectionHandler(new SelectionHandler<Example>() {
         @Override
         public void onSelection(SelectionEvent<Example> event) {
@@ -116,4 +112,5 @@ public class OverviewExample implements IsWidget, EntryPoint {
   public void setPlaceController(PlaceController placeController) {
     this.placeController = placeController;
   }
+
 }

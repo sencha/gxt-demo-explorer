@@ -93,6 +93,7 @@ public class ComboBoxExample implements IsWidget, EntryPoint {
 
       ComboBox<State> combo2 = new ComboBox<State>(statesStore2, properties.name(),
           new AbstractSafeHtmlRenderer<State>() {
+            @Override
             public SafeHtml render(State item) {
               final ComboBoxTemplates comboBoxTemplates = GWT.create(ComboBoxTemplates.class);
               return comboBoxTemplates.state(item.getSlogan(), item.getName());
@@ -105,7 +106,7 @@ public class ComboBoxExample implements IsWidget, EntryPoint {
       ComboBox<Country> combo3 = new ComboBox<Country>(countries, countryProps.name(),
           new AbstractSafeHtmlRenderer<Country>() {
             final ComboBoxTemplates comboBoxTemplates = GWT.create(ComboBoxTemplates.class);
-
+            @Override
             public SafeHtml render(Country item) {
               SafeUri imageUri = UriUtils.fromString(GWT.getHostPageBaseURL() + "examples/images/flags/"
                   + item.getAbbr() + ".png");

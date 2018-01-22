@@ -32,7 +32,6 @@ import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.Verti
 import com.sencha.gxt.widget.core.client.form.StoreFilterField;
 import com.sencha.gxt.widget.core.client.selection.SelectionChangedEvent;
 import com.sencha.gxt.widget.core.client.selection.SelectionChangedEvent.SelectionChangedHandler;
-import com.sencha.gxt.widget.core.client.toolbar.ToolBar;
 import com.sencha.gxt.widget.core.client.tree.Tree;
 
 public class ExampleListViewImpl implements ExampleListView {
@@ -51,12 +50,10 @@ public class ExampleListViewImpl implements ExampleListView {
 
   @Inject
   public ExampleListViewImpl(ExampleModel model) {
-    tabPanel = new TabPanel(GWT.<TabPanelAppearance> create(TabPanelBottomAppearance.class));
-    tabPanel.setBodyBorder(false);
-    
     NamedModelProperties props = GWT.create(NamedModelProperties.class);
-    
+
     treeStore = new TreeStore<NamedModel>(NamedModel.KEY);
+    
     listStore = new ListStore<NamedModel>(NamedModel.KEY);
     listStore.addSortInfo(new StoreSortInfo<NamedModel>(new Comparator<NamedModel>() {
       @Override
@@ -81,19 +78,6 @@ public class ExampleListViewImpl implements ExampleListView {
       }
     }
 
-    tree = new Tree<NamedModel, String>(treeStore, props.name());
-    tree.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-
-    tree.getStyle().setLeafIcon(ExampleImages.INSTANCE.list());
-
-    tabPanel.add(tree, "Tree");
-
-    list = new ListView<NamedModel, String>(listStore, props.name());
-    list.setBorders(false);
-    list.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-    
-    tabPanel.add(list, "List");
-
     SelectionChangedHandler<NamedModel> selectHandler = new SelectionChangedHandler<NamedModel>() {
       @Override
       public void onSelectionChanged(SelectionChangedEvent<NamedModel> event) {
@@ -107,11 +91,8 @@ public class ExampleListViewImpl implements ExampleListView {
         }
       }
     };
-    tree.getSelectionModel().addSelectionChangedHandler(selectHandler);
-    list.getSelectionModel().addSelectionChangedHandler(selectHandler);
 
     StoreFilterField<NamedModel> filter = new StoreFilterField<NamedModel>() {
-
       @Override
       protected boolean doSelect(Store<NamedModel> store, NamedModel parent, NamedModel item, String filter) {
         if (item instanceof Category) {
@@ -128,6 +109,23 @@ public class ExampleListViewImpl implements ExampleListView {
     filter.bind(listStore);
     filter.bind(treeStore);
     filter.setEmptyText("Filter...");
+    //filter.getElement().getStyle().setProperty("border", "1px solid green");
+
+    list = new ListView<NamedModel, String>(listStore, props.name());
+    list.setBorders(false);
+    list.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+    list.getSelectionModel().addSelectionChangedHandler(selectHandler);
+
+    tree = new Tree<NamedModel, String>(treeStore, props.name());
+    tree.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+    tree.getStyle().setLeafIcon(ExampleImages.INSTANCE.list());
+    tree.getSelectionModel().addSelectionChangedHandler(selectHandler);
+
+    tabPanel = new TabPanel(GWT.<TabPanelAppearance>create(TabPanelBottomAppearance.class));
+    tabPanel.setBodyBorder(false);
+    tabPanel.add(tree, "Tree");
+    tabPanel.add(list, "List");
+    //tabPanel.getElement().getStyle().setProperty("border", "1px solid red");
 
     con = new VerticalLayoutContainer();
     con.add(filter, new VerticalLayoutData(1, -1, new Margins(5)));
@@ -159,7 +157,7 @@ public class ExampleListViewImpl implements ExampleListView {
       tree.setExpanded(example, true, false);
       tree.scrollIntoView(e);
       tree.getSelectionModel().select(e, false);
-      
+
       list.getSelectionModel().select(e, false);
     } else {
       tree.getSelectionModel().deselectAll();

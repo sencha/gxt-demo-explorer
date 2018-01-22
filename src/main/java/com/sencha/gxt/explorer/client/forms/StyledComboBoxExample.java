@@ -83,7 +83,6 @@ public class StyledComboBoxExample implements EntryPoint, IsWidget {
       panel = new ContentPanel();
       panel.setHeading("Combo Box — Styled");
       panel.add(container, new MarginData(10));
-
     }
 
     return panel;
