@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
-import com.google.gwt.http.client.UrlBuilder;
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Widget;
@@ -109,17 +108,11 @@ public class ExampleDetailViewImpl implements ExampleDetailView {
    * https://developers.google.com/analytics/devguides/collection/analyticsjs/pages
    */
   private native void trackJsni(String path) /*-{
-      // Universal Analytics
-      try {
-          $wnd.ga('send', 'pageview', path);
-      } catch (e) {
-      }
-
-      // Deprecated Analytics Call
-      try {
-          $wnd._gaq.push(['_trackPageview', path]);
-      } catch (e) {
-      }
+    // Universal Analytics
+    try {
+      $wnd.ga('send', 'pageview', path);
+    } catch (e) {
+    }
   }-*/;
 
 }
