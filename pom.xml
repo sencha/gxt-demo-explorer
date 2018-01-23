@@ -50,11 +50,32 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.5.1</version>
+        <version>3.7.0</version>
         <configuration>
           <fork>true</fork>
           <source>1.8</source>
           <target>1.8</target>
+        </configuration>
+      </plugin>
+      
+      <!-- Display versions -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>versions-maven-plugin</artifactId>
+        <version>2.5</version>
+        <executions>
+          <execution>
+            <phase>compile</phase>
+            <goals>
+              <goal>display-dependency-updates</goal>
+              <goal>display-plugin-updates</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <excludes>
+            <exclude>javax.servlet:javax.servlet-api</exclude>
+          </excludes>
         </configuration>
       </plugin>
 
@@ -62,7 +83,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.12</version>
+        <version>2.20.1</version>
         <configuration>
           <includes>
             <include>**/*Test.java</include>
@@ -143,7 +164,7 @@
 
       <plugin>
         <artifactId>maven-war-plugin</artifactId>
-        <version>2.1.1</version>
+        <version>3.2.0</version>
         <configuration>
           <!-- Provide a classes jar for source in the dist zip -->
           <attachClasses>true</attachClasses>
@@ -162,7 +183,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
-        <version>2.4</version>
+        <version>3.0.1</version>
         <executions>
           <execution>
             <id>attach-sources</id>
@@ -230,10 +251,11 @@
             </lifecycleMappingMetadata>
           </configuration>
         </plugin>
+
         <plugin>
           <groupId>org.mortbay.jetty</groupId>
           <artifactId>jetty-maven-plugin</artifactId>
-          <version>8.1.9.v20130131</version>
+          <version>8.1.16.v20140903</version>
         </plugin>
       </plugins>
     </pluginManagement>
@@ -321,11 +343,17 @@
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-dev</artifactId>
       <scope>provided</scope>
+      <exclusions>
+        <!-- Fixes xerces class cast exception, during the enhance excecution -->
+        <exclusion>
+          <groupId>xerces</groupId>
+          <artifactId>xercesImpl</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-servlet</artifactId>
-      <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.google.gwt.inject</groupId>
@@ -361,7 +389,7 @@
     <dependency>
       <groupId>org.hsqldb</groupId>
       <artifactId>hsqldb</artifactId>
-      <version>2.0.0</version>
+      <version>2.4.0</version>
     </dependency>
 
     <!-- Support for our JPA persistence -->
@@ -381,7 +409,7 @@
     <dependency>
       <groupId>org.json</groupId>
       <artifactId>json</artifactId>
-      <version>20090211</version>
+      <version>20171018</version>
       <scope>compile</scope>
     </dependency>
 
@@ -395,7 +423,7 @@
     <dependency>
       <groupId>org.apache.bval</groupId>
       <artifactId>bval-jsr303</artifactId>
-      <version>0.2-incubating</version>
+      <version>0.5</version>
       <scope>runtime</scope>
     </dependency>
 
@@ -403,7 +431,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.8.1</version>
+      <version>4.12</version>
       <scope>test</scope>
     </dependency>
     <dependency>
