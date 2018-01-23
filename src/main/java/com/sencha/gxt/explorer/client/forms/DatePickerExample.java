@@ -42,6 +42,7 @@ public class DatePickerExample implements IsWidget, EntryPoint {
           Info.display("Value Changed", "You selected " + f.format(d));
         }
       });
+      
     }
 
     return picker;
