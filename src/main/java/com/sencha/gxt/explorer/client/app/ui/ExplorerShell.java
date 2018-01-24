@@ -68,7 +68,13 @@ public class ExplorerShell implements IsWidget {
     HTML title = new HTML("Sencha GXT Explorer");
     title.addStyleName("demo-title");
 
-    HTML links = new HTML("<a href=\"http://docs.sencha.com/gxt/latest/\" target=\"_blank\">GXT Documentation</a>");
+    String slinks = "";
+    slinks += "&nbsp;&nbsp;&nbsp;<a href=\"https://github.com/sencha/gxt-demo-explorer/\" target=\"_blank\">Explorer Source</a>";
+    slinks += "&nbsp;&nbsp;&nbsp;<a href=\"http://docs.sencha.com/gxt/latest/\" target=\"_blank\">Documentation</a>";
+    slinks += "&nbsp;&nbsp;&nbsp;<a href=\"https://www.sencha.com/products/evaluate/\" target=\"_blank\">Try it free</a>";
+    slinks += "&nbsp;&nbsp;&nbsp;<a href=\"https://www.sencha.com/company/contact/\" target=\"_blank\">Contact Sales</a>";
+
+    HTML links = new HTML(slinks);
     links.addStyleName("demo-links");
 
     BoxLayoutData spacerFlex = new BoxLayoutData();
@@ -77,7 +83,7 @@ public class ExplorerShell implements IsWidget {
     HBoxLayoutContainer menuContainer = new HBoxLayoutContainer(HBoxLayoutAlign.MIDDLE);
     menuContainer.setEnableOverflow(false);
     menuContainer.setStateful(false);
-    menuContainer.add(title, new BoxLayoutData(new Margins(0, 15, 0, 10)));
+    menuContainer.add(title, new BoxLayoutData(new Margins(0, 15, 0, 0)));
     menuContainer.add(links, spacerFlex);
     menuContainer.add(themeComboContainer, new BoxLayoutData(new Margins(0, 10, 0, 15)));
 
@@ -85,8 +91,7 @@ public class ExplorerShell implements IsWidget {
     menuContainer.addStyleName("x-small-editor");
 
     BorderLayoutData westData = new BorderLayoutData(260);
-    westData.setMargins(
-        Theme.NEPTUNE.isActive() || Theme.TRITON.isActive() ? new Margins(0) : new Margins(5, 0, 5, 5));
+    westData.setMargins(Theme.NEPTUNE.isActive() || Theme.TRITON.isActive() ? new Margins(0) : new Margins(5, 0, 5, 5));
     westData.setCollapsible(true);
     westData.setCollapseHeaderVisible(true);
 
@@ -182,4 +187,5 @@ public class ExplorerShell implements IsWidget {
   public AcceptsOneWidget getDisplay() {
     return borderLayoutContainer;
   }
+
 }
