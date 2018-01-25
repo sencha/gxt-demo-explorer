@@ -51,17 +51,12 @@ import com.sencha.gxt.widget.core.client.form.validator.MinLengthValidator;
 import com.sencha.gxt.widget.core.client.info.Info;
 
 @Detail(
-    name = "Forms Example",
-    category = "Forms",
-    icon = "formsexample",
-    classes = {
-        Stock.class,
-        StockProperties.class,
-        TestData.class
-    },
-    minHeight = FormsExample.MIN_HEIGHT,
-    minWidth = FormsExample.MIN_WIDTH
-)
+  name = "Forms Example",
+  category = "Forms",
+  icon = "formsexample",
+  classes = { Stock.class, StockProperties.class, TestData.class },
+  minHeight = FormsExample.MIN_HEIGHT,
+  minWidth = FormsExample.MIN_WIDTH)
 public class FormsExample implements IsWidget, EntryPoint {
 
   protected static final int MIN_HEIGHT = 940;
@@ -74,10 +69,12 @@ public class FormsExample implements IsWidget, EntryPoint {
     if (widget == null) {
       BoxLayoutData flex = new BoxLayoutData(new Margins(0, 0, 20, 0));
       flex.setFlex(1);
+      
+      BoxLayoutData bottom = new BoxLayoutData(new Margins(10, 0, 0, 0));
 
       widget = new VBoxLayoutContainer(VBoxLayoutAlign.STRETCH);
       widget.add(createForm1(), flex);
-      widget.add(createForm2());
+      widget.add(createForm2(), bottom);
     }
 
     return widget;
@@ -190,7 +187,7 @@ public class FormsExample implements IsWidget, EntryPoint {
     radio2.setBoxLabel("Blue");
     radio2.setValue(true);
 
-    // we can set name on radios or use toggle group
+    // Set name on radios or use toggle group
     ToggleGroup toggle = new ToggleGroup();
     toggle.add(radio);
     toggle.add(radio2);
@@ -305,10 +302,7 @@ public class FormsExample implements IsWidget, EntryPoint {
 
   @Override
   public void onModuleLoad() {
-    new ExampleContainer(this)
-        .setMinHeight(MIN_HEIGHT)
-        .setMinWidth(MIN_WIDTH)
-        .doStandalone();
+    new ExampleContainer(this).setMinHeight(MIN_HEIGHT).setMinWidth(MIN_WIDTH).doStandalone();
   }
 
 }

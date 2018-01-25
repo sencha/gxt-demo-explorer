@@ -45,6 +45,7 @@
 
   #demo-header {
     gwt-sprite: "classicBg";
+    background-size: 48px;
   }
 }
 
