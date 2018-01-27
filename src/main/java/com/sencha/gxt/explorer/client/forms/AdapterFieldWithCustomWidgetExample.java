@@ -15,12 +15,12 @@ import com.sencha.gxt.widget.core.client.form.FieldLabel;
 import com.sencha.gxt.widget.core.client.form.TextField;
 
 @Detail(
-  name = "Adapter Field Example",
+  name = "Adapter Field with Custom Widget",
   category = "Forms",
   icon = "advancedforms",
-  minHeight = AdapterFieldExample.MIN_HEIGHT,
-  minWidth = AdapterFieldExample.MIN_WIDTH)
-public class AdapterFieldExample implements IsWidget, EntryPoint {
+  minHeight = AdapterFieldWithCustomWidgetExample.MIN_HEIGHT,
+  minWidth = AdapterFieldWithCustomWidgetExample.MIN_WIDTH)
+public class AdapterFieldWithCustomWidgetExample implements IsWidget, EntryPoint {
 
   protected static final int MIN_HEIGHT = 480;
   protected static final int MIN_WIDTH = 720;
