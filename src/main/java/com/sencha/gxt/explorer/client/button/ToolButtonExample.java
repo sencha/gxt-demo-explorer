@@ -15,13 +15,12 @@ import com.sencha.gxt.widget.core.client.button.ToolButton;
 import com.sencha.gxt.widget.core.client.container.MarginData;
 
 @Detail(
-    name = "Tool Buttons",
-    category = "Button",
-    icon = "toolbuttons",
-    minHeight = ToolButtonExample.MIN_HEIGHT,
-    minWidth = ToolButtonExample.MIN_WIDTH,
-    classes = { Utils.class }
-)
+  name = "Tool Buttons",
+  category = "Button",
+  icon = "toolbuttons",
+  minHeight = ToolButtonExample.MIN_HEIGHT,
+  minWidth = ToolButtonExample.MIN_WIDTH,
+  classes = { Utils.class, ToolButton.class })
 public class ToolButtonExample implements IsWidget, EntryPoint {
 
   protected static final int MIN_HEIGHT = 100;
@@ -29,27 +28,15 @@ public class ToolButtonExample implements IsWidget, EntryPoint {
 
   private ContentPanel panel;
 
+  @Override
   public Widget asWidget() {
     if (panel == null) {
-      ToolButton[] buttons = new ToolButton[] {
-        new ToolButton(ToolButton.CLOSE),
-        new ToolButton(ToolButton.MINIMIZE),
-        new ToolButton(ToolButton.MAXIMIZE),
-        new ToolButton(ToolButton.RESTORE),
-        new ToolButton(ToolButton.GEAR),
-        new ToolButton(ToolButton.PIN),
-        new ToolButton(ToolButton.UNPIN),
-        new ToolButton(ToolButton.RIGHT),
-        new ToolButton(ToolButton.LEFT),
-        new ToolButton(ToolButton.DOWN),
-        new ToolButton(ToolButton.REFRESH),
-        new ToolButton(ToolButton.MINUS),
-        new ToolButton(ToolButton.PLUS),
-        new ToolButton(ToolButton.QUESTION),
-        new ToolButton(ToolButton.SEARCH),
-        new ToolButton(ToolButton.SAVE),
-        new ToolButton(ToolButton.PRINT)
-      };
+      ToolButton[] buttons = new ToolButton[] { new ToolButton(ToolButton.CLOSE), new ToolButton(ToolButton.MINIMIZE),
+          new ToolButton(ToolButton.MAXIMIZE), new ToolButton(ToolButton.RESTORE), new ToolButton(ToolButton.GEAR),
+          new ToolButton(ToolButton.PIN), new ToolButton(ToolButton.UNPIN), new ToolButton(ToolButton.RIGHT),
+          new ToolButton(ToolButton.LEFT), new ToolButton(ToolButton.DOWN), new ToolButton(ToolButton.REFRESH),
+          new ToolButton(ToolButton.MINUS), new ToolButton(ToolButton.PLUS), new ToolButton(ToolButton.QUESTION),
+          new ToolButton(ToolButton.SEARCH), new ToolButton(ToolButton.SAVE), new ToolButton(ToolButton.PRINT) };
 
       panel = new ContentPanel();
       panel.setHeading("Tool Buttons");
@@ -61,7 +48,8 @@ public class ToolButtonExample implements IsWidget, EntryPoint {
         }
       }
 
-      HTML text = new HTML("Tool Buttons are predefined icons normally added to Headers or Buttons.");
+      HTML text = new HTML(
+          "Tool Buttons are predefined icons. Check out ToolButton.class in the the source tab for a full list of the available tool buttons.");
       text.getElement().getStyle().setOverflowY(Style.Overflow.AUTO);
       text.getElement().getStyle().setFontSize(13, Style.Unit.PX);
       panel.add(text, new MarginData(20));
@@ -72,10 +60,7 @@ public class ToolButtonExample implements IsWidget, EntryPoint {
 
   @Override
   public void onModuleLoad() {
-    new ExampleContainer(this)
-        .setMinHeight(MIN_HEIGHT)
-        .setMinWidth(MIN_WIDTH)
-        .doStandalone();
+    new ExampleContainer(this).setMinHeight(MIN_HEIGHT).setMinWidth(MIN_WIDTH).doStandalone();
   }
 
 }
