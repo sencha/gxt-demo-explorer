@@ -6,7 +6,6 @@ import com.google.gwt.place.shared.PlaceTokenizer;
 public class ExamplePlace extends Place {
 
   public static class Tokenizer implements PlaceTokenizer<ExamplePlace> {
-
     @Override
     public ExamplePlace getPlace(String token) {
       return new ExamplePlace(token);
@@ -16,7 +15,6 @@ public class ExamplePlace extends Place {
     public String getToken(ExamplePlace place) {
       return place.getExampleId();
     }
-
   }
 
   private String exampleId;
@@ -41,4 +39,5 @@ public class ExamplePlace extends Place {
   public int hashCode() {
     return exampleId.hashCode();
   }
+
 }
