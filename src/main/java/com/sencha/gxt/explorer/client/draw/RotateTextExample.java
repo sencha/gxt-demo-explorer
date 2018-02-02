@@ -1,7 +1,6 @@
 package com.sencha.gxt.explorer.client.draw;
 
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.ui.IsWidget;
@@ -69,7 +68,8 @@ public class RotateTextExample implements IsWidget, EntryPoint {
       slider.addValueChangeHandler(new ValueChangeHandler<Integer>() {
         @Override
         public void onValueChange(ValueChangeEvent<Integer> event) {
-          GWT.log("valueChange");
+          rotate.setRotation(event.getValue());
+          rotate.redraw();
         }
       });
 
