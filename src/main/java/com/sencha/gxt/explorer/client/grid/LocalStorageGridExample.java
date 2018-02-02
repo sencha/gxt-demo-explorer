@@ -168,7 +168,7 @@ public class LocalStorageGridExample implements IsWidget, EntryPoint {
       };
 
       // Proxy to load from server
-      String url = "http://www.sencha.com/forum/topics-remote.php";
+      String url = "//www.sencha.com/forum/topics-remote.php";
       final ScriptTagProxy<ForumLoadConfig> remoteProxy = new ScriptTagProxy<ForumLoadConfig>(url);
       remoteProxy.setWriter(writer);
 
