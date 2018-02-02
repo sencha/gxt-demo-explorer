@@ -145,7 +145,7 @@ public class AdvancedComboBoxExample implements IsWidget, EntryPoint {
   @Override
   public Widget asWidget() {
     if (panel == null) {
-      String url = "http://www.sencha.com/forum/topics-remote.php";
+      String url = "//www.sencha.com/forum/topics-remote.php";
 
       ScriptTagProxy<ForumLoadConfig> proxy = new ScriptTagProxy<ForumLoadConfig>(url);
       proxy.setWriter(new UrlEncodingWriter<ForumLoadConfig>(TestAutoBeanFactory.instance, ForumLoadConfig.class));
@@ -217,7 +217,7 @@ public class AdvancedComboBoxExample implements IsWidget, EntryPoint {
         public void onBeforeSelection(BeforeSelectionEvent<Forum> event) {
           event.cancel();
           Forum forum = event.getItem();
-          String url = "http://sencha.com/forum/showthread.php?t=" + forum.getTopicId() + "&p=" + forum.getPostId();
+          String url = "//sencha.com/forum/showthread.php?t=" + forum.getTopicId() + "&p=" + forum.getPostId();
           Window.open(url, null, "resizable=yes");
         }
       });
