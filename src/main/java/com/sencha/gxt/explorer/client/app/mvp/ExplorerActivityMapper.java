@@ -11,16 +11,16 @@ import com.sencha.gxt.explorer.client.app.place.ExamplePlace;
 public class ExplorerActivityMapper implements ActivityMapper {
   @Inject
   private Provider<ShowExampleActivity> exampleActivity;
-  
+
   @Override
   public Activity getActivity(Place place) {
     if (place instanceof ExamplePlace) {
-      ExamplePlace ep = (ExamplePlace)place;
+      ExamplePlace ep = (ExamplePlace) place;
       ShowExampleActivity ex = exampleActivity.get();
       ex.setExampleId(ep.getExampleId());
       return ex;
-
     }
+
     return null;
   }
 

@@ -100,7 +100,7 @@ public class GridWithColumnHeaderFilterExample implements IsWidget, EntryPoint {
         }
       });
       
-      nameCol.setWidget(nameHeaderField, SafeHtmlUtils.fromSafeConstant(""));
+      nameCol.setWidget(nameHeaderField, SafeHtmlUtils.fromSafeConstant("Name"));
 
       List<ColumnConfig<Stock, ?>> columns = new ArrayList<ColumnConfig<Stock, ?>>();
       columns.add(nameCol);

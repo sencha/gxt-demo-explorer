@@ -48,7 +48,7 @@ public class ExplorerApp implements ExampleListView.Presenter, ExampleDetailView
 
   @Inject
   private ExampleModel exampleModel;
-  
+
   public void run() {
     init();
   }
@@ -56,6 +56,7 @@ public class ExplorerApp implements ExampleListView.Presenter, ExampleDetailView
   @SuppressWarnings("deprecation")
   private void init() {
     GWT.setUncaughtExceptionHandler(new GWT.UncaughtExceptionHandler() {
+      @Override
       public void onUncaughtException(Throwable e) {
         Window.alert("Error: " + e.getMessage());
         log.log(Level.SEVERE, e.getMessage(), e);
@@ -78,7 +79,7 @@ public class ExplorerApp implements ExampleListView.Presenter, ExampleDetailView
     eventBus.addHandler(PlaceChangeEvent.TYPE, listView);
 
     Example example = exampleModel.findExample(OVERVIEW.toLowerCase());
-    OverviewExample oExample = (OverviewExample)example.getExample();
+    OverviewExample oExample = (OverviewExample) example.getExample();
     oExample.setPlaceController(placeController);
     oExample.loadData(exampleModel);
 

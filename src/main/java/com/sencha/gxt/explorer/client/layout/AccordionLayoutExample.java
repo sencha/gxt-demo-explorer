@@ -59,6 +59,7 @@ public class AccordionLayoutExample implements IsWidget, EntryPoint {
             }
           });
       tree.setIconProvider(new IconProvider<NameImageModel>() {
+        @Override
         public ImageResource getIcon(NameImageModel model) {
           if (null == model.getImage()) {
             return null;
