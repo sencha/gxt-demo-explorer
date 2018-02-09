@@ -13,6 +13,7 @@ import com.sencha.gxt.chart.client.chart.series.GaugeSeries;
 import com.sencha.gxt.chart.client.draw.Color;
 import com.sencha.gxt.chart.client.draw.RGB;
 import com.sencha.gxt.core.client.ValueProvider;
+import com.sencha.gxt.core.client.util.Margins;
 import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 import com.sencha.gxt.data.shared.PropertyAccess;
@@ -108,12 +109,12 @@ public class GaugeExample implements IsWidget, EntryPoint {
       toolBar.add(animation);
 
       HorizontalLayoutContainer row1 = new HorizontalLayoutContainer();
-      row1.add(chart1, new HorizontalLayoutData(0.5, 1.0));
-      row1.add(chart2, new HorizontalLayoutData(0.5, 1.0));
+      row1.add(chart1, new HorizontalLayoutData(0.5, 1.0, new Margins(20)));
+      row1.add(chart2, new HorizontalLayoutData(0.5, 1.0, new Margins(20)));
 
       HorizontalLayoutContainer row2 = new HorizontalLayoutContainer();
-      row2.add(chart3, new HorizontalLayoutData(0.5, 1.0));
-      row2.add(chart4, new HorizontalLayoutData(0.5, 1.0));
+      row2.add(chart3, new HorizontalLayoutData(0.5, 1.0, new Margins(20)));
+      row2.add(chart4, new HorizontalLayoutData(0.5, 1.0, new Margins(20)));
 
       VerticalLayoutContainer layout = new VerticalLayoutContainer();
       layout.add(toolBar, new VerticalLayoutData(1, -1));
