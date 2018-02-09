@@ -255,7 +255,10 @@ public class SampleGenerator extends Generator {
         boolean hasLicense = true;
         
         // gss files don't have a license
-        hasLicense = !type.equals("gss");
+        // ui.xml files don't have a license 
+        if (!type.equals("gss") || !type.equals("xml")) {
+          hasLicense = false;
+        }
         
         while ((str = reader.readLine()) != null) {
           // remove license header
@@ -333,7 +336,6 @@ public class SampleGenerator extends Generator {
         }
       }
       stream.write(footer.getBytes());
-
       stream.close();
     } catch (Exception e) {
       l.log(Type.ERROR, "Error occured writing out a java file into html", e);
