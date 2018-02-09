@@ -55,9 +55,10 @@ public class AccordionUiBinderExample implements IsWidget, EntryPoint {
     if (panel == null) {
       uiBinder.createAndBindUi(this);
 
-      con.setActiveWidget((ContentPanel) con.getWidget(0));
+      con.setActiveWidget(con.getWidget(0));
 
       Scheduler.get().scheduleDeferred(new Command() {
+        @Override
         public void execute() {
           tree.expandAll();
         }
@@ -75,6 +76,7 @@ public class AccordionUiBinderExample implements IsWidget, EntryPoint {
   @UiFactory
   public IconProvider<NameImageModel> createIconProvider() {
     return new IconProvider<NameImageModel>() {
+      @Override
       public ImageResource getIcon(NameImageModel model) {
         if (null == model.getImage()) {
           return null;

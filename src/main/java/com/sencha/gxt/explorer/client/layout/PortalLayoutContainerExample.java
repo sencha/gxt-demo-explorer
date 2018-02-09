@@ -108,6 +108,7 @@ public class PortalLayoutContainerExample implements IsWidget, EntryPoint {
       public void render(Context context, Double value, SafeHtmlBuilder sb) {
         String style = "style='color: " + (value < 0 ? "red" : "green") + "'";
         String v = number.format(value);
+        // The quicktip has to initialized to use the quick tips in this element. 
         sb.appendHtmlConstant("<span " + style + " qtitle='Change' qtip='" + v + "'>" + v + "</span>");
       }
     });
@@ -132,8 +133,8 @@ public class PortalLayoutContainerExample implements IsWidget, EntryPoint {
     grid.getView().setStripeRows(true);
     grid.getView().setColumnLines(true);
 
-    // needed to enable quicktips 
-    // (qtitle for the heading and qtip for the content) that are setup in the change GridCellRenderer
+    // This is needed to enable quicktips to be displayed in the grid.  
+    // See the cell renderer HTML above with qtip attribute.
     QuickTip.of(grid);
 
     return grid;
