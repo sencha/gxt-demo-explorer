@@ -36,21 +36,13 @@ import com.sencha.gxt.widget.core.client.form.validator.MinNumberValidator;
 import com.sencha.gxt.widget.core.client.form.validator.RegExValidator;
 
 @Detail(
-    name = "Basic Data Binding (UiBinder)",
-    category = "Data Binding",
-    icon = "basicbindinguibinder",
-    files = {
-        "BasicDataBindingExample.html",
-        "BasicDataBindingUiBinderExample.ui.xml"
-    },
-    classes = {
-        Stock.class,
-        StockProperties.class,
-        TestData.class
-    },
-    minHeight = BasicDataBindingUiBinderExample.MIN_HEIGHT,
-    minWidth = BasicDataBindingUiBinderExample.MIN_WIDTH
-)
+  name = "Basic Data Binding (UiBinder)",
+  category = "Data Binding",
+  icon = "basicbindinguibinder",
+  files = { "BasicDataBindingExample.html", "BasicDataBindingUiBinderExample.ui.xml" },
+  classes = { Stock.class, StockProperties.class, TestData.class },
+  minHeight = BasicDataBindingUiBinderExample.MIN_HEIGHT,
+  minWidth = BasicDataBindingUiBinderExample.MIN_WIDTH)
 public class BasicDataBindingUiBinderExample implements IsWidget, EntryPoint, Editor<Stock> {
 
   interface MyUiBinder extends UiBinder<ContentPanel, BasicDataBindingUiBinderExample> {
@@ -104,6 +96,7 @@ public class BasicDataBindingUiBinderExample implements IsWidget, EntryPoint, Ed
   @UiField
   HorizontalLayoutContainer hp;
 
+  @Override
   public Widget asWidget() {
     if (panel == null) {
       stockStore = new ListStore<Stock>(properties.key());
@@ -113,10 +106,18 @@ public class BasicDataBindingUiBinderExample implements IsWidget, EntryPoint, Ed
 
       panel = uiBinder.createAndBindUi(this);
 
+      name.setAllowBlank(false);
+      
+      last.setAllowBlank(false);
       last.addValidator(new MinNumberValidator<Double>(0D));
 
+      symbol.setAllowBlank(false);
       symbol.addValidator(new RegExValidator("^[^a-z]+$", "Only uppercase letters allowed"));
       symbol.setAutoValidate(true);
+      
+      change.setAllowBlank(false);
+      
+      lastTrans.setAllowBlank(false);
 
       display.setHTML(getUpdatedPanel());
 
@@ -166,10 +167,7 @@ public class BasicDataBindingUiBinderExample implements IsWidget, EntryPoint, Ed
 
   @Override
   public void onModuleLoad() {
-    new ExampleContainer(this)
-        .setMinHeight(MIN_HEIGHT)
-        .setMinWidth(MIN_WIDTH)
-        .doStandalone();
+    new ExampleContainer(this).setMinHeight(MIN_HEIGHT).setMinWidth(MIN_WIDTH).doStandalone();
   }
 
 }
