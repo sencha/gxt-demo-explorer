@@ -17,7 +17,6 @@ import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.IsWidget;
-import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.cell.core.client.NumberCell;
 import com.sencha.gxt.core.client.IdentityValueProvider;
@@ -42,15 +41,14 @@ import com.sencha.gxt.widget.core.client.grid.editing.GridEditing;
 import com.sencha.gxt.widget.core.client.grid.editing.GridInlineEditing;
 
 @Detail(
-    name = "Live Group Summary",
-    category = "Grid",
-    icon = "livegroupsummary",
-    classes = { Task.class, TestData.class },
-    maxHeight = LiveGroupSummaryExample.MAX_HEIGHT,
-    maxWidth = LiveGroupSummaryExample.MAX_WIDTH,
-    minHeight = LiveGroupSummaryExample.MIN_HEIGHT,
-    minWidth = LiveGroupSummaryExample.MIN_WIDTH
-)
+  name = "Live Group Summary",
+  category = "Grid",
+  icon = "livegroupsummary",
+  classes = { Task.class, TestData.class },
+  maxHeight = LiveGroupSummaryExample.MAX_HEIGHT,
+  maxWidth = LiveGroupSummaryExample.MAX_WIDTH,
+  minHeight = LiveGroupSummaryExample.MIN_HEIGHT,
+  minWidth = LiveGroupSummaryExample.MIN_WIDTH)
 public class LiveGroupSummaryExample implements EntryPoint, IsWidget {
 
   protected static final int MAX_HEIGHT = 600;
@@ -83,7 +81,7 @@ public class LiveGroupSummaryExample implements EntryPoint, IsWidget {
       TaskProperties properties = GWT.create(TaskProperties.class);
 
       final ListStore<Task> store = new ListStore<Task>(properties.key());
-      //Summaries can't be updated to latest value without calling commit or this set to true
+      // Summaries can't be updated to latest value without calling commit or this set to true
       store.setAutoCommit(true);
       store.addAll(tasks);
 
@@ -98,7 +96,8 @@ public class LiveGroupSummaryExample implements EntryPoint, IsWidget {
       descColumn.setSummaryRenderer(new SummaryRenderer<Task>() {
         @Override
         public SafeHtml render(Number value, Map<ValueProvider<? super Task, ?>, Number> data) {
-          return SafeHtmlUtils.fromTrustedString(value.intValue() > 1 ? "(" + value.intValue() + " Tasks)" : "(1 Task)");
+          return SafeHtmlUtils
+              .fromTrustedString(value.intValue() > 1 ? "(" + value.intValue() + " Tasks)" : "(1 Task)");
         }
       });
 
@@ -111,13 +110,25 @@ public class LiveGroupSummaryExample implements EntryPoint, IsWidget {
       });
       estimateColumn.setCell(new AbstractCell<Double>() {
         @Override
-        public void render(com.google.gwt.cell.client.Cell.Context context, Double value, SafeHtmlBuilder sb) {
+        public void render(Context context, Double value, SafeHtmlBuilder sb) {
           sb.appendHtmlConstant(value + " hours");
+        }
+
+        @Override
+        public boolean handlesSelection() {
+          // Allow the cell to be selectedable, so it can turn on editing
+          return true;
         }
       });
 
       rateColumn.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
-      rateColumn.setCell(new NumberCell<Double>(NumberFormat.getCurrencyFormat()));
+      rateColumn.setCell(new NumberCell<Double>(NumberFormat.getCurrencyFormat()) {
+        @Override
+        public boolean handlesSelection() {
+          // Allow the cell to be selectedable, so it can turn on editing
+          return true;
+        }
+      });
       rateColumn.setSummaryType(new SummaryType.AvgSummaryType<Double>());
       rateColumn.setSummaryFormat(NumberFormat.getCurrencyFormat());
 
@@ -125,7 +136,7 @@ public class LiveGroupSummaryExample implements EntryPoint, IsWidget {
       costColumn.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
       costColumn.setCell(new AbstractCell<Task>() {
         @Override
-        public void render(com.google.gwt.cell.client.Cell.Context context, Task value, SafeHtmlBuilder sb) {
+        public void render(Context context, Task value, SafeHtmlBuilder sb) {
           sb.appendHtmlConstant(NumberFormat.getCurrencyFormat().format(value.getRate() * value.getEstimate()));
         }
       });
@@ -186,12 +197,8 @@ public class LiveGroupSummaryExample implements EntryPoint, IsWidget {
 
   @Override
   public void onModuleLoad() {
-    new ExampleContainer(this)
-        .setMaxHeight(MAX_HEIGHT)
-        .setMaxWidth(MAX_WIDTH)
-        .setMinHeight(MIN_HEIGHT)
-        .setMinWidth(MIN_WIDTH)
-        .doStandalone();
+    new ExampleContainer(this).setMaxHeight(MAX_HEIGHT).setMaxWidth(MAX_WIDTH).setMinHeight(MIN_HEIGHT)
+        .setMinWidth(MIN_WIDTH).doStandalone();
   }
 
 }
