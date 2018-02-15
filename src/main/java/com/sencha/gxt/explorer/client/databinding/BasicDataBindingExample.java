@@ -82,6 +82,7 @@ public class BasicDataBindingExample implements IsWidget, EntryPoint, Editor<Sto
   private StockDriver driver = GWT.create(StockDriver.class);
   private StockProperties props;
 
+  @Override
   public Widget asWidget() {
     if (panel == null) {
       props = GWT.create(StockProperties.class);
@@ -132,21 +133,25 @@ public class BasicDataBindingExample implements IsWidget, EntryPoint, Editor<Sto
     name.setAllowBlank(false);
 
     symbol = new TextField();
+    symbol.setAllowBlank(false);
     symbol.addValidator(new RegExValidator("^[^a-z]+$", "Only uppercase letters allowed"));
     symbol.setAutoValidate(true);
     symbol.setName("symbol");
 
     last = new DoubleField();
+    last.setAllowBlank(false);
     last.setName("last");
     last.setFormat(NumberFormat.getFormat("0.00"));
     last.setAllowNegative(false);
     last.addValidator(new MinNumberValidator<Double>(0D));
 
     change = new DoubleField();
+    change.setAllowBlank(false);
     change.setName("change");
     change.setFormat(NumberFormat.getFormat("0.00"));
 
     lastTrans = new DateField();
+    lastTrans.setAllowBlank(false);
     lastTrans.setName("date");
     lastTrans.setClearValueOnParseError(false);
     lastTrans.setAutoValidate(true);
@@ -164,7 +169,6 @@ public class BasicDataBindingExample implements IsWidget, EntryPoint, Editor<Sto
 
     TextButton reset = new TextButton("Cancel");
     reset.addSelectHandler(new SelectHandler() {
-
       @Override
       public void onSelect(SelectEvent event) {
         FormPanelHelper.reset(inner);
@@ -174,7 +178,6 @@ public class BasicDataBindingExample implements IsWidget, EntryPoint, Editor<Sto
 
     TextButton save = new TextButton("Save");
     save.addSelectHandler(new SelectHandler() {
-
       @Override
       public void onSelect(SelectEvent event) {
         stock = driver.flush();

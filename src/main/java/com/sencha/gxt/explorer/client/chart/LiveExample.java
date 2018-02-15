@@ -70,7 +70,8 @@ public class LiveExample implements IsWidget, EntryPoint {
   private Timer update;
   private ContentPanel panel;
 
-  public Widget asWidget() {
+  @Override
+  public Widget asWidget() { 
     if (panel == null) {
       final ListStore<Site> store = new ListStore<Site>(siteAccess.nameKey());
       

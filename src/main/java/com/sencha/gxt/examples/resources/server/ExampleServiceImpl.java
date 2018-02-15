@@ -91,6 +91,7 @@ public class ExampleServiceImpl extends RelativeRemoteServiceServlet implements 
         final String sortField = sort.getSortField();
         if (sortField != null) {
           Collections.sort(posts, sort.getSortDir().comparator(new Comparator<Post>() {
+            @Override
             public int compare(Post p1, Post p2) {
               if (sortField.equals("forum")) {
                 return p1.getForum().compareTo(p2.getForum());
@@ -138,6 +139,7 @@ public class ExampleServiceImpl extends RelativeRemoteServiceServlet implements 
         final String sortField = sort.getSortField();
         if (sortField != null) {
           Collections.sort(temp, sort.getSortDir().comparator(new Comparator<Stock>() {
+            @Override
             public int compare(Stock s1, Stock s2) {
               if ("name".equals(sortField)) {
                 return s1.getName().compareTo(s2.getName());
@@ -278,8 +280,8 @@ public class ExampleServiceImpl extends RelativeRemoteServiceServlet implements 
 
   private boolean isListFiltered(String test, String value) {
     String[] tests = test.split("::");
-    for (int i = 0; i < tests.length; i++) {
-      if (tests[i].equals(value)) {
+    for (String test2 : tests) {
+      if (test2.equals(value)) {
         return false;
       }
     }
@@ -311,6 +313,7 @@ public class ExampleServiceImpl extends RelativeRemoteServiceServlet implements 
     File folder = new File(url);
 
     File[] pics = folder.listFiles(new FilenameFilter() {
+      @Override
       public boolean accept(File dir, String name) {
         return !name.startsWith(".");
       }
@@ -319,6 +322,7 @@ public class ExampleServiceImpl extends RelativeRemoteServiceServlet implements 
       return;
     }
     Arrays.sort(pics, new Comparator<File>() {
+      @Override
       public int compare(File o1, File o2) {
         return o1.getName().compareTo(o2.getName());
       }

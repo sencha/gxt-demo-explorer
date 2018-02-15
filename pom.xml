@@ -44,6 +44,14 @@
       <resource>
         <directory>src/main/resources</directory>
       </resource>
+      <resource>
+        <directory>src/main/java</directory>
+        <!-- Include the xml resources that are loaded in RPC -->
+        <includes>
+          <include>**/*.xml</include>
+          <include>**/*.dtd</include>
+        </includes>
+      </resource>
     </resources>
 
     <plugins>
