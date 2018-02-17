@@ -13,4 +13,8 @@
   <!-- https://cloud.google.com/appengine/pricing -->
   <!-- automatic scaling -->
   <instance-class>F1</instance-class>
+  
+  <!-- The request factory example uses getSession() -->
+  <!-- This is needed to use getSession() -->
+  <sessions-enabled>true</sessions-enabled>
 </appengine-web-app>

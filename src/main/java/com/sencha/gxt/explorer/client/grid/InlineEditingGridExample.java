@@ -19,6 +19,7 @@ import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.cell.core.client.SimpleSafeHtmlCell;
+import com.sencha.gxt.cell.core.client.form.CheckBoxCell;
 import com.sencha.gxt.cell.core.client.form.ComboBoxCell.TriggerAction;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.core.client.util.DateWrapper;
@@ -137,12 +138,32 @@ public class InlineEditingGridExample implements EntryPoint, IsWidget {
       ColumnConfig<Plant, Double> priceColumn = new ColumnConfig<Plant, Double>(properties.price(), 75, "Price");
 
       dateColumn.setCell(new DateCell(DateTimeFormat.getFormat("yyyy MMM dd")));
-      indoorColumn.setCell(new SimpleSafeHtmlCell<Boolean>(new AbstractSafeHtmlRenderer<Boolean>() {
-        @Override
-        public SafeHtml render(Boolean object) {
-          return SafeHtmlUtils.fromTrustedString(object ? "True" : "False");
-        }
-      }));
+      
+      // Option 1
+      indoorColumn.setCell(new CheckBoxCell());
+      
+      // Another checkbox option 2 - use this instead of an editor
+      // indoorColumn.setCell(new InputCheckboxCell() {
+      // @Override
+      // protected String getStyle(Context context, Boolean value) {
+      // return "margin-top: 3px;";
+      // }
+      //
+      // @Override
+      // protected String getLabelHtml() {
+      // return "";
+      // }
+      // });
+      // indoorColumn.setCellPadding(true);
+      // indoorColumn.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
+
+      // Another checkbox option 3 - Use a cell label renderer with an check box editor below
+      // indoorColumn.setCell(new SimpleSafeHtmlCell<Boolean>(new AbstractSafeHtmlRenderer<Boolean>() {
+      // @Override
+      // public SafeHtml render(Boolean object) {
+      // return SafeHtmlUtils.fromTrustedString(object ? "True" : "False");
+      // }
+      // }));
 
       priceColumn.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
       priceColumn.setCell(new SimpleSafeHtmlCell<Double>(new AbstractSafeHtmlRenderer<Double>() {
@@ -211,13 +232,16 @@ public class InlineEditingGridExample implements EntryPoint, IsWidget {
       dateField.setClearValueOnParseError(false);
 
       CheckBox checkBox = new CheckBox();
-      checkBox.getElement().getStyle().setBackgroundColor("white");
-      
+      // TODO checkBox.getElement().getStyle().setBackgroundColor("white");
+
       final GridEditing<Plant> editing = new GridInlineEditing<Plant>(grid);
       editing.addEditor(nameColumn, new TextField());
       editing.addEditor(lightColumn, lightConverter, lightCombo);
       editing.addEditor(dateColumn, dateField);
-      editing.addEditor(indoorColumn, checkBox);
+
+      // Another checkbox option 3 - Use this with the true/false label cell renderer above.
+      // editing.addEditor(indoorColumn, checkBox);
+
       // column 5 is not editable
 
       // EDITING //
