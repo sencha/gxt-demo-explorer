@@ -13,26 +13,26 @@ import com.sencha.gxt.core.client.util.DateWrapper;
 import com.sencha.gxt.explorer.client.app.ui.ExampleContainer;
 import com.sencha.gxt.explorer.client.model.Example.Detail;
 import com.sencha.gxt.widget.core.client.DatePicker;
+import com.sencha.gxt.widget.core.client.container.FlowLayoutContainer;
 import com.sencha.gxt.widget.core.client.info.Info;
 
 @Detail(
-    name = "Date Picker",
-    category = "Forms",
-    icon = "datepicker",
-    preferredHeight = DatePickerExample.PREFERRED_HEIGHT,
-    preferredWidth = DatePickerExample.PREFERRED_WIDTH
-)
+  name = "Date Picker",
+  category = "Forms",
+  icon = "datepicker",
+  preferredHeight = DatePickerExample.PREFERRED_HEIGHT,
+  preferredWidth = DatePickerExample.PREFERRED_WIDTH)
 public class DatePickerExample implements IsWidget, EntryPoint {
 
   protected static final int PREFERRED_HEIGHT = -1;
   protected static final int PREFERRED_WIDTH = -1;
 
-  private DatePicker picker;
+  FlowLayoutContainer panel;
 
   @Override
   public Widget asWidget() {
-    if (picker == null) {
-      picker = new DatePicker();
+    if (panel == null) {
+      DatePicker picker = new DatePicker();
       picker.setMinDate(new DateWrapper().addDays(-5).asDate());
       picker.addValueChangeHandler(new ValueChangeHandler<Date>() {
         @Override
@@ -43,17 +43,16 @@ public class DatePickerExample implements IsWidget, EntryPoint {
         }
       });
       
+      panel = new FlowLayoutContainer();
+      panel.add(picker);
     }
 
-    return picker;
+    return panel;
   }
 
   @Override
   public void onModuleLoad() {
-    new ExampleContainer(this)
-        .setPreferredHeight(PREFERRED_HEIGHT)
-        .setPreferredWidth(PREFERRED_WIDTH)
-        .doStandalone();
+    new ExampleContainer(this).setPreferredHeight(PREFERRED_HEIGHT).setPreferredWidth(PREFERRED_WIDTH).doStandalone();
   }
 
 }
