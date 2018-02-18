@@ -141,7 +141,13 @@ public class RowEditingGridExample implements EntryPoint, IsWidget {
       ColumnConfig<Plant, Boolean> indoorColumn = new ColumnConfig<Plant, Boolean>(properties.indoor(), 65, "Indoor");
       ColumnConfig<Plant, Double> priceColumn = new ColumnConfig<Plant, Double>(properties.price(), 75, "Price");
 
-      dateColumn.setCell(new DateCell(DateTimeFormat.getFormat("yyyy MMM dd")));
+      dateColumn.setCell(new DateCell(DateTimeFormat.getFormat("yyyy MMM dd")) {
+        // allow selecting and editing from this column
+        @Override
+        public boolean handlesSelection() {
+          return true;
+        }
+      });
       indoorColumn.setCell(new SimpleSafeHtmlCell<Boolean>(new AbstractSafeHtmlRenderer<Boolean>() {
         @Override
         public SafeHtml render(Boolean object) {
