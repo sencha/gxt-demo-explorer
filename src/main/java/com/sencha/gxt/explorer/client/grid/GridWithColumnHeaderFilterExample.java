@@ -16,6 +16,9 @@ import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.i18n.client.NumberFormat;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
+import com.google.gwt.user.client.Event;
+import com.google.gwt.user.client.Event.NativePreviewEvent;
+import com.google.gwt.user.client.Event.NativePreviewHandler;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.cell.core.client.form.ComboBoxCell.TriggerAction;
@@ -40,6 +43,7 @@ import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 import com.sencha.gxt.widget.core.client.grid.Grid;
 import com.sencha.gxt.widget.core.client.grid.GridSelectionModel;
+import com.sencha.gxt.widget.core.client.grid.GridView;
 import com.sencha.gxt.widget.core.client.grid.filters.GridFilters;
 import com.sencha.gxt.widget.core.client.grid.filters.StringFilter;
 import com.sencha.gxt.widget.core.client.selection.CellSelectionChangedEvent;
@@ -71,6 +75,13 @@ public class GridWithColumnHeaderFilterExample implements IsWidget, EntryPoint {
   @Override
   public Widget asWidget() {
     if (panel == null) {
+      Event.addNativePreviewHandler(new NativePreviewHandler() {
+        @Override
+        public void onPreviewNativeEvent(final NativePreviewEvent event) {
+          // GWT.log("event=" + event.getNativeEvent().getType());
+        }
+      });
+
       ColumnConfig<Stock, String> nameCol = new ColumnConfig<Stock, String>(props.name(), 50, "Company");
       ColumnConfig<Stock, String> symbolCol = new ColumnConfig<Stock, String>(props.symbol(), 75, "Symbol");
       ColumnConfig<Stock, Double> lastCol = new ColumnConfig<Stock, Double>(props.last(), 75, "Last");
@@ -99,7 +110,7 @@ public class GridWithColumnHeaderFilterExample implements IsWidget, EntryPoint {
           nameFilter.setActive(true);
         }
       });
-      
+
       nameCol.setWidget(nameHeaderField, SafeHtmlUtils.fromSafeConstant("Name"));
 
       List<ColumnConfig<Stock, ?>> columns = new ArrayList<ColumnConfig<Stock, ?>>();
@@ -114,7 +125,9 @@ public class GridWithColumnHeaderFilterExample implements IsWidget, EntryPoint {
       ListStore<Stock> store = new ListStore<Stock>(props.key());
       store.addAll(TestData.getStocks());
 
-      final Grid<Stock> grid = new Grid<Stock>(store, cm);
+      GridView<Stock> gridView = new GridView<Stock>();
+
+      final Grid<Stock> grid = new Grid<Stock>(store, cm, gridView);
       grid.setAllowTextSelection(true);
       grid.getView().setAutoExpandColumn(nameCol);
       grid.getView().setStripeRows(true);
