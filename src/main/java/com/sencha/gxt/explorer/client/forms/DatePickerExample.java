@@ -13,7 +13,9 @@ import com.sencha.gxt.core.client.util.DateWrapper;
 import com.sencha.gxt.explorer.client.app.ui.ExampleContainer;
 import com.sencha.gxt.explorer.client.model.Example.Detail;
 import com.sencha.gxt.widget.core.client.DatePicker;
-import com.sencha.gxt.widget.core.client.container.FlowLayoutContainer;
+import com.sencha.gxt.widget.core.client.container.BoxLayoutContainer.BoxLayoutData;
+import com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer;
+import com.sencha.gxt.widget.core.client.container.SimpleContainer;
 import com.sencha.gxt.widget.core.client.info.Info;
 
 @Detail(
@@ -27,7 +29,7 @@ public class DatePickerExample implements IsWidget, EntryPoint {
   protected static final int PREFERRED_HEIGHT = -1;
   protected static final int PREFERRED_WIDTH = -1;
 
-  FlowLayoutContainer panel;
+  private HBoxLayoutContainer panel;
 
   @Override
   public Widget asWidget() {
@@ -43,8 +45,14 @@ public class DatePickerExample implements IsWidget, EntryPoint {
         }
       });
       
-      panel = new FlowLayoutContainer();
+      BoxLayoutData flex = new BoxLayoutData();
+      flex.setFlex(1);
+      
+      // Example of center with the sizing containers
+      panel = new HBoxLayoutContainer();
+      panel.add(new SimpleContainer(), flex);
       panel.add(picker);
+      panel.add(new SimpleContainer(), flex);
     }
 
     return panel;
