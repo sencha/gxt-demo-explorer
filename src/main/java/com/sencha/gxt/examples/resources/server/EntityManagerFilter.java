@@ -15,8 +15,9 @@ public class EntityManagerFilter implements Filter {
 
   private static EntityManagerFactory factory = null;
 
-  public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException,
-      ServletException {
+  @Override
+  public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+      throws IOException, ServletException {
     EntityManager em = null;
     try {
       em = factory.createEntityManager();
@@ -25,19 +26,23 @@ public class EntityManagerFilter implements Filter {
       EntityManagerUtil.MANAGERS.remove();
     } finally {
       try {
-        if (em != null) em.close();
+        if (em != null)
+          em.close();
       } catch (Throwable t) {
         t.printStackTrace();
       }
     }
   }
 
+  @Override
   public void init(FilterConfig config) {
     destroy();
     factory = EMF.get();
   }
 
+  @Override
   public void destroy() {
-    if (factory != null) factory.close();
+    if (factory != null)
+      factory.close();
   }
 }

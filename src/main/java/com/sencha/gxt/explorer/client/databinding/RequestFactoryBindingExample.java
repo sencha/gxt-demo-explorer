@@ -1,10 +1,11 @@
 package com.sencha.gxt.explorer.client.databinding;
 
-import javax.validation.ConstraintViolation;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
+
+import javax.validation.ConstraintViolation;
 
 import com.google.gwt.core.client.Callback;
 import com.google.gwt.core.client.EntryPoint;
@@ -119,6 +120,7 @@ public class RequestFactoryBindingExample implements Editor<MusicProxy>, IsWidge
   };
 
   private final TreeLoader<NamedProxy> loader = new TreeLoader<NamedProxy>(proxy) {
+    @Override
     public boolean hasChildren(NamedProxy parent) {
       return parent instanceof FolderProxy;
     }
@@ -171,7 +173,10 @@ public class RequestFactoryBindingExample implements Editor<MusicProxy>, IsWidge
             startEdit(music);
             name.setEnabled(true);
             author.setEnabled(true);
-            genre.setEnabled(true);
+            
+            // This is disabled because, it will only edit the attribute in the model
+            // In order to use this, logic would have to be added to move it to a new parent in the tree
+            genre.setEnabled(false);
             save.setEnabled(true);
           } else {
             name.setValue("");
@@ -180,7 +185,6 @@ public class RequestFactoryBindingExample implements Editor<MusicProxy>, IsWidge
             name.setEnabled(false);
             author.setEnabled(false);
             genre.setEnabled(false);
-
             save.setEnabled(false);
           }
         }
@@ -197,7 +201,6 @@ public class RequestFactoryBindingExample implements Editor<MusicProxy>, IsWidge
       save = new TextButton("Save");
       save.setEnabled(false);
       save.addSelectHandler(new SelectHandler() {
-
         @Override
         public void onSelect(SelectEvent event) {
           RequestContext req = driver.flush();
