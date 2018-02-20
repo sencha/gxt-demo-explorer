@@ -97,7 +97,6 @@ public class Music {
   public void remove() {
     EntityManager em = entityManager();
     em.remove(this);
-
   }
 
   public void setAuthor(String author) {
@@ -124,4 +123,5 @@ public class Music {
     // prefix music in case other objects get stored in session
     return "music" + id;
   }
+
 }
