@@ -13,9 +13,6 @@ import com.sencha.gxt.core.client.util.DateWrapper;
 import com.sencha.gxt.explorer.client.app.ui.ExampleContainer;
 import com.sencha.gxt.explorer.client.model.Example.Detail;
 import com.sencha.gxt.widget.core.client.DatePicker;
-import com.sencha.gxt.widget.core.client.container.BoxLayoutContainer.BoxLayoutData;
-import com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer;
-import com.sencha.gxt.widget.core.client.container.SimpleContainer;
 import com.sencha.gxt.widget.core.client.info.Info;
 
 @Detail(
@@ -29,14 +26,14 @@ public class DatePickerExample implements IsWidget, EntryPoint {
   protected static final int PREFERRED_HEIGHT = -1;
   protected static final int PREFERRED_WIDTH = -1;
 
-  private HBoxLayoutContainer panel;
+  private DatePicker datePicker;
 
   @Override
   public Widget asWidget() {
-    if (panel == null) {
-      DatePicker picker = new DatePicker();
-      picker.setMinDate(new DateWrapper().addDays(-5).asDate());
-      picker.addValueChangeHandler(new ValueChangeHandler<Date>() {
+    if (datePicker == null) {
+      datePicker = new DatePicker();
+      datePicker.setMinDate(new DateWrapper().addDays(-5).asDate());
+      datePicker.addValueChangeHandler(new ValueChangeHandler<Date>() {
         @Override
         public void onValueChange(ValueChangeEvent<Date> event) {
           Date d = event.getValue();
@@ -44,18 +41,9 @@ public class DatePickerExample implements IsWidget, EntryPoint {
           Info.display("Value Changed", "You selected " + f.format(d));
         }
       });
-      
-      BoxLayoutData flex = new BoxLayoutData();
-      flex.setFlex(1);
-      
-      // Example of center with the sizing containers
-      panel = new HBoxLayoutContainer();
-      panel.add(new SimpleContainer(), flex);
-      panel.add(picker);
-      panel.add(new SimpleContainer(), flex);
     }
 
-    return panel;
+    return datePicker;
   }
 
   @Override
