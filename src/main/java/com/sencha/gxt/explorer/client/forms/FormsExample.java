@@ -167,8 +167,8 @@ public class FormsExample implements IsWidget, EntryPoint {
     };
 
     CheckBox check1 = new CheckBox();
-    check1.setEnabled(false);
     check1.setBoxLabel("Classical");
+    check1.setEnabled(false);
     check1.addValueChangeHandler(musicHandler);
 
     CheckBox check2 = new CheckBox();

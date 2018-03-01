@@ -191,7 +191,7 @@ public class AdvancedComboBoxExample implements IsWidget, EntryPoint {
       ListView<Forum, Forum> listView = new ListView<Forum, Forum>(store, new IdentityValueProvider<Forum>());
       listView.setCell(new AbstractCell<Forum>() {
         @Override
-        public void render(com.google.gwt.cell.client.Cell.Context context, Forum value, SafeHtmlBuilder sb) {
+        public void render(Context context, Forum value, SafeHtmlBuilder sb) {
           sb.append(template.render(value, bundle.css()));
         }
       });
@@ -199,12 +199,9 @@ public class AdvancedComboBoxExample implements IsWidget, EntryPoint {
       ComboBoxCell<Forum> comboCell = new ComboBoxCell<Forum>(store, properties.title(), listView) {
         @Override
         protected PagingToolBar createPagingToolBar(int pageSize) {
-          return new PagingToolBar(pageSize) {
-            @Override
-            protected void initMore() {
-              // we don't want to show toolbar overflow in this example, just hide any item that doesn't fit
-            }
-          };
+          PagingToolBar pagingToolbar = new PagingToolBar(pageSize);
+          pagingToolbar.setEnableOverflow(false);
+          return pagingToolbar;
         }
       };
 
