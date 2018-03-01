@@ -113,22 +113,10 @@ public class LiveGroupSummaryExample implements EntryPoint, IsWidget {
         public void render(Context context, Double value, SafeHtmlBuilder sb) {
           sb.appendHtmlConstant(value + " hours");
         }
-
-        @Override
-        public boolean handlesSelection() {
-          // Allow the cell to be selectedable, so it can turn on editing
-          return true;
-        }
       });
 
       rateColumn.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
-      rateColumn.setCell(new NumberCell<Double>(NumberFormat.getCurrencyFormat()) {
-        @Override
-        public boolean handlesSelection() {
-          // Allow the cell to be selectedable, so it can turn on editing
-          return true;
-        }
-      });
+      rateColumn.setCell(new NumberCell<Double>(NumberFormat.getCurrencyFormat()));
       rateColumn.setSummaryType(new SummaryType.AvgSummaryType<Double>());
       rateColumn.setSummaryFormat(NumberFormat.getCurrencyFormat());
 
