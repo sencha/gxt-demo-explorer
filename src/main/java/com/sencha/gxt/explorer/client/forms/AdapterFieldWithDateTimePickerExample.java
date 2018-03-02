@@ -232,6 +232,8 @@ public class AdapterFieldWithDateTimePickerExample implements IsWidget, EntryPoi
       hlc.add(amPmField);
 
       initWidget(hlc);
+      
+      setValue(new Date());
     }
 
     public void setValue(Date value) {
@@ -260,9 +262,16 @@ public class AdapterFieldWithDateTimePickerExample implements IsWidget, EntryPoi
       amPmField.setValue(ampm);
     }
 
-    // TODO may need to be tested more
+    /**
+     * This is a rough example of how it can work. This may need to be tested more.
+     * @return the date
+     * @since 4.0.3
+     */
     public Date getValue() {
-      int hours = hourField.getValue();
+      int hours = 0;
+      if (hourField != null) {
+        hours = hourField.getCurrentValue();
+      }
       if (amPmField.getCurrentValue() != null && amPmField.getCurrentValue().equals("PM")) {
         hours += 12;
       }
@@ -270,6 +279,9 @@ public class AdapterFieldWithDateTimePickerExample implements IsWidget, EntryPoi
       int minutes = minField.getValue();
 
       Date val = dateField.getCurrentValue();
+      if (val == null) {
+        val = new Date();
+      }
       val.setHours(hours);
       val.setMinutes(minutes);
       val.setSeconds(0);
