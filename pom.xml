@@ -31,6 +31,14 @@
     <maven.compiler.target>1.8</maven.compiler.target>
     <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
     <archiveClasses>true</archiveClasses>
+    
+    <!-- Global license info to embed into the release, You can change at build time to eval 
+       with -Dlicense=eval or gpl with  -Dlicense=gpl -->
+    <license>commercial</license>
+    <license.fromYear>2006</license.fromYear>
+    <license.thruYear>2018</license.thruYear>
+    <license.email>licensing@sencha.com</license.email>
+    <license.url>http://www.sencha.com/products/gxt/license/</license.url>
   </properties>
   
   <prerequisites>
@@ -213,6 +221,46 @@
           <devserver.port>8181</devserver.port>
         </configuration>
       </plugin>
+      
+      <!-- License Addition -->
+      <plugin>
+        <groupId>com.google.code.maven-license-plugin</groupId>
+        <artifactId>maven-license-plugin</artifactId>
+        <version>1.4.0</version>
+        <configuration>
+          <mapping>
+            <theme>JAVADOC_STYLE</theme>
+          </mapping>
+          <includes>
+            <include>**/*.java</include>
+            <include>**/*.theme</include>
+            <include>**/*.gwt.xml</include>
+            <include>**/*.ui.xml</include>
+          </includes>
+          <excludes>
+            <exclude>**/super/**</exclude>
+          </excludes>
+          <header>${project.basedir}/src/main/resources/license/license_${license}.txt</header>
+          <properties>
+            <project.version>${project.version}</project.version>
+            <license>${license}</license>
+            <license.fromYear>${license.fromYear}</license.fromYear>
+            <license.thruYear>${license.thruYear}</license.thruYear>
+            <license.email>${license.email}</license.email>
+            <license.url>${license.url}</license.url>
+          </properties>
+          <quiet>true</quiet>
+        </configuration>
+        <executions>
+          <execution>
+            <id>apply-license</id>
+            <phase>process-sources</phase>
+            <goals>
+              <goal>format</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
 
     <pluginManagement>
@@ -253,6 +301,19 @@
                   </pluginExecutionFilter>
                   <action>
                     <ignore />
+                  </action>
+                </pluginExecution>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>com.google.code.maven-license-plugin</groupId>
+                    <artifactId>maven-license-plugin</artifactId>
+                    <versionRange>[1.4.0,)</versionRange>
+                    <goals>
+                      <goal>format</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore></ignore>
                   </action>
                 </pluginExecution>
               </pluginExecutions>
