@@ -1,3 +1,40 @@
+/**
+ * Sencha GXT 1.0.0-SNAPSHOT - Sencha for GWT
+ * Copyright (c) 2006-2018, Sencha Inc.
+ *
+ * licensing@sencha.com
+ * http://www.sencha.com/products/gxt/license/
+ *
+ * ================================================================================
+ * Commercial License
+ * ================================================================================
+ * This version of Sencha GXT is licensed commercially and is the appropriate
+ * option for the vast majority of use cases.
+ *
+ * Please see the Sencha GXT Licensing page at:
+ * http://www.sencha.com/products/gxt/license/
+ *
+ * For clarification or additional options, please contact:
+ * licensing@sencha.com
+ * ================================================================================
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ * ================================================================================
+ * Disclaimer
+ * ================================================================================
+ * THIS SOFTWARE IS DISTRIBUTED "AS-IS" WITHOUT ANY WARRANTIES, CONDITIONS AND
+ * REPRESENTATIONS WHETHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION THE
+ * IMPLIED WARRANTIES AND CONDITIONS OF MERCHANTABILITY, MERCHANTABLE QUALITY,
+ * FITNESS FOR A PARTICULAR PURPOSE, DURABILITY, NON-INFRINGEMENT, PERFORMANCE AND
+ * THOSE ARISING BY STATUTE OR FROM CUSTOM OR USAGE OF TRADE OR COURSE OF DEALING.
+ * ================================================================================
+ */
 package com.sencha.gxt.explorer.client.tabs;
 
 import java.util.HashMap;
@@ -47,8 +84,6 @@ public class AdvancedTabsExample implements IsWidget, EntryPoint {
   @Override
   public Widget asWidget() {
     if (container == null) {
-      container = new VerticalLayoutContainer();
-
       final Map<TabPanel, Integer> tabPanels = new HashMap<TabPanel, Integer>(2); // map tab panels to index count
       tabPanels.put(getTabPanel(), 0);
       tabPanels.put(getPlainTabPanel(), 0);
@@ -113,6 +148,7 @@ public class AdvancedTabsExample implements IsWidget, EntryPoint {
           }
         });
 
+        container = new VerticalLayoutContainer();
         container.add(bb, new VerticalLayoutData(1, -1, new Margins(0, 0, 20, 0)));
         container.add(tabPanel, new VerticalLayoutData(1, 0.5));
         if (it.hasNext()) {

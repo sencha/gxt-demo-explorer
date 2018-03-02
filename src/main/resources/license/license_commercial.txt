@@ -1,0 +1,35 @@
+Sencha GXT ${project.version} - Sencha for GWT
+Copyright (c) ${license.fromYear}-${license.thruYear}, Sencha Inc.
+
+${license.email}
+${license.url}
+
+================================================================================
+Commercial License
+================================================================================
+This version of Sencha GXT is licensed commercially and is the appropriate
+option for the vast majority of use cases.
+
+Please see the Sencha GXT Licensing page at:
+${license.url}
+
+For clarification or additional options, please contact:
+${license.email}
+================================================================================
+
+
+
+
+
+
+
+
+================================================================================
+Disclaimer
+================================================================================
+THIS SOFTWARE IS DISTRIBUTED "AS-IS" WITHOUT ANY WARRANTIES, CONDITIONS AND
+REPRESENTATIONS WHETHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION THE
+IMPLIED WARRANTIES AND CONDITIONS OF MERCHANTABILITY, MERCHANTABLE QUALITY,
+FITNESS FOR A PARTICULAR PURPOSE, DURABILITY, NON-INFRINGEMENT, PERFORMANCE AND
+THOSE ARISING BY STATUTE OR FROM CUSTOM OR USAGE OF TRADE OR COURSE OF DEALING.
+================================================================================
