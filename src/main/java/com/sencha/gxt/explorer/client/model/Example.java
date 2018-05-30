@@ -54,8 +54,8 @@ import com.sencha.gxt.explorer.client.app.ui.ExampleContainer;
 import com.sencha.gxt.explorer.client.thumbs.ExampleThumbs;
 
 /**
- * Model object to represent a GXT example - contains the example widget itself,
- * as well as a name, icon, and some display details about the example.
+ * Model object to represent a GXT example - contains the example widget itself, as well as a name, icon, and some
+ * display details about the example.
  * 
  */
 public abstract class Example extends NamedModel {
@@ -69,8 +69,7 @@ public abstract class Example extends NamedModel {
     String category();
 
     /**
-     * Other classes, besides the type annotated with {@literal @}Detail to have
-     * their source included
+     * Other classes, besides the type annotated with {@literal @}Detail to have their source included
      */
     Class<?>[] classes() default {};
 
@@ -80,8 +79,8 @@ public abstract class Example extends NamedModel {
     String[] files() default {};
 
     /**
-     * Name of the icon method to use in the clientbundle file. See
-     * {@link #iconClientBundle()} for the class this method will be called on
+     * Name of the icon method to use in the clientbundle file. See {@link #iconClientBundle()} for the class this
+     * method will be called on
      */
     String icon();
 
@@ -145,7 +144,6 @@ public abstract class Example extends NamedModel {
      */
     Overflow overflowY() default Overflow.AUTO;
 
-
     /**
      * The preferred height for this example.
      * <ul>
@@ -190,12 +188,10 @@ public abstract class Example extends NamedModel {
   private double preferredWidth;
   private List<Source> sources = new ArrayList<Source>();
 
-  public Example(String name, ImageResource icon,
-                 double minWidth, double minHeight,
-                 double maxWidth, double maxHeight,
-                 Overflow overflowX, Overflow overflowY,
-                 double preferredWidth, double preferredHeight, double preferredMargin) {
-    super(name);
+  public Example(String category, String name, ImageResource icon, double minWidth, double minHeight, double maxWidth, double maxHeight,
+      Overflow overflowX, Overflow overflowY, double preferredWidth, double preferredHeight, double preferredMargin) {
+    super(category, name);
+    
     this.icon = icon;
 
     this.minWidth = minWidth;

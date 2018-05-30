@@ -42,9 +42,12 @@ import java.util.Date;
 import java.util.List;
 
 import com.google.gwt.cell.client.Cell.Context;
+import com.google.gwt.cell.client.ValueUpdater;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.dom.client.NativeEvent;
 import com.google.gwt.editor.client.Editor.Path;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
@@ -56,6 +59,7 @@ import com.google.gwt.safecss.shared.SafeStyles;
 import com.google.gwt.safecss.shared.SafeStylesUtils;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.user.client.Random;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
@@ -68,6 +72,7 @@ import com.sencha.gxt.cell.core.client.form.ComboBoxCell.TriggerAction;
 import com.sencha.gxt.cell.core.client.form.DateCell;
 import com.sencha.gxt.core.client.Style.Side;
 import com.sencha.gxt.core.client.ValueProvider;
+import com.sencha.gxt.core.client.dom.XElement;
 import com.sencha.gxt.core.client.resources.CommonStyles;
 import com.sencha.gxt.data.shared.LabelProvider;
 import com.sencha.gxt.data.shared.ListStore;
@@ -198,7 +203,7 @@ public class CellGridExample implements IsWidget, EntryPoint {
         // Override this to control the row selection
         @Override
         public boolean handlesSelection() {
-          return true;
+          return false;
         }
       };
       button.addSelectHandler(new SelectHandler() {
@@ -217,6 +222,58 @@ public class CellGridExample implements IsWidget, EntryPoint {
         @Override
         public boolean handlesSelection() {
           return false;
+        }
+
+        @Override
+        protected void onClick(final Context context, final XElement parent, final NativeEvent event, final Date value,
+            final ValueUpdater<Date> updater) {
+          super.onClick(context, parent, event, value, updater);
+          GWT.log("DateCell onClick");
+        }
+
+        @Override
+        protected void onMouseDown(final XElement parent, final NativeEvent event) {
+
+          final String dateCellId = parent.getId();
+
+          Timer t = new Timer() {
+            @Override
+            public void run() {
+              GWT.log("DateCell onMouseDown id=" + dateCellId);
+
+              XElement newParent = Document.get().getElementById(dateCellId).cast();
+
+              laterOnMouseDown(newParent, event);
+
+            }
+          };
+          t.schedule(1000);
+        }
+
+        void laterOnMouseDown(XElement parent, NativeEvent event) {
+          super.onMouseDown(parent, event);
+        }
+
+        @Override
+        protected void onFocus(Context context, XElement parent, Date value, NativeEvent event,
+            ValueUpdater<Date> valueUpdater) {
+          super.onFocus(context, parent, value, event, valueUpdater);
+          GWT.log("DateCell onFocus");
+        }
+
+        @Override
+        protected void onBlur(Context context, XElement parent, Date value, NativeEvent event,
+            ValueUpdater<Date> valueUpdater) {
+          super.onBlur(context, parent, value, event, valueUpdater);
+          GWT.log("DateCell onBlur");
+        }
+
+        @Override
+        protected void modifyRenderTriggerFieldOptions(Context context, Date value, FieldAppearanceOptions options,
+            FieldViewData viewData) {
+          super.modifyRenderTriggerFieldOptions(context, value, options, viewData);
+          String dateCellId = "dateCell_" + context.getIndex() + "_" + context.getColumn();
+          options.setId(dateCellId);
         }
       };
       dateCell.getDatePicker().addValueChangeHandler(new ValueChangeHandler<Date>() {
@@ -256,7 +313,47 @@ public class CellGridExample implements IsWidget, EntryPoint {
         // Override this to control the row selection
         @Override
         public boolean handlesSelection() {
-          return false;
+          return true;
+        }
+
+        @Override
+        protected void onClick(final Context context, final XElement parent, final NativeEvent event,
+            final String value, final ValueUpdater<String> updater) {
+          super.onClick(context, parent, event, value, updater);
+
+          GWT.log("Combo onClick");
+        }
+
+        @Override
+        protected void onMouseDown(XElement parent, NativeEvent event) {
+          super.onMouseDown(parent, event);
+          GWT.log("Combo onMouseDown");
+        }
+
+        @Override
+        protected void onTriggerClick(Context context, XElement parent, NativeEvent event, String value,
+            ValueUpdater<String> updater) {
+          super.onTriggerClick(context, parent, event, value, updater);
+          GWT.log("Combo onTriggerClick");
+        }
+
+        @Override
+        protected void onFocus(Context context, XElement parent, String value, NativeEvent event,
+            ValueUpdater<String> valueUpdater) {
+          super.onFocus(context, parent, value, event, valueUpdater);
+          GWT.log("Combo onFocus");
+        }
+
+        @Override
+        protected void onBlur(Context context, XElement parent, String value, NativeEvent event,
+            ValueUpdater<String> valueUpdater) {
+          super.onBlur(context, parent, value, event, valueUpdater);
+          GWT.log("Combo onBlur");
+        }
+
+        private void later(Context context, XElement parent, NativeEvent event, String value,
+            ValueUpdater<String> updater) {
+          super.onClick(context, parent, event, value, updater);
         }
       };
       lightCombo.addSelectionHandler(new SelectionHandler<String>() {
@@ -311,7 +408,7 @@ public class CellGridExample implements IsWidget, EntryPoint {
       };
       slider.setToolTipConfig(tooltipConfig);
       slider.setWidth(140);
-      
+
       ColumnConfig<Plant, Integer> difficultyColumn = new ColumnConfig<Plant, Integer>(properties.difficulty(), 150,
           "Durability");
       difficultyColumn.setColumnTextStyle(fieldPaddingStyle);
@@ -330,7 +427,7 @@ public class CellGridExample implements IsWidget, EntryPoint {
       progress.setProgressText("{0}% Complete");
       progress.setWidth(140);
       progressColumn.setCell(progress);
-      
+
       nameColumn.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
       availableColumn.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
       lightColumn.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);

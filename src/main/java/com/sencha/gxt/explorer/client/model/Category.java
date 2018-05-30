@@ -45,7 +45,7 @@ public class Category extends NamedModel {
   private List<Example> examples;
 
   public Category(String name) {
-    super(name);
+    super(name, name);
 
     examples = new ArrayList<Example>();
   }

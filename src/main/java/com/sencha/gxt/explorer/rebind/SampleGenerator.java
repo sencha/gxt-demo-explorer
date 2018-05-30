@@ -183,6 +183,7 @@ public class SampleGenerator extends Generator {
     sw.println("ImageResource icon;");
     sw.println("Example e;");
     sw.println("Source dir;");
+    
     Set<String> names = new HashSet<String>();
     Map<JClassType, String> bundles = new HashMap<JClassType, String>();
     for (String folder : folders) {
@@ -216,12 +217,22 @@ public class SampleGenerator extends Generator {
     sw.println("icon = %1$s.%2$s();", bundleName, example.getIconMethodName());
 
     Detail detail = example.getExampleDetail();
-    sw.println("e = new Example(\"%1$s\", icon, %2$f, %3$f, %4$f, %5$f, com.google.gwt.dom.client.Style.Overflow.%6$s, com.google.gwt.dom.client.Style.Overflow.%7$s, %8$f, %9$f, %10$f) {",
-        escape(detail.name()),
-        detail.minWidth(), detail.minHeight(),
-        detail.maxWidth(), detail.maxHeight(),
-        detail.overflowX(), detail.overflowY(),
-        detail.preferredWidth(), detail.preferredHeight(), detail.preferredMargin());
+    
+    // Create a unique ID for the example using the category and name
+    String category = detail.category();
+    
+    sw.println("e = new Example(\"%1$s\", \"%2$s\", icon, %3$f, %4$f, %5$f, %6$f, com.google.gwt.dom.client.Style.Overflow.%7$s, com.google.gwt.dom.client.Style.Overflow.%8$s, %9$f, %10$f, %11$f) {",
+        escape(category), // 1
+        escape(detail.name()), // 2
+        detail.minWidth(),  // 3
+        detail.minHeight(), // 4
+        detail.maxWidth(),  // 5
+        detail.maxHeight(), // 6
+        detail.overflowX(), // 7
+        detail.overflowY(), // 8
+        detail.preferredWidth(), // 9 
+        detail.preferredHeight(), // 10
+        detail.preferredMargin()); // 11
     sw.indent();
     sw.println("protected %1$s createExample() { ", IsWidget.class.getName());
     sw.indentln("return new %1$s();", example.getExampleType().getQualifiedSourceName());
@@ -273,6 +284,7 @@ public class SampleGenerator extends Generator {
       l.log(Type.ERROR, "File cannot be found.");
       throw new UnableToCompleteException();
     }
+    
     OutputStream stream = ctx.tryCreateResource(l, "code/" + path.replace('/', '.') + ".html");
     if (stream == null) {
       // file already exists for this compile

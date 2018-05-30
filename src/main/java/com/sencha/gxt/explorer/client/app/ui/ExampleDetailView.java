@@ -45,6 +45,7 @@ public interface ExampleDetailView extends IsWidget {
   public interface Presenter {
     void selectExample(Example ex);
   }
+
   void setPresenter(Presenter listener);
 
   /**
@@ -53,4 +54,5 @@ public interface ExampleDetailView extends IsWidget {
    * @param example
    */
   void showExample(Example example);
+
 }
