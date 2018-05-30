@@ -35,24 +35,26 @@
  * THOSE ARISING BY STATUTE OR FROM CUSTOM OR USAGE OF TRADE OR COURSE OF DEALING.
  * ================================================================================
  */
-package com.sencha.gxt.explorer.client.app.ui;
+package com.sencha.gxt.explorer.client.extjs;
 
-import com.google.gwt.user.client.ui.IsWidget;
-import com.sencha.gxt.explorer.client.model.Example;
+import jsinterop.annotations.JsMethod;
+import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
-public interface ExampleDetailView extends IsWidget {
+@JsType(isNative = true, name = "Ext", namespace = JsPackage.GLOBAL)
+public abstract class Ext {
 
-  public interface Presenter {
-    void selectExample(Example ex);
-  }
+  @JsProperty(name = "isChrome")
+  public static native boolean isChrome();
 
-  void setPresenter(Presenter listener);
-
-  /**
-   * Focuses on the given example
-   * 
-   * @param example
-   */
-  void showExample(Example example);
-
+  @JsMethod()
+  public static native void define(String className, java.lang.Object data);
+    
+  @JsMethod()
+  public static native java.lang.Object create(java.lang.Object config);
+  
+  @JsMethod()
+  public static native java.lang.Object create(String className, java.lang.Object config);
+  
 }

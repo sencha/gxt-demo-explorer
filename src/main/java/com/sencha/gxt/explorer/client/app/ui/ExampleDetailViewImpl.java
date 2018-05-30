@@ -68,22 +68,20 @@ public class ExampleDetailViewImpl implements ExampleDetailView {
   public ExampleDetailViewImpl(ExampleModel model) {
     this.exampleModel = model;
     tabPanel = new TabPanel();
-
     tabPanel.setTabScroll(true);
     tabPanel.setCloseContextMenu(true);
-
     tabPanel.addSelectionHandler(new SelectionHandler<Widget>() {
       @Override
       public void onSelection(SelectionEvent<Widget> event) {
         Widget item = event.getSelectedItem();
         TabItemConfig config = tabPanel.getConfig(item);
         String name = config.getText();
-        Example e = exampleModel.findExampleByName(name);
+        Example example = exampleModel.findExampleByName(name);
 
         // This is a little gross, but it ensures that adding the first tab
         // won't kick off a place change
         if (presenter != null) {
-          presenter.selectExample(e);
+          presenter.selectExample(example);
         }
       }
     });

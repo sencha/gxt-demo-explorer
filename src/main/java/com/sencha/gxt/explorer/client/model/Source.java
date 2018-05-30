@@ -43,15 +43,17 @@ import java.util.List;
 import com.sencha.gxt.data.shared.TreeStore;
 
 /**
- * Model object for storing info about a source file that can be used to show
- * how an example is put together.
+ * Model object for storing info about a source file that can be used to show how an example is put together.
  * 
  */
 public class Source implements TreeStore.TreeNode<Source> {
+
   private static int nextId = 1;
+
   public enum FileType {
     JAVA, CSS, XML, JSON, FOLDER, HTML
   }
+
   private Integer id;
   private String name;
   private String url;
@@ -65,7 +67,7 @@ public class Source implements TreeStore.TreeNode<Source> {
   public void setType(FileType type) {
     this.type = type;
   }
-  
+
   public Source(String name, String url, FileType type) {
     this.id = nextId++;
     this.name = name;
@@ -101,6 +103,7 @@ public class Source implements TreeStore.TreeNode<Source> {
     this.name = name;
   }
 
+  @Override
   public List<Source> getChildren() {
     return children;
   }
@@ -113,4 +116,5 @@ public class Source implements TreeStore.TreeNode<Source> {
   public Source getData() {
     return this;
   }
+
 }

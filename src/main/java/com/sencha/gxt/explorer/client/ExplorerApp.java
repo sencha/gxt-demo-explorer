@@ -59,12 +59,14 @@ import com.sencha.gxt.explorer.client.app.ui.OverviewExample;
 import com.sencha.gxt.explorer.client.model.Example;
 import com.sencha.gxt.explorer.client.model.ExampleModel;
 import com.sencha.gxt.widget.core.client.container.Viewport;
+import com.sencha.gxt.widget.core.client.info.Info;
 
 public class ExplorerApp implements ExampleListView.Presenter, ExampleDetailView.Presenter {
 
   private static final Logger log = Logger.getLogger(ExplorerApp.class.getName());
   public static final String OVERVIEW = "Overview";
   public static final String OVERVIEW_CATEGORY = "overview category";
+
   @Inject
   private EventBus eventBus;
 
@@ -107,6 +109,7 @@ public class ExplorerApp implements ExampleListView.Presenter, ExampleDetailView
 
     // Start PlaceHistoryHandler with our PlaceHistoryMapper
     ExplorerPlaceHistoryMapper historyMapper = GWT.create(ExplorerPlaceHistoryMapper.class);
+
     final PlaceHistoryHandler historyHandler = new PlaceHistoryHandler(historyMapper);
     historyHandler.register(placeController, eventBus, new ExamplePlace(OVERVIEW.toLowerCase()));
 
@@ -116,6 +119,7 @@ public class ExplorerApp implements ExampleListView.Presenter, ExampleDetailView
     eventBus.addHandler(PlaceChangeEvent.TYPE, listView);
 
     Example example = exampleModel.findExample(OVERVIEW.toLowerCase());
+
     OverviewExample oExample = (OverviewExample) example.getExample();
     oExample.setPlaceController(placeController);
     oExample.loadData(exampleModel);
@@ -130,7 +134,9 @@ public class ExplorerApp implements ExampleListView.Presenter, ExampleDetailView
   }
 
   @Override
-  public void selectExample(Example ex) {
-    placeController.goTo(new ExamplePlace(ex.getId()));
+  public void selectExample(Example example) {
+    //Info.display("selectExample", "ex=" + example.getId());
+    placeController.goTo(new ExamplePlace(example.getId()));
   }
+
 }

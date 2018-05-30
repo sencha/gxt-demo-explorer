@@ -48,6 +48,9 @@
   <inherits name='com.sencha.gxt.examples.resources.Resources' />
   <inherits name='com.sencha.gxt.chart.Chart' />
   
+  <!-- JsInterop with ExtJs -->
+  <inherits name='jsinterop.annotations.Annotations' />
+  
   <!-- Testing -->
   <inherits name="com.google.gwt.user.Debug"/>
   <inherits name="org.senchalabs.gwt.gwtdriver.gxt.TestableGXT" />

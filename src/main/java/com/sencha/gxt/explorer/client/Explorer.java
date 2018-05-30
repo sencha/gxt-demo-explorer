@@ -53,7 +53,6 @@ public class Explorer implements EntryPoint {
   @Override
   public void onModuleLoad() {
     Scheduler.get().scheduleDeferred(new ScheduledCommand() {
-
       @Override
       public void execute() {
         StateManager.get().setProvider(new CookieProvider("/", null, null, GXT.isSecure()));
@@ -63,7 +62,6 @@ public class Explorer implements EntryPoint {
 
         onReady();
       }
-
     });
   }
 

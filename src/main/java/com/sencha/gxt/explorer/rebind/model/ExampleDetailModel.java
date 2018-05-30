@@ -52,6 +52,7 @@ import com.sencha.gxt.explorer.client.model.Example;
 import com.sencha.gxt.explorer.rebind.model.SourceModel.FileType;
 
 public class ExampleDetailModel implements Comparable<ExampleDetailModel> {
+
   // private final TreeLogger logger;
   private final GeneratorContext context;
   private final Example.Detail detail;
@@ -97,7 +98,6 @@ public class ExampleDetailModel implements Comparable<ExampleDetailModel> {
 
   public List<SourceModel> getJavaSources() {
     List<SourceModel> srcs = new ArrayList<SourceModel>();
-
     srcs.add(new SourceModel(getExampleType()));
     srcs.addAll(getSourceModels(context.getTypeOracle(), detail.classes()));
     return srcs;
@@ -105,7 +105,7 @@ public class ExampleDetailModel implements Comparable<ExampleDetailModel> {
 
   public List<SourceModel> getOtherSources(FileType type) {
     List<SourceModel> paths = new ArrayList<SourceModel>();
-    //make the paths absolute to the classpath, not to the example type
+    // make the paths absolute to the classpath, not to the example type
     for (String initialPath : detail.files()) {
       final String path;
       if (!context.getResourcesOracle().getPathNames().contains(initialPath)) {
@@ -137,4 +137,5 @@ public class ExampleDetailModel implements Comparable<ExampleDetailModel> {
 
     return types;
   }
+
 }

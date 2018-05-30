@@ -45,4 +45,5 @@ import com.sencha.gxt.explorer.client.ExplorerApp;
 public interface ExplorerGinjector extends Ginjector {
 
   ExplorerApp getApp();
+
 }

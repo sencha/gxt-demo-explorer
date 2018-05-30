@@ -40,6 +40,7 @@ package com.sencha.gxt.explorer.rebind.model;
 import com.google.gwt.core.ext.typeinfo.JClassType;
 
 public class SourceModel {
+
   public static enum FileType {
     JAVA, CSS, XML, JSON, HTML, FOLDER
   }
@@ -61,7 +62,8 @@ public class SourceModel {
 
   public SourceModel(String path) {
     this.name = path.substring(path.lastIndexOf('/') + 1);
-    this.type = path.endsWith("css") ? FileType.CSS : (path.endsWith("xml") ? FileType.XML : (path.endsWith("html") ? FileType.HTML: FileType.JSON));
+    this.type = path.endsWith("css") ? FileType.CSS
+        : (path.endsWith("xml") ? FileType.XML : (path.endsWith("html") ? FileType.HTML : FileType.JSON));
     this.url = "code/" + path.replace('/', '.') + ".html";
 
     this.path = path;
@@ -88,6 +90,7 @@ public class SourceModel {
     assert type == FileType.JAVA;
     return jclassType;
   }
+
   @Override
   public boolean equals(Object obj) {
     if (obj instanceof SourceModel) {
@@ -98,8 +101,10 @@ public class SourceModel {
     }
     return false;
   }
+
   @Override
   public int hashCode() {
     return url.hashCode();
   }
+
 }
