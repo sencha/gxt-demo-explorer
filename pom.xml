@@ -212,6 +212,8 @@
       
       <!-- App Engine Hosting -->
       <!-- https://cloud.google.com/appengine/docs/standard/java/tools/using-maven -->
+      <!-- gcloud init -->
+      <!-- mvn appengine:deploy -->
       <plugin>
         <groupId>com.google.cloud.tools</groupId>
         <artifactId>appengine-maven-plugin</artifactId>
