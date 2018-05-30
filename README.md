@@ -12,8 +12,8 @@ Easily add Ext JS integration with the GWT JSNI or JsInterop Apis.
 
 Integration instructions:
 1. Download Ext JS zip. (In the near future it will be installed using Maven)
-2. Import the resources into the [index.html](blob/master/src/main/webapp/index.html). Find the Ext JS comments.
-3. Add the resources to the [/extjs](tree/master/src/main/webapp/extjs) directory. 
+2. Import the resources into the [index.html](https://github.com/sencha/gxt-demo-explorer/blob/master/src/main/webapp/index.html). Find the Ext JS comments.
+3. Add the resources to the [/extjs](https://github.com/sencha/gxt-demo-explorer/tree/master/src/main/webapp/extjs) directory. 
 
 ## Demo
 
