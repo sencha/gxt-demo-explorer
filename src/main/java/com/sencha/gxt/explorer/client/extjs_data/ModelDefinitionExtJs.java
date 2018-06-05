@@ -69,11 +69,11 @@ public class ModelDefinitionExtJs implements EntryPoint, IsWidget {
   @JsType
   public static class PersonConfig {
     @JsProperty
-    public String name = "Brandon";
+    public String name;
     @JsProperty
     int age = 1;
     @JsProperty
-    public String gender = "M";
+    public String gender;
   }
 
   /**
@@ -117,6 +117,7 @@ public class ModelDefinitionExtJs implements EntryPoint, IsWidget {
     FlowPanel fp = new FlowPanel();
 
     defineUsingJsInterop(fp);
+    fp.add(new HTML("<br/>"));
     defineUsingJSNI(fp);
 
     return fp;
@@ -129,16 +130,16 @@ public class ModelDefinitionExtJs implements EntryPoint, IsWidget {
     personDefine.config = config;
 
     // Define the model
-    // Verify it exists in: 
+    // Verify it exists in:
     // Browser Dev Tools: > Ext.data.schema.Schema.instances.default.entities
     Ext.define("com.example.Person", personDefine);
 
-    // Instantiate the model 
-    Person jacky = new Person();
-    jacky.name = "Jacky";
-    jacky.age = 35;
+    // Instantiate the model
+    Person person = new Person();
+    person.name = "Jacky";
+    person.age = 35;
 
-    HTML htmlJsInterop = new HTML("JsInterop: jacky.name=" + jacky.name + " jacky.age=" + jacky.age);
+    HTML htmlJsInterop = new HTML("JsInterop: name=" + person.name + " age=" + person.age);
 
     fp.add(htmlJsInterop);
   }
@@ -154,14 +155,12 @@ public class ModelDefinitionExtJs implements EntryPoint, IsWidget {
    * JSNI Example
    */
   public native void defineUsingJsni(Element htmlElement) /*-{
-    var jacky = new $wnd.com.example.Person({
-      name : "Jacky",
-      age : 35
-    });
+    var person = new $wnd.com.example.Person();
+    person.name = "Angie";
+    person.age = 25;
 
-    var str = "JSNI: jacky.name=" + jacky.name + " jacky.age=" + jacky.age;
-
-    htmlElement.innerHTML = str;
+    var s = "JSNI: name=" + person.name + " age=" + person.age;
+    htmlElement.innerHTML = s;
   }-*/;
 
 }
