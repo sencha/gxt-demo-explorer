@@ -39,6 +39,10 @@
     <license.thruYear>2018</license.thruYear>
     <license.email>licensing@sencha.com</license.email>
     <license.url>http://www.sencha.com/products/gxt/license/</license.url>
+    
+    <!-- Froala license key -->
+    <!-- This key is passedin with -Dfroala.license.key=xxxxx -->
+    <froala.license.key></froala.license.key>
   </properties>
   
   <prerequisites>
@@ -49,6 +53,11 @@
     <outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
 
     <resources>
+      <resource>
+        <directory>src/main/java</directory>
+        <!-- Replace the froala license key -->
+        <filtering>true</filtering>
+      </resource>
       <resource>
         <directory>src/main/resources</directory>
       </resource>
