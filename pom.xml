@@ -43,6 +43,9 @@
     <!-- Froala license key -->
     <!-- This key is passedin with -Dfroala.license.key=xxxxx -->
     <froala.license.key></froala.license.key>
+    
+    <!-- Label build version in the html -->
+    <build.version>4.0.3.build</build.version>
   </properties>
   
   <prerequisites>
