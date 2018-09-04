@@ -37,12 +37,17 @@
  */
 package com.sencha.gxt.explorer.client.html;
 
+import com.google.gwt.cell.client.ValueUpdater;
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.dom.client.Element;
+import com.google.gwt.dom.client.NativeEvent;
 import com.google.gwt.event.logical.shared.AttachEvent;
 import com.google.gwt.event.logical.shared.AttachEvent.Handler;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
+import com.sencha.gxt.cell.core.client.form.TextAreaInputCell;
+import com.sencha.gxt.core.client.dom.XElement;
 import com.sencha.gxt.core.client.util.Margins;
 import com.sencha.gxt.explorer.client.app.ui.ExampleContainer;
 import com.sencha.gxt.explorer.client.model.Example.Detail;
@@ -76,11 +81,26 @@ public class FroalaEditorBasicExample implements IsWidget, EntryPoint {
   @Override
   public Widget asWidget() {
     if (panel == null) {
-      textArea = new TextArea();
+      
+      TextAreaInputCell cell = new TextAreaInputCell() {
+        @Override
+        protected void onBlur(Context context, XElement parent, String value, NativeEvent event,
+            ValueUpdater<String> valueUpdater) {
+          // Turn this off. We'll fix this in 4.0.4.
+          //super.onBlur(context, parent, value, event, valueUpdater);
+        }
+        @Override
+        public void finishEditing(Element parent, String value, Object key, ValueUpdater<String> valueUpdater) {
+          // Turn this off. We'll fix this in 4.0.4.
+          //super.finishEditing(parent, value, key, valueUpdater);
+        }
+      };
+      
+      textArea = new TextArea(cell);
+      textArea.setBorders(false);
       textArea
           .setValue("The <a href='https://www.froala.com/wysiwyg-editor'>Froala Editor</a> is a lightweight WYSIWYG HTML "
               + "Editor written in Javascript that enables rich text editing capabilities for your applications.");
-      textArea.setSize("100%", "400px");
 
       FlowPanel fp = new FlowPanel();
       fp.add(textArea);
@@ -123,7 +143,7 @@ public class FroalaEditorBasicExample implements IsWidget, EntryPoint {
   private native void initFroala() /*-{
     // froala.license.key is inserted from build system
     $wnd.$('textarea').froalaEditor({
-      height : 300,
+      height : '100%',
       'key': '${froala.license.key}'
     });
   }-*/;

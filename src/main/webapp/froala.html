@@ -29,6 +29,11 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.8.4/js/froala_editor.pkgd.min.js"></script>
  
     <!-- Initialize the editor. -->
-    <script> $(function() { $('textarea').froalaEditor() }); </script>
+    <script> $(function() { 
+      $('textarea').froalaEditor({
+        'key': '${froala.license.key}'
+      })
+    });    
+    </script>
   </body>
 </html>
