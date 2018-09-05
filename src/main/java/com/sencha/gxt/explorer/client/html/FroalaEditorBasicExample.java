@@ -81,26 +81,34 @@ public class FroalaEditorBasicExample implements IsWidget, EntryPoint {
   @Override
   public Widget asWidget() {
     if (panel == null) {
-      
+
       TextAreaInputCell cell = new TextAreaInputCell() {
+        @Override
+        protected void onFocus(Context context, XElement parent, String value, NativeEvent event,
+            ValueUpdater<String> updater) {
+          // skip focusing
+          // super.onFocus(context, parent, value, event, updater);
+        }
+
         @Override
         protected void onBlur(Context context, XElement parent, String value, NativeEvent event,
             ValueUpdater<String> valueUpdater) {
-          // Turn this off. We'll fix this in 4.0.4.
-          //super.onBlur(context, parent, value, event, valueUpdater);
+          // skip  blurring
+          // super.onBlur(context, parent, value, event, valueUpdater);
         }
+
         @Override
         public void finishEditing(Element parent, String value, Object key, ValueUpdater<String> valueUpdater) {
-          // Turn this off. We'll fix this in 4.0.4.
-          //super.finishEditing(parent, value, key, valueUpdater);
+          // skip finish editing logic
+          // super.finishEditing(parent, value, key, valueUpdater);
         }
       };
-      
+
       textArea = new TextArea(cell);
       textArea.setBorders(false);
-      textArea
-          .setValue("The <a href='https://www.froala.com/wysiwyg-editor'>Froala Editor</a> is a lightweight WYSIWYG HTML "
-              + "Editor written in Javascript that enables rich text editing capabilities for your applications.");
+      textArea.setValue(
+          "<p>The <a href=\"https://www.froala.com/wysiwyg-editor\">Froala Editor</a> is a lightweight WYSIWYG HTML Editor written in Javascript that enables rich text editing capabilities for your applications.</p><p><br></p><p>"
+              + "<img src=\"https://www.sencha.com/wp-content/uploads/2015/03/built-in-support-for-rpc-requestfactory-and-json.png\" style=\"width: 300px;\" class=\"fr-fic fr-dib fr-fir\"></p>");
 
       FlowPanel fp = new FlowPanel();
       fp.add(textArea);
@@ -136,7 +144,7 @@ public class FroalaEditorBasicExample implements IsWidget, EntryPoint {
 
   private native String getValue() /*-{
     var value = $wnd.$('textarea').froalaEditor('html.get');
-    // console.log(value);
+    console.log(value);
     return value;
   }-*/;
 
@@ -144,7 +152,7 @@ public class FroalaEditorBasicExample implements IsWidget, EntryPoint {
     // froala.license.key is inserted from build system
     $wnd.$('textarea').froalaEditor({
       'height' : '100%',
-      'key': '${froala.license.key}'
+      'key' : '${froala.license.key}'
     });
   }-*/;
 
