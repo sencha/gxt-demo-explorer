@@ -37,18 +37,14 @@
  */
 package com.sencha.gxt.explorer.client.html;
 
-import com.google.gwt.cell.client.ValueUpdater;
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.dom.client.Element;
-import com.google.gwt.dom.client.NativeEvent;
+import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.event.logical.shared.AttachEvent;
 import com.google.gwt.event.logical.shared.AttachEvent.Handler;
-import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.IsWidget;
+import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.Widget;
-import com.sencha.gxt.cell.core.client.form.TextAreaInputCell;
-import com.sencha.gxt.core.client.dom.XElement;
-import com.sencha.gxt.core.client.util.Margins;
 import com.sencha.gxt.explorer.client.app.ui.ExampleContainer;
 import com.sencha.gxt.explorer.client.model.Example.Detail;
 import com.sencha.gxt.widget.core.client.ContentPanel;
@@ -58,7 +54,6 @@ import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.event.SelectEvent.SelectHandler;
-import com.sencha.gxt.widget.core.client.form.TextArea;
 import com.sencha.gxt.widget.core.client.info.Info;
 
 @Detail(
@@ -81,37 +76,11 @@ public class FroalaEditorBasicExample implements IsWidget, EntryPoint {
   @Override
   public Widget asWidget() {
     if (panel == null) {
-
-      TextAreaInputCell cell = new TextAreaInputCell() {
-        @Override
-        protected void onFocus(Context context, XElement parent, String value, NativeEvent event,
-            ValueUpdater<String> updater) {
-          // skip focusing
-          // super.onFocus(context, parent, value, event, updater);
-        }
-
-        @Override
-        protected void onBlur(Context context, XElement parent, String value, NativeEvent event,
-            ValueUpdater<String> valueUpdater) {
-          // skip  blurring
-          // super.onBlur(context, parent, value, event, valueUpdater);
-        }
-
-        @Override
-        public void finishEditing(Element parent, String value, Object key, ValueUpdater<String> valueUpdater) {
-          // skip finish editing logic
-          // super.finishEditing(parent, value, key, valueUpdater);
-        }
-      };
-
-      textArea = new TextArea(cell);
-      textArea.setBorders(false);
+      // Use the GWT text area, it's simpler to use. 
+      textArea = new TextArea();
       textArea.setValue(
           "<p>The <a href=\"https://www.froala.com/wysiwyg-editor\">Froala Editor</a> is a lightweight WYSIWYG HTML Editor written in Javascript that enables rich text editing capabilities for your applications.</p><p><br></p><p>"
               + "<img src=\"https://www.sencha.com/wp-content/uploads/2015/03/built-in-support-for-rpc-requestfactory-and-json.png\" style=\"width: 300px;\" class=\"fr-fic fr-dib fr-fir\"></p>");
-
-      FlowPanel fp = new FlowPanel();
-      fp.add(textArea);
 
       TextButton buttonGet = new TextButton("Display HTML Info");
       buttonGet.addSelectHandler(new SelectHandler() {
@@ -121,8 +90,10 @@ public class FroalaEditorBasicExample implements IsWidget, EntryPoint {
         }
       });
 
+      // In this layout, I use this container to fill the parent container 100% x 100%
+      // This sizes the textarea 100% x 100%
       VerticalLayoutContainer wrapper = new VerticalLayoutContainer();
-      wrapper.add(textArea, new VerticalLayoutData(1, 1, new Margins(20)));
+      wrapper.add(textArea, new VerticalLayoutData(1, 1));
 
       panel = new ContentPanel();
       panel.setHeading("Froala WYSIWYG HTML Editor");
@@ -132,7 +103,17 @@ public class FroalaEditorBasicExample implements IsWidget, EntryPoint {
         @Override
         public void onAttachOrDetach(AttachEvent event) {
           if (panel.isAttached()) {
-            initFroala();
+            Scheduler.get().scheduleDeferred(new ScheduledCommand() { 
+              @Override
+              public void execute() {
+                // Figure out a specific size to assign to the froala div
+                // The specific height will ensure it scrolls to the height given
+                int height = panel.getBodyWrap().getOffsetHeight();
+                // This offsets for margins...
+                height -= 160;
+                initFroala(height);
+              }
+            });
           }
         }
       });
@@ -148,10 +129,12 @@ public class FroalaEditorBasicExample implements IsWidget, EntryPoint {
     return value;
   }-*/;
 
-  private native void initFroala() /*-{
+  private native void initFroala(int height) /*-{
     // froala.license.key is inserted from build system
     $wnd.$('textarea').froalaEditor({
-      'height' : '100%',
+      // Provide a height so it scrolls to that height
+      'height' : height,
+      // Provide a license key for your organization. 
       'key' : '${froala.license.key}'
     });
   }-*/;
