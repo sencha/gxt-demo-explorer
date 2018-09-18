@@ -136,6 +136,15 @@ public class FroalaEditorBasicExample implements IsWidget, EntryPoint {
       'height' : height
     });
   }-*/;
+  
+  /**
+   * Example of how to update the editor
+   */
+  private native void updateFroalaEditorHeight() /*-{
+    var editor = $wnd.$('textarea').data('froala.editor');
+    editor.opts.height = 100;
+    editor.size.refresh();
+  }-*/;
 
   @Override
   public void onModuleLoad() {
