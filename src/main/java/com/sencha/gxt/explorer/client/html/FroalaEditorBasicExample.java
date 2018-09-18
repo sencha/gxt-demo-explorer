@@ -133,9 +133,7 @@ public class FroalaEditorBasicExample implements IsWidget, EntryPoint {
     // froala.license.key is inserted from build system
     $wnd.$('textarea').froalaEditor({
       // Provide a height so it scrolls to that height
-      'height' : height,
-      // Provide a license key for your organization. 
-      'key' : '${froala.license.key}'
+      'height' : height
     });
   }-*/;
 
