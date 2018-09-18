@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-  	<!-- Build system inserts version -->
-	<meta name='build.version' content="${build.version}" />
-
     <meta charset="utf-8">
  
     <!-- Include external CSS. -->
@@ -11,8 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
  
     <!-- Include Editor style. -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.8.4/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.8.4/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.8.5/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.8.5/css/froala_style.min.css" rel="stylesheet" type="text/css" />
   </head>
  
   <body>
@@ -26,14 +23,9 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
  
     <!-- Include Editor JS files. -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.8.4/js/froala_editor.pkgd.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.8.5/js/froala_editor.pkgd.min.js"></script>
  
     <!-- Initialize the editor. -->
-    <script> $(function() { 
-      $('textarea').froalaEditor({
-        'key': '${froala.license.key}'
-      })
-    });    
-    </script>
+    <script> $(function() { $('textarea').froalaEditor() }); </script>
   </body>
 </html>
