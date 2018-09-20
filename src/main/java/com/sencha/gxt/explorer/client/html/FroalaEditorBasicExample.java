@@ -42,19 +42,20 @@ import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.event.logical.shared.AttachEvent;
 import com.google.gwt.event.logical.shared.AttachEvent.Handler;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.explorer.client.app.ui.ExampleContainer;
 import com.sencha.gxt.explorer.client.model.Example.Detail;
 import com.sencha.gxt.widget.core.client.ContentPanel;
+import com.sencha.gxt.widget.core.client.box.MessageBox;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.MarginData;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.event.SelectEvent.SelectHandler;
-import com.sencha.gxt.widget.core.client.info.Info;
 
 @Detail(
   name = "WYSIWYG HTML Editor",
@@ -82,11 +83,16 @@ public class FroalaEditorBasicExample implements IsWidget, EntryPoint {
           "<p>The <a href=\"https://www.froala.com/wysiwyg-editor\">Froala Editor</a> is a lightweight WYSIWYG HTML Editor written in Javascript that enables rich text editing capabilities for your applications.</p><p><br></p><p>"
               + "<img src=\"https://www.sencha.com/wp-content/uploads/2015/03/built-in-support-for-rpc-requestfactory-and-json.png\" style=\"width: 300px;\" class=\"fr-fic fr-dib fr-fir\"></p>");
 
-      TextButton buttonGet = new TextButton("Display HTML Info");
+      TextButton buttonGet = new TextButton("Display HTML");
       buttonGet.addSelectHandler(new SelectHandler() {
         @Override
         public void onSelect(SelectEvent event) {
-          Info.display("Your HTML is", getValue());
+          String html = getValue();
+          html = "<div class='fr-view'>" + html + "</div>"; 
+
+          MessageBox messageBox = new MessageBox("Froala HTML");
+          messageBox.add(new HTML(html), new MarginData(20));
+          messageBox.show();
         }
       });
 
