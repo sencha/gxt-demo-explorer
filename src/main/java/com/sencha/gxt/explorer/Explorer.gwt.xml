@@ -41,25 +41,37 @@
 <!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.7.0//EN"
   "http://gwtproject.org/doctype/2.7.0/gwt-module.dtd">
 <module rename-to='explorer'>
+  <!-- GWT -->
   <inherits name='com.google.gwt.activity.Activity' />
   <inherits name='com.google.gwt.place.Place' />
+  
+  <!-- GWT Injection -->
   <inherits name="com.google.gwt.inject.Inject" />
 
+  <!-- GXT -->
   <inherits name='com.sencha.gxt.examples.resources.Resources' />
   <inherits name='com.sencha.gxt.chart.Chart' />
   
   <!-- JsInterop with ExtJs -->
   <inherits name='jsinterop.annotations.Annotations' />
   
+  <!-- GWT Elemental -->
+  <!-- https://github.com/google/elemental2 --> 
+  <inherits name="elemental2.core.Core"/>
+  <inherits name="elemental2.dom.Dom"/>
+  <!-- More: There are more inherit options in the docs https://github.com/google/elemental2 -->
+  
   <!-- Testing -->
   <inherits name="com.google.gwt.user.Debug"/>
   <inherits name="org.senchalabs.gwt.gwtdriver.gxt.TestableGXT" />
 
+  <!-- Logging -->
   <!-- https://docs.sencha.com/gxt/4.x/guides/concepts/Logging.html -->
   <set-property name="gwt.logging.logLevel" value="SEVERE" />
   <set-property name="gwt.logging.enabled" value="TRUE" />
   <set-property name="gxt.logging.enabled" value="false" />
 
+  <!-- GXT Theme -->
   <!-- Include all base GXT themes and set the app to check for url params to activate a different one -->
   <inherits name="com.sencha.gxt.theme.blue.Blue" />
   <inherits name="com.sencha.gxt.theme.gray.Gray" />
@@ -86,9 +98,11 @@
     </any>
   </set-property>
 
+  <!-- GSS & Styling -->
   <set-configuration-property name="CssResource.enableGss" value="true" />
   <set-configuration-property name="CssResource.style" value="pretty" />
 
+  <!-- GXT Custom Appearance  -->
   <replace-with class='com.sencha.gxt.explorer.client.chart.BlueThemedChartAppearance'>
     <when-type-is class='com.sencha.gxt.explorer.client.chart.ThemedChartExample.ThemedChartAppearance'/>
     <when-property-is name="gxt.theme" value="blue" />
@@ -110,14 +124,18 @@
   <source path='client' />
   <source path='shared' />
 
+  <!-- Generator -->
   <generate-with class="com.sencha.gxt.explorer.rebind.SampleGenerator">
     <when-type-assignable class="com.sencha.gxt.explorer.client.model.ExampleModel" />
   </generate-with>
 
+  <!-- GWT Autobean -->
   <set-configuration-property name="GXT.state.autoBeanFactory" value="com.sencha.gxt.explorer.client.window.WindowStateExample.ExampleAutoBeanFactory" />
 
+  <!-- Entrypoint onLoad calls this -->
   <entry-point class='com.sencha.gxt.explorer.client.Explorer' />
 
+  <!-- CSS Normalization -->
   <stylesheet src="reset.css"/>
 
   <!-- collapse properties for fewer permutations -->
