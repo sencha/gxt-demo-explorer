@@ -216,7 +216,8 @@ public class ElementalFileDndUploadExample implements EntryPoint, IsWidget {
       }
     });
 
-    xhr.open("POST", "/FileUploadExampleServlet");
+    //xhr.open("POST", "/FileUploadExampleServlet"); // TODO fix the server
+    xhr.open("POST", "/");
     xhr.send(formData);
   }
 
