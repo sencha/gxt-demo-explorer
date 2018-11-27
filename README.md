@@ -15,7 +15,7 @@
 ## Import
 Start by importing the project as an existing maven project. 
 
-### Configure Repository Access
+### Add GXT Dependency
 Add this xml element to `~/.m2/settings.xml` to get access to the GXT 4.0.3 artifacts. 
 
 * More in the [GXT Maven Guide](https://docs.sencha.com/gxt/4.x/guides/getting_started/maven/Maven.html)
