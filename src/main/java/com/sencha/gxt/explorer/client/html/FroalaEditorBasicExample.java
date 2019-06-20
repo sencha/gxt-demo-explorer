@@ -77,7 +77,7 @@ public class FroalaEditorBasicExample implements IsWidget, EntryPoint {
   @Override
   public Widget asWidget() {
     if (panel == null) {
-      // Use the GWT text area, it's simpler to use. 
+      // Use the GWT text area, it's simpler to use.
       textArea = new TextArea();
       textArea.setValue(
           "<p>The <a href=\"https://www.froala.com/wysiwyg-editor\">Froala Editor</a> is a lightweight WYSIWYG HTML Editor written in Javascript that enables rich text editing capabilities for your applications.</p><p><br></p><p>"
@@ -88,7 +88,7 @@ public class FroalaEditorBasicExample implements IsWidget, EntryPoint {
         @Override
         public void onSelect(SelectEvent event) {
           String html = getValue();
-          html = "<div class='fr-view'>" + html + "</div>"; 
+          html = "<div class='fr-view'>" + html + "</div>";
 
           MessageBox messageBox = new MessageBox("Froala HTML");
           messageBox.add(new HTML(html), new MarginData(20));
@@ -109,7 +109,7 @@ public class FroalaEditorBasicExample implements IsWidget, EntryPoint {
         @Override
         public void onAttachOrDetach(AttachEvent event) {
           if (panel.isAttached()) {
-            Scheduler.get().scheduleDeferred(new ScheduledCommand() { 
+            Scheduler.get().scheduleDeferred(new ScheduledCommand() {
               @Override
               public void execute() {
                 // Figure out a specific size to assign to the froala div
@@ -142,7 +142,7 @@ public class FroalaEditorBasicExample implements IsWidget, EntryPoint {
       'height' : height
     });
   }-*/;
-  
+
   /**
    * Example of how to update the editor
    */
@@ -154,7 +154,7 @@ public class FroalaEditorBasicExample implements IsWidget, EntryPoint {
 
   @Override
   public void onModuleLoad() {
-    new ExampleContainer(this).setMinHeight(MIN_HEIGHT).setMinWidth(MIN_WIDTH).setMaxWidth(1000.0).doStandalone();
+    new ExampleContainer(this).setMinHeight(MIN_HEIGHT).setMinWidth(MIN_WIDTH).doStandalone();
   }
 
 }
