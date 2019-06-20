@@ -52,8 +52,8 @@ import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
 @Detail(
-  name = "Model Defintions",
-  category = "Ext JS Interop",
+  name = "Models",
+  category = "ExtJS",
   icon = "basicbinding",
   classes = { Ext.class },
   minHeight = ModelDefinitionExtJs.MIN_HEIGHT,
