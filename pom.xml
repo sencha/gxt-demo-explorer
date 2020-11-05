@@ -11,7 +11,7 @@
   <properties>
     <!-- GXT -->
     <!-- This is dependent on the Sencha Repository credentials and url -->
-    <gxt.version>4.0.3</gxt.version>
+    <gxt.version>4.0.4</gxt.version>
 
     <!-- GWT -->
     <gwt.version>2.8.2</gwt.version>
