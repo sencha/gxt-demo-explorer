@@ -11,46 +11,31 @@
   <properties>
     <!-- GXT -->
     <!-- This is dependent on the Sencha Repository credentials and url -->
-    <gxt.version>4.0.4-SNAPSHOT</gxt.version>
+    <gxt.version>4.1.0-SNAPSHOT</gxt.version>
 
     <!-- GWT -->
-    <gwt.version>2.8.2</gwt.version>
+    <gwt.version>2.9.0</gwt.version>
     <gwt.maven.version>2.8.2</gwt.maven.version>
     <gwt.style>OBF</gwt.style>
 
     <!-- Maven -->
     <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
-    
-    <!-- App Engine ID -->
-    <app.deploy.project>sencha-gxt-demos</app.deploy.project>
-    <app.deploy.version>explorer</app.deploy.version>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-    <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
     <archiveClasses>true</archiveClasses>
     
     <!-- Global license info to embed into the release, You can change at build time to eval 
        with -Dlicense=eval or gpl with  -Dlicense=gpl -->
     <license>commercial</license>
     <license.fromYear>2006</license.fromYear>
-    <license.thruYear>2018</license.thruYear>
+    <license.thruYear>2021</license.thruYear>
     <license.email>licensing@sencha.com</license.email>
     <license.url>http://www.sencha.com/products/gxt/license/</license.url>
     
-    <!-- Froala license key -->
-    <!-- This key is passedin with -Dfroala.license.key=xxxxx -->
-    <froala.license.key></froala.license.key>
-    
     <!-- Label build version in the html -->
-    <build.version>4.0.3.build</build.version>
+    <build.version>4.1.0.build</build.version>
   </properties>
-  
-  <prerequisites>
-    <maven>3.0</maven>
-  </prerequisites>
 
   <build>
     <outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
@@ -78,11 +63,11 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.7.0</version>
+        <version>3.8.1</version>
         <configuration>
-          <fork>true</fork>
-          <source>1.8</source>
-          <target>1.8</target>
+          <source>11</source>
+          <target>11</target>
+          <release>11</release>
         </configuration>
       </plugin>
       
@@ -108,19 +93,19 @@
       </plugin>
 
       <!-- Skips the GWTTestCases during Junit Testing -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.20.1</version>
-        <configuration>
-          <includes>
-            <include>**/*Test.java</include>
-          </includes>
-          <excludes>
-            <exclude>**/*GwtTest.java</exclude>
-          </excludes>
-        </configuration>
-      </plugin>
+<!--      <plugin>-->
+<!--        <groupId>org.apache.maven.plugins</groupId>-->
+<!--        <artifactId>maven-surefire-plugin</artifactId>-->
+<!--        <version>2.20.1</version>-->
+<!--        <configuration>-->
+<!--          <includes>-->
+<!--            <include>**/*Test.java</include>-->
+<!--          </includes>-->
+<!--          <excludes>-->
+<!--            <exclude>**/*GwtTest.java</exclude>-->
+<!--          </excludes>-->
+<!--        </configuration>-->
+<!--      </plugin>-->
 
       <!-- GWT -->
       <!-- 'mvn gwt:run' - runs development mode -->
@@ -162,33 +147,33 @@
         </executions>
       </plugin>
 
-      <plugin>
-        <groupId>org.apache.openjpa</groupId>
-        <artifactId>openjpa-maven-plugin</artifactId>
-        <version>2.4.2</version>
-        <configuration>
-          <includes>**/server/data/*.class</includes>
-          <addDefaultConstructor>true</addDefaultConstructor>
-          <enforcePropertyRestrictions>true</enforcePropertyRestrictions>
-        </configuration>
-        <executions>
-          <execution>
-            <id>enhancer</id>
-            <phase>process-classes</phase>
-            <goals>
-              <goal>enhance</goal>
-            </goals>
-          </execution>
-        </executions>
-        <dependencies>
-          <dependency>
-            <groupId>org.apache.openjpa</groupId>
-            <artifactId>openjpa</artifactId>
-            <!-- set the version to be the same as the level in your runtime -->
-            <version>2.4.2</version>
-          </dependency>
-        </dependencies>
-      </plugin>
+<!--      <plugin>-->
+<!--        <groupId>org.apache.openjpa</groupId>-->
+<!--        <artifactId>openjpa-maven-plugin</artifactId>-->
+<!--        <version>2.4.2</version>-->
+<!--        <configuration>-->
+<!--          <includes>**/server/data/*.class</includes>-->
+<!--          <addDefaultConstructor>true</addDefaultConstructor>-->
+<!--          <enforcePropertyRestrictions>true</enforcePropertyRestrictions>-->
+<!--        </configuration>-->
+<!--        <executions>-->
+<!--          <execution>-->
+<!--            <id>enhancer</id>-->
+<!--            <phase>process-classes</phase>-->
+<!--            <goals>-->
+<!--              <goal>enhance</goal>-->
+<!--            </goals>-->
+<!--          </execution>-->
+<!--        </executions>-->
+<!--        <dependencies>-->
+<!--          <dependency>-->
+<!--            <groupId>org.apache.openjpa</groupId>-->
+<!--            <artifactId>openjpa</artifactId>-->
+<!--            &lt;!&ndash; set the version to be the same as the level in your runtime &ndash;&gt;-->
+<!--            <version>2.4.2</version>-->
+<!--          </dependency>-->
+<!--        </dependencies>-->
+<!--      </plugin>-->
 
       <plugin>
         <artifactId>maven-war-plugin</artifactId>
@@ -221,21 +206,7 @@
           </execution>
         </executions>
       </plugin>
-      
-      <!-- App Engine Hosting -->
-      <!-- https://cloud.google.com/appengine/docs/standard/java/tools/using-maven -->
-      <!-- gcloud init -->
-      <!-- mvn appengine:deploy -->
-      <plugin>
-        <groupId>com.google.cloud.tools</groupId>
-        <artifactId>appengine-maven-plugin</artifactId>
-        <version>1.3.2</version>
-        <configuration>
-          <devserver.host>0.0.0.0</devserver.host>
-          <devserver.port>8181</devserver.port>
-        </configuration>
-      </plugin>
-      
+
       <!-- License Addition -->
       <plugin>
         <groupId>com.google.code.maven-license-plugin</groupId>
@@ -281,65 +252,65 @@
       <plugins>
         <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build 
           itself. -->
-        <plugin>
-          <groupId>org.eclipse.m2e</groupId>
-          <artifactId>lifecycle-mapping</artifactId>
-          <version>1.0.0</version>
-          <configuration>
-            <lifecycleMappingMetadata>
-              <pluginExecutions>
-                <pluginExecution>
-                  <pluginExecutionFilter>
-                    <groupId>org.apache.openjpa</groupId>
-                    <artifactId>openjpa-maven-plugin</artifactId>
-                    <versionRange>[2.4.2,)</versionRange>
-                    <goals>
-                      <goal>enhance</goal>
-                    </goals>
-                  </pluginExecutionFilter>
-                  <action>
-                    <execute>
-                      <runOnIncremental>true</runOnIncremental>
-                    </execute>
-                  </action>
-                </pluginExecution>
+		<plugin>
+         <groupId>org.eclipse.m2e</groupId>
+         <artifactId>lifecycle-mapping</artifactId>
+         <version>1.0.0</version>
+         <configuration>
+           <lifecycleMappingMetadata>
+             <pluginExecutions>
+               <pluginExecution>
+                 <pluginExecutionFilter>
+                   <groupId>org.apache.openjpa</groupId>
+                   <artifactId>openjpa-maven-plugin</artifactId>
+                   <versionRange>[2.4.2,)</versionRange>
+                   <goals>
+                     <goal>enhance</goal>
+                   </goals>
+                 </pluginExecutionFilter>
+                 <action>
+                   <execute>
+                     <runOnIncremental>true</runOnIncremental>
+                   </execute>
+                 </action>
+               </pluginExecution>
 
-                <pluginExecution>
-                  <pluginExecutionFilter>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-enforcer-plugin</artifactId>
-                    <versionRange>[1.0.0,)</versionRange>
-                    <goals>
-                      <goal>enforce</goal>
-                    </goals>
-                  </pluginExecutionFilter>
-                  <action>
-                    <ignore />
-                  </action>
-                </pluginExecution>
-                <pluginExecution>
-                  <pluginExecutionFilter>
-                    <groupId>com.google.code.maven-license-plugin</groupId>
-                    <artifactId>maven-license-plugin</artifactId>
-                    <versionRange>[1.4.0,)</versionRange>
-                    <goals>
-                      <goal>format</goal>
-                    </goals>
-                  </pluginExecutionFilter>
-                  <action>
-                    <ignore></ignore>
-                  </action>
-                </pluginExecution>
-              </pluginExecutions>
-            </lifecycleMappingMetadata>
-          </configuration>
-        </plugin>
+               <pluginExecution>
+                 <pluginExecutionFilter>
+                   <groupId>org.apache.maven.plugins</groupId>
+                   <artifactId>maven-enforcer-plugin</artifactId>
+                   <versionRange>[1.0.0,)</versionRange>
+                   <goals>
+                     <goal>enforce</goal>
+                   </goals>
+                 </pluginExecutionFilter>
+                 <action>
+                   <ignore />
+                 </action>
+               </pluginExecution>
+               <pluginExecution>
+                 <pluginExecutionFilter>
+                   <groupId>com.google.code.maven-license-plugin</groupId>
+                   <artifactId>maven-license-plugin</artifactId>
+                   <versionRange>[1.4.0,)</versionRange>
+                   <goals>
+                     <goal>format</goal>
+                   </goals>
+                 </pluginExecutionFilter>
+                 <action>
+                   <ignore></ignore>
+                 </action>
+               </pluginExecution>
+             </pluginExecutions>
+           </lifecycleMappingMetadata>
+         </configuration>
+       </plugin>
 
-        <plugin>
-          <groupId>org.mortbay.jetty</groupId>
-          <artifactId>jetty-maven-plugin</artifactId>
-          <version>8.1.16.v20140903</version>
-        </plugin>
+       <plugin>
+         <groupId>org.mortbay.jetty</groupId>
+         <artifactId>jetty-maven-plugin</artifactId>
+         <version>8.1.16.v20140903</version>
+       </plugin>
       </plugins>
     </pluginManagement>
   </build>
@@ -383,16 +354,8 @@
 
   <repositories>
     <repository>
-      <!-- http://docs.sencha.com/gxt/latest/getting_started/maven/Maven.html -->
-      <!-- ~/.m2/settings.xml add <server/> with the support portal credentials -->
-      <id>sencha-gxt-repository</id>
-      <name>Sencha GXT Repository</name>
-      <url>https://maven.sencha.com/repo/gxt-support-commercial-release</url>
-      <!-- <url>https://maven.sencha.com/repo/gxt-commercial-snapshot</url> -->
-    </repository>
-    <repository>
-      <id>snapshots-repo</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+      <id>sencha-myget</id>
+      <url>https://sencha.myget.org/F/maven/maven/</url>
       <releases>
         <enabled>false</enabled>
       </releases>
@@ -448,9 +411,9 @@
     
     <!-- GWT JsInterop -->
     <dependency>
-      <groupId>com.google.jsinterop</groupId>
-      <artifactId>jsinterop-annotations</artifactId>
-    </dependency>
+	    <groupId>com.google.jsinterop</groupId>
+	    <artifactId>jsinterop-annotations</artifactId>
+	</dependency>
 
     <!-- GXT -->
     <dependency>
@@ -503,6 +466,18 @@
       <version>20171018</version>
       <scope>compile</scope>
     </dependency>
+    
+    <dependency>
+      <groupId>jakarta.xml.bind</groupId>
+      <artifactId>jakarta.xml.bind-api</artifactId>
+      <version>3.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.xml.bind</groupId>
+      <artifactId>jaxb-impl</artifactId>
+      <version>3.0.0</version>
+      <scope>runtime</scope>
+    </dependency>
 
     <!-- javax.validation for RF bean validation -->
     <dependency>
@@ -546,42 +521,42 @@
      <dependency>
       <groupId>com.google.elemental2</groupId>
       <artifactId>elemental2-core</artifactId>
-      <version>1.0.0-RC1</version>
+      <version>1.1.0</version>
     </dependency>
     <dependency>
       <groupId>com.google.elemental2</groupId>
       <artifactId>elemental2-dom</artifactId>
-      <version>1.0.0-RC1</version>
+      <version>1.1.0</version>
     </dependency>
     <dependency>
       <groupId>com.google.elemental2</groupId>
       <artifactId>elemental2-promise</artifactId>
-      <version>1.0.0-RC1</version>
+      <version>1.1.0</version>
     </dependency>
     <dependency>
       <groupId>com.google.elemental2</groupId>
       <artifactId>elemental2-indexeddb</artifactId>
-      <version>1.0.0-RC1</version>
+      <version>1.1.0</version>
     </dependency>
     <dependency>
       <groupId>com.google.elemental2</groupId>
       <artifactId>elemental2-svg</artifactId>
-      <version>1.0.0-RC1</version>
+      <version>1.1.0</version>
     </dependency>
     <dependency>
       <groupId>com.google.elemental2</groupId>
       <artifactId>elemental2-webgl</artifactId>
-      <version>1.0.0-RC1</version>
+      <version>1.1.0</version>
     </dependency>
     <dependency>
       <groupId>com.google.elemental2</groupId>
       <artifactId>elemental2-media</artifactId>
-      <version>1.0.0-RC1</version>
+      <version>1.1.0</version>
     </dependency>
     <dependency>
       <groupId>com.google.elemental2</groupId>
       <artifactId>elemental2-webstorage</artifactId>
-      <version>1.0.0-RC1</version>
+      <version>1.1.0</version>
     </dependency>
   </dependencies>
 

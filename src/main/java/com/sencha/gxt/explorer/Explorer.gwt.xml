@@ -2,7 +2,7 @@
 <!--
 
     Sencha GXT 1.0.0-SNAPSHOT - Sencha for GWT
-    Copyright (c) 2006-2018, Sencha Inc.
+    Copyright (c) 2006-2021, Sencha Inc.
 
     licensing@sencha.com
     http://www.sencha.com/products/gxt/license/
@@ -53,7 +53,7 @@
   <inherits name='com.sencha.gxt.chart.Chart' />
   
   <!-- JsInterop with ExtJs -->
-  <inherits name='jsinterop.annotations.Annotations' />
+  <!-- <inherits name='jsinterop.annotations.Annotations' /> -->
   
   <!-- GWT Elemental -->
   <!-- https://github.com/google/elemental2 --> 
@@ -62,8 +62,8 @@
   <!-- More: There are more inherit options in the docs https://github.com/google/elemental2 -->
   
   <!-- Testing -->
-  <inherits name="com.google.gwt.user.Debug"/>
-  <inherits name="org.senchalabs.gwt.gwtdriver.gxt.TestableGXT" />
+  <!-- <inherits name="com.google.gwt.user.Debug"/> -->
+  <!-- <inherits name="org.senchalabs.gwt.gwtdriver.gxt.TestableGXT" /> -->
 
   <!-- Logging -->
   <!-- https://docs.sencha.com/gxt/4.x/guides/concepts/Logging.html -->
