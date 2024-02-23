@@ -1,21 +1,25 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.sencha.gxt</groupId>
   <artifactId>gxt-demo-explorer</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.1.0-SNAPSHOT</version>
   <packaging>war</packaging>
   <name>Sencha GXT Explorer Examples</name>
 
   <properties>
     <!-- GXT -->
     <!-- This is dependent on the Sencha Repository credentials and url -->
-    <gxt.version>4.1.0-SNAPSHOT</gxt.version>
+    <gxt.version>4.1.1-SNAPSHOT</gxt.version>
 
     <!-- GWT -->
-    <gwt.version>2.9.0</gwt.version>
-    <gwt.maven.version>2.8.2</gwt.maven.version>
+    <!--  <gwt.version>2.9.0</gwt.version>
+      <gwt.maven.version>2.8.2</gwt.maven.version>
+      <gwt.style>OBF</gwt.style>-->
+
+    <gwt.version>2.11.0</gwt.version>
+    <gwt.maven.version>1.1.0</gwt.maven.version>
     <gwt.style>OBF</gwt.style>
 
     <!-- Maven -->
@@ -24,15 +28,15 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <archiveClasses>true</archiveClasses>
-    
-    <!-- Global license info to embed into the release, You can change at build time to eval 
+
+    <!-- Global license info to embed into the release, You can change at build time to eval
        with -Dlicense=eval or gpl with  -Dlicense=gpl -->
     <license>commercial</license>
     <license.fromYear>2006</license.fromYear>
     <license.thruYear>2021</license.thruYear>
     <license.email>licensing@sencha.com</license.email>
     <license.url>http://www.sencha.com/products/gxt/license/</license.url>
-    
+
     <!-- Label build version in the html -->
     <build.version>4.1.0.build</build.version>
   </properties>
@@ -63,12 +67,12 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
+        <version>3.12.1</version>
         <configuration>
           <release>11</release>
         </configuration>
       </plugin>
-      
+
       <!-- Display versions -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
@@ -91,19 +95,19 @@
       </plugin>
 
       <!-- Skips the GWTTestCases during Junit Testing -->
-<!--      <plugin>-->
-<!--        <groupId>org.apache.maven.plugins</groupId>-->
-<!--        <artifactId>maven-surefire-plugin</artifactId>-->
-<!--        <version>2.20.1</version>-->
-<!--        <configuration>-->
-<!--          <includes>-->
-<!--            <include>**/*Test.java</include>-->
-<!--          </includes>-->
-<!--          <excludes>-->
-<!--            <exclude>**/*GwtTest.java</exclude>-->
-<!--          </excludes>-->
-<!--        </configuration>-->
-<!--      </plugin>-->
+      <!--      <plugin>-->
+      <!--        <groupId>org.apache.maven.plugins</groupId>-->
+      <!--        <artifactId>maven-surefire-plugin</artifactId>-->
+      <!--        <version>2.20.1</version>-->
+      <!--        <configuration>-->
+      <!--          <includes>-->
+      <!--            <include>**/*Test.java</include>-->
+      <!--          </includes>-->
+      <!--          <excludes>-->
+      <!--            <exclude>**/*GwtTest.java</exclude>-->
+      <!--          </excludes>-->
+      <!--        </configuration>-->
+      <!--      </plugin>-->
 
       <!-- GWT -->
       <!-- 'mvn gwt:run' - runs development mode -->
@@ -111,29 +115,30 @@
       <!-- 'mvn gwt:compile' - compiles gwt -->
       <!-- 'mvn gwt:test' or 'mvn integration-test' - runs the gwt tests (*GwtTest.java), (run a suite its faster) -->
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
+        <!-- <groupId>org.codehaus.mojo</groupId>
+         <artifactId>gwt-maven-plugin</artifactId>-->
+        <groupId>net.ltgt.gwt.maven</groupId>
         <artifactId>gwt-maven-plugin</artifactId>
         <version>${gwt.maven.version}</version>
         <configuration>
-          <strict>true</strict>
 
-          <testTimeOut>180</testTimeOut>
           <includes>**/*GwtTestSuite.java</includes>
           <excludes>**/*GwtTest.java</excludes>
-          <mode>htmlunit</mode>
-
-          <extraJvmArgs>-Xss1024K -Xmx1g -XX:MaxPermSize=256M</extraJvmArgs>
           <logLevel>INFO</logLevel>
           <style>${gwt.style}</style>
-
-          <copyWebapp>true</copyWebapp>
-          <hostedWebapp>${webappDirectory}</hostedWebapp>
-
-          <runTarget>index.html</runTarget>
+          <moduleName>com.sencha.gxt.examples.resources.Resources</moduleName>
+          <moduleName>com.sencha.gxt.explorer.Explorer</moduleName>
           <modules>
             <module>com.sencha.gxt.examples.resources.Resources</module>
             <module>com.sencha.gxt.explorer.Explorer</module>
           </modules>
+          <!--<strict>true</strict>
+          <testTimeOut>180</testTimeOut>
+          <mode>htmlunit</mode>
+          <extraJvmArgs>-Xss1024m -Xmx1g -XX:MaxPermSize=1024M</extraJvmArgs>
+          <copyWebapp>true</copyWebapp>
+          <hostedWebapp>${webappDirectory}</hostedWebapp>
+          <runTarget>index.html</runTarget>    -->
         </configuration>
         <executions>
           <execution>
@@ -148,7 +153,7 @@
       <plugin>
         <groupId>org.apache.openjpa</groupId>
         <artifactId>openjpa-maven-plugin</artifactId>
-        <version>3.1.2</version>
+        <version>4.0.0</version>
         <configuration>
           <includes>**/server/data/*.class</includes>
           <addDefaultConstructor>true</addDefaultConstructor>
@@ -248,67 +253,67 @@
 
     <pluginManagement>
       <plugins>
-        <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build 
+        <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build
           itself. -->
-		<plugin>
-         <groupId>org.eclipse.m2e</groupId>
-         <artifactId>lifecycle-mapping</artifactId>
-         <version>1.0.0</version>
-         <configuration>
-           <lifecycleMappingMetadata>
-             <pluginExecutions>
-               <pluginExecution>
-                 <pluginExecutionFilter>
-                   <groupId>org.apache.openjpa</groupId>
-                   <artifactId>openjpa-maven-plugin</artifactId>
-                   <versionRange>[2.4.2,)</versionRange>
-                   <goals>
-                     <goal>enhance</goal>
-                   </goals>
-                 </pluginExecutionFilter>
-                 <action>
-                   <execute>
-                     <runOnIncremental>true</runOnIncremental>
-                   </execute>
-                 </action>
-               </pluginExecution>
+        <plugin>
+          <groupId>org.eclipse.m2e</groupId>
+          <artifactId>lifecycle-mapping</artifactId>
+          <version>1.0.0</version>
+          <configuration>
+            <lifecycleMappingMetadata>
+              <pluginExecutions>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.apache.openjpa</groupId>
+                    <artifactId>openjpa-maven-plugin</artifactId>
+                    <versionRange>[2.4.2,)</versionRange>
+                    <goals>
+                      <goal>enhance</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <execute>
+                      <runOnIncremental>true</runOnIncremental>
+                    </execute>
+                  </action>
+                </pluginExecution>
 
-               <pluginExecution>
-                 <pluginExecutionFilter>
-                   <groupId>org.apache.maven.plugins</groupId>
-                   <artifactId>maven-enforcer-plugin</artifactId>
-                   <versionRange>[1.0.0,)</versionRange>
-                   <goals>
-                     <goal>enforce</goal>
-                   </goals>
-                 </pluginExecutionFilter>
-                 <action>
-                   <ignore />
-                 </action>
-               </pluginExecution>
-               <pluginExecution>
-                 <pluginExecutionFilter>
-                   <groupId>com.google.code.maven-license-plugin</groupId>
-                   <artifactId>maven-license-plugin</artifactId>
-                   <versionRange>[1.4.0,)</versionRange>
-                   <goals>
-                     <goal>format</goal>
-                   </goals>
-                 </pluginExecutionFilter>
-                 <action>
-                   <ignore></ignore>
-                 </action>
-               </pluginExecution>
-             </pluginExecutions>
-           </lifecycleMappingMetadata>
-         </configuration>
-       </plugin>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <versionRange>[1.0.0,)</versionRange>
+                    <goals>
+                      <goal>enforce</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore />
+                  </action>
+                </pluginExecution>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>com.google.code.maven-license-plugin</groupId>
+                    <artifactId>maven-license-plugin</artifactId>
+                    <versionRange>[1.4.0,)</versionRange>
+                    <goals>
+                      <goal>format</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore></ignore>
+                  </action>
+                </pluginExecution>
+              </pluginExecutions>
+            </lifecycleMappingMetadata>
+          </configuration>
+        </plugin>
 
         <!-- mvn jetty:run -->
         <plugin>
           <groupId>org.eclipse.jetty</groupId>
           <artifactId>jetty-maven-plugin</artifactId>
-          <version>11.0.0</version>
+          <version>11.0.19</version>
         </plugin>
 
         <plugin>
@@ -328,7 +333,7 @@
           &lt;set-property name="user.agent" value="safari" /&gt;
           &lt;set-property name="gxt.user.agent" value="chrome" /&gt;
           &lt;set-property name="gxt.device" value="desktop" /&gt;
-          &lt;set-property name="gxt.theme" value="triton" /&gt; 
+          &lt;set-property name="gxt.theme" value="triton" /&gt;
         </profile.fast.build>
       </properties>
       <build>
@@ -376,7 +381,7 @@
       <dependency>
         <groupId>com.google.gwt</groupId>
         <artifactId>gwt</artifactId>
-        <version>${gwt.version}</version>
+        <version>2.10.0</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -388,11 +393,13 @@
     <dependency>
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-user</artifactId>
+      <version>${gwt.version}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-dev</artifactId>
+      <version>${gwt.version}</version>
       <scope>provided</scope>
       <exclusions>
         <!-- Fixes xerces class cast exception, during the enhance excecution -->
@@ -405,20 +412,27 @@
     <dependency>
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-servlet</artifactId>
+      <version>2.11.0</version>
     </dependency>
-    
+
     <!-- GWT Injection -->
     <dependency>
       <groupId>com.google.gwt.inject</groupId>
       <artifactId>gin</artifactId>
       <version>2.1.2</version>
     </dependency>
-    
+
     <!-- GWT JsInterop -->
     <dependency>
-	    <groupId>com.google.jsinterop</groupId>
-	    <artifactId>jsinterop-annotations</artifactId>
-	</dependency>
+      <groupId>com.google.jsinterop</groupId>
+      <artifactId>jsinterop-annotations</artifactId>
+      <version>2.1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.sql</groupId>
+      <artifactId>javax.sql-api</artifactId>
+      <version>1.0</version>
+    </dependency>
 
     <!-- GXT -->
     <dependency>
@@ -448,7 +462,7 @@
     <dependency>
       <groupId>org.hsqldb</groupId>
       <artifactId>hsqldb</artifactId>
-      <version>2.4.0</version>
+      <version>2.7.2</version>
     </dependency>
 
     <!-- Support for our JPA persistence -->
@@ -462,6 +476,7 @@
     <dependency>
       <groupId>com.google.web.bindery</groupId>
       <artifactId>requestfactory-apt</artifactId>
+      <version>2.11.0</version>
       <scope>provided</scope>
     </dependency>
     <!-- RF needs a JSON jar at runtime -->
@@ -471,7 +486,7 @@
       <version>20171018</version>
       <scope>compile</scope>
     </dependency>
-    
+
     <dependency>
       <groupId>jakarta.xml.bind</groupId>
       <artifactId>jakarta.xml.bind-api</artifactId>
@@ -488,6 +503,7 @@
     <dependency>
       <groupId>javax.validation</groupId>
       <artifactId>validation-api</artifactId>
+      <version>1.0.0.GA</version>
       <scope>compile</scope>
     </dependency>
     <!-- Simple javax.validation impl -->
@@ -521,9 +537,9 @@
       </exclusions>
     </dependency>
 
-    <!-- Elemental -->   
-    <!-- https://search.maven.org/search?q=com.google.elemental2 --> 
-     <dependency>
+    <!-- Elemental -->
+    <!-- https://search.maven.org/search?q=com.google.elemental2 -->
+    <dependency>
       <groupId>com.google.elemental2</groupId>
       <artifactId>elemental2-core</artifactId>
       <version>1.1.0</version>
