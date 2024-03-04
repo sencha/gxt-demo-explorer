@@ -1,5 +1,5 @@
 /**
- * Sencha GXT 1.1.0-SNAPSHOT - Sencha for GWT
+ * Sencha GXT 1.0.0-SNAPSHOT - Sencha for GWT
  * Copyright (c) 2006-2021, Sencha Inc.
  *
  * licensing@sencha.com
