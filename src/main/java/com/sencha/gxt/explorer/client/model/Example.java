@@ -1,5 +1,5 @@
 /**
- * Sencha GXT 1.0.0-SNAPSHOT - Sencha for GWT
+ * Sencha GXT 1.1.0-SNAPSHOT - Sencha for GWT
  * Copyright (c) 2006-2021, Sencha Inc.
  *
  * licensing@sencha.com
@@ -58,7 +58,7 @@ import com.sencha.gxt.explorer.client.thumbs.ExampleThumbs;
  * display details about the example.
  * 
  */
-public abstract class Example extends NamedModel {
+public abstract class Example extends NamedModel{
 
   @Retention(RetentionPolicy.RUNTIME)
   @Target(ElementType.TYPE)
