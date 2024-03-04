@@ -1,5 +1,5 @@
 /**
- * Sencha GXT 1.0.0-SNAPSHOT - Sencha for GWT
+ * Sencha GXT 1.1.0-SNAPSHOT - Sencha for GWT
  * Copyright (c) 2006-2021, Sencha Inc.
  *
  * licensing@sencha.com
@@ -41,11 +41,12 @@ import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.place.shared.PlaceController;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
-import com.google.inject.Inject;
+
+import com.sencha.gxt.explorer.client.ExplorerApp;
 
 public class OverviewActivity extends AbstractActivity {
-  @Inject
-  PlaceController placeController;
+ // @Inject
+  PlaceController placeController= ExplorerApp.placeController;
 
   @Override
   public void start(AcceptsOneWidget panel, EventBus eventBus) {

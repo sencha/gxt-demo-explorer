@@ -1,5 +1,5 @@
 /**
- * Sencha GXT 1.0.0-SNAPSHOT - Sencha for GWT
+ * Sencha GXT 1.1.0-SNAPSHOT - Sencha for GWT
  * Copyright (c) 2006-2021, Sencha Inc.
  *
  * licensing@sencha.com
@@ -37,13 +37,11 @@
  */
 package com.sencha.gxt.explorer.client.app.ioc;
 
-import com.google.gwt.inject.client.GinModules;
-import com.google.gwt.inject.client.Ginjector;
-import com.sencha.gxt.explorer.client.ExplorerApp;
 
-@GinModules(ExplorerModule.class)
+
+/*@GinModules(ExplorerModule.class)
 public interface ExplorerGinjector extends Ginjector {
 
   ExplorerApp getApp();
 
-}
+}*/

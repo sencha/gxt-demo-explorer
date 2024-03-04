@@ -1,5 +1,5 @@
 /**
- * Sencha GXT 1.0.0-SNAPSHOT - Sencha for GWT
+ * Sencha GXT 1.1.0-SNAPSHOT - Sencha for GWT
  * Copyright (c) 2006-2021, Sencha Inc.
  *
  * licensing@sencha.com
@@ -44,7 +44,7 @@ import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Widget;
-import com.google.inject.Inject;
+
 import com.sencha.gxt.core.client.XTemplates;
 import com.sencha.gxt.explorer.client.ExplorerApp;
 import com.sencha.gxt.explorer.client.model.Example;
@@ -64,7 +64,7 @@ public class ExampleDetailViewImpl implements ExampleDetailView {
 
   private ExampleModel exampleModel;
 
-  @Inject
+ // @Inject
   public ExampleDetailViewImpl(ExampleModel model) {
     this.exampleModel = model;
     tabPanel = new TabPanel();
@@ -86,7 +86,7 @@ public class ExampleDetailViewImpl implements ExampleDetailView {
       }
     });
     Example overview = exampleModel.findExample(ExplorerApp.OVERVIEW.toLowerCase());
-    tabPanel.add(new Page(overview), overview.getName());
+   // tabPanel.add(new Page(overview), overview.getName());
   }
 
   @Override

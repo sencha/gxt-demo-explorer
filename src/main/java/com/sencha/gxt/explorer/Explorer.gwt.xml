@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Sencha GXT 1.0.0-SNAPSHOT - Sencha for GWT
+    Sencha GXT 1.1.0-SNAPSHOT - Sencha for GWT
     Copyright (c) 2006-2021, Sencha Inc.
 
     licensing@sencha.com
@@ -46,7 +46,7 @@
   <inherits name='com.google.gwt.place.Place' />
   
   <!-- GWT Injection -->
-  <inherits name="com.google.gwt.inject.Inject" />
+ <!-- <inherits name="com.google.gwt.inject.Inject" />-->
 
   <!-- GXT -->
   <inherits name='com.sencha.gxt.examples.resources.Resources' />
