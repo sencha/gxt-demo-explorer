@@ -28,6 +28,21 @@ Add this xml element to `~/.m2/settings.xml` to get access to the GXT 4.0.3 arti
     <password>[portal password]</password>
 </server>
 ```
+## Add javax.sql-api-1.0
+IF you face SQL api issue, Then need to add the dependacny in repo. 
+To add the SQL jar in local repostory -
+download the javax.sql-a.pi-1.0.jar from google. 
+open the command prompt from current direcoty of jar and 
+run the below maven command, once build is success it will be added in your local repo-
+
+	mvn install:install-file \
+   -Dfile=javax.sql-api-1.0.jar \
+   -DgroupId=javax.sql \
+   -DartifactId=javax.sql-api \
+   -Dversion=1.0 \
+   -Dpackaging=jar \
+   -DgeneratePom=true
+
 
 ### Adding Ext JS Integration
 Easily add Ext JS integration with the GWT JSNI or JsInterop Apis.
