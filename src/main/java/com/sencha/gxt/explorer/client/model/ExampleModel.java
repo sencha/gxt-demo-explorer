@@ -60,7 +60,6 @@ public  class ExampleModel {
 
   public Example findExample(String id) {
     List<Example> list = getExamplesAsList();
-    System.out.println("Size of Example list==="+list.size());
     for (int i = 0; i < list.size(); i++) {
       Example ex = list.get(i);
       if (ex.getId().equals(id)) {

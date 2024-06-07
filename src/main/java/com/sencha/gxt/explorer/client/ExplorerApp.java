@@ -134,7 +134,7 @@ public static ExampleDetailView detailView = new ExampleDetailViewImpl(exampleMo
 
     // Goes to place represented on URL or default place
     historyHandler.handleCurrentHistory();
-      GWT.log("GXT version----"+ GXT.getVersion().getRelease()+"=====GWT version==="+GWT.getVersion());
+
   }
 
   @Override
