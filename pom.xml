@@ -434,11 +434,6 @@
       <artifactId>jsinterop-annotations</artifactId>
       <version>2.1.0</version>
     </dependency>
-    <dependency>
-      <groupId>javax.sql</groupId>
-      <artifactId>javax.sql-api</artifactId>
-      <version>1.0</version>
-    </dependency>
 
     <!-- GXT -->
     <dependency>
