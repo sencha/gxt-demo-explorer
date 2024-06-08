@@ -39,14 +39,14 @@
 
 -->
 <!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.7.0//EN"
-  "http://gwtproject.org/doctype/2.7.0/gwt-module.dtd">
+  "http://gwtproject.org/doctype/2.11.0/gwt-module.dtd">
 <module rename-to='explorer'>
   <!-- GWT -->
   <inherits name='com.google.gwt.activity.Activity' />
   <inherits name='com.google.gwt.place.Place' />
   
   <!-- GWT Injection -->
-  <inherits name="com.google.gwt.inject.Inject" />
+ <!-- <inherits name="com.google.gwt.inject.Inject" />-->
 
   <!-- GXT -->
   <inherits name='com.sencha.gxt.examples.resources.Resources' />

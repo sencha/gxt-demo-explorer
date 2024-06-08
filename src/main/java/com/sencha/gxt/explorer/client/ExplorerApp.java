@@ -37,6 +37,7 @@
  */
 package com.sencha.gxt.explorer.client;
 
+import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -44,56 +45,58 @@ import com.google.gwt.activity.shared.ActivityManager;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.event.shared.SimpleEventBus;
 import com.google.gwt.place.shared.PlaceChangeEvent;
 import com.google.gwt.place.shared.PlaceController;
 import com.google.gwt.place.shared.PlaceHistoryHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.RootPanel;
-import com.google.inject.Inject;
+
+import com.sencha.gxt.core.client.GXT;
+import com.sencha.gxt.explorer.client.app.mvp.ExplorerActivityMapper;
 import com.sencha.gxt.explorer.client.app.mvp.ExplorerPlaceHistoryMapper;
 import com.sencha.gxt.explorer.client.app.place.ExamplePlace;
-import com.sencha.gxt.explorer.client.app.ui.ExampleDetailView;
-import com.sencha.gxt.explorer.client.app.ui.ExampleListView;
-import com.sencha.gxt.explorer.client.app.ui.ExplorerShell;
-import com.sencha.gxt.explorer.client.app.ui.OverviewExample;
+import com.sencha.gxt.explorer.client.app.ui.*;
 import com.sencha.gxt.explorer.client.model.Example;
 import com.sencha.gxt.explorer.client.model.ExampleModel;
 import com.sencha.gxt.widget.core.client.container.Viewport;
 import com.sencha.gxt.widget.core.client.info.Info;
 
-public class ExplorerApp implements ExampleListView.Presenter, ExampleDetailView.Presenter {
+public class ExplorerApp implements ExampleListView.Presenter, ExampleDetailView.Presenter{
 
   private static final Logger log = Logger.getLogger(ExplorerApp.class.getName());
   public static final String OVERVIEW = "Overview";
   public static final String OVERVIEW_CATEGORY = "overview category";
 
-  @Inject
-  private EventBus eventBus;
+ // @Inject
+     public static EventBus eventBus = new SimpleEventBus();
 
-  @Inject
-  private PlaceController placeController;
+    //@Inject
+    public static ExampleModel exampleModel = GWT.create(ExampleModel.class);
+    public static PlaceController placeController = new PlaceController(eventBus);
 
-  @Inject
-  private ActivityMapper activityMapper;
+//  @Inject
+     public static ActivityMapper activityMapper = new ExplorerActivityMapper();
 
-  @Inject
-  private ExplorerShell shell;
+ // @Inject
+ public static ExampleListView listView = new ExampleListViewImpl(exampleModel);
 
-  @Inject
-  private ExampleListView listView;
+//  @Inject
+public static ExampleDetailView detailView = new ExampleDetailViewImpl(exampleModel) ;
+ /* @Inject*/
+ public static ExplorerShell shell = new ExplorerShell(listView,detailView);
 
-  @Inject
-  private ExampleDetailView detailView;
 
-  @Inject
-  private ExampleModel exampleModel;
+
+
 
   public void run() {
-    init();
+      init();
   }
 
   @SuppressWarnings("deprecation")
   private void init() {
+
     GWT.setUncaughtExceptionHandler(new GWT.UncaughtExceptionHandler() {
       @Override
       public void onUncaughtException(Throwable e) {
@@ -131,6 +134,7 @@ public class ExplorerApp implements ExampleListView.Presenter, ExampleDetailView
 
     // Goes to place represented on URL or default place
     historyHandler.handleCurrentHistory();
+
   }
 
   @Override

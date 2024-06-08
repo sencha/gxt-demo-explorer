@@ -53,7 +53,7 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
-import com.google.inject.Inject;
+
 import com.sencha.gxt.cell.core.client.form.ComboBoxCell.TriggerAction;
 import com.sencha.gxt.core.client.GXT;
 import com.sencha.gxt.core.client.util.Margins;
@@ -90,7 +90,7 @@ public class ExplorerShell implements IsWidget {
     ImageResource squareBg();
   }
 
-  @Inject
+  //@Inject
   public ExplorerShell(ExampleListView listView, ExampleDetailView detailView) {
     Resources resource = GWT.create(Resources.class);
     resource.explorerStyles().ensureInjected();

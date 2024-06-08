@@ -44,8 +44,8 @@ import com.sencha.gxt.data.shared.TreeStore;
 import com.sencha.gxt.data.shared.TreeStore.TreeNode;
 import com.sencha.gxt.explorer.client.ExplorerApp;
 
-public abstract class ExampleModel {
-  protected List<Category> categories = new ArrayList<Category>();
+public  class ExampleModel {
+  public ArrayList<Category> categories = new ArrayList<Category>();
 
   public Example findExampleByName(String name) {
     List<Example> list = getExamplesAsList();
@@ -57,7 +57,7 @@ public abstract class ExampleModel {
     }
     return null;
   }
-  
+
   public Example findExample(String id) {
     List<Example> list = getExamplesAsList();
     for (int i = 0; i < list.size(); i++) {
@@ -65,6 +65,7 @@ public abstract class ExampleModel {
       if (ex.getId().equals(id)) {
         return ex;
       }
+
     }
     return null;
   }
@@ -81,9 +82,7 @@ public abstract class ExampleModel {
     return list;
   }
 
-  protected ExampleModel() {
-    // protected to it isn't instantiated directly, except by generated subclass
-  }
+
 
   public List<Category> getCategories() {
     return categories;
@@ -124,5 +123,15 @@ public abstract class ExampleModel {
 
     return models;
   }
+  private static final ExampleModel instance = new ExampleModel();
+
+  public ExampleModel() {
+    // Private constructor to prevent external instantiation
+  }
+
+  public static ExampleModel getInstance() {
+    return instance;
+  }
+
 
 }

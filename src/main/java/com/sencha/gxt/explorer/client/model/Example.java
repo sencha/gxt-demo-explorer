@@ -58,7 +58,7 @@ import com.sencha.gxt.explorer.client.thumbs.ExampleThumbs;
  * display details about the example.
  * 
  */
-public abstract class Example extends NamedModel {
+public abstract class Example extends NamedModel{
 
   @Retention(RetentionPolicy.RUNTIME)
   @Target(ElementType.TYPE)
