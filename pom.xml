@@ -528,16 +528,12 @@
     <!-- Simple javax.validation impl -->
     <dependency>
       <groupId>org.apache.bval</groupId>
-      <artifactId>bval-jsr303</artifactId>
-      <version>0.5</version>
+      <artifactId>bval-jsr</artifactId>
+      <version>3.0.0</version>
       <scope>runtime</scope>
     </dependency>
 
     <!-- Testing -->
-   <!-- <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.12</version>-->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>

@@ -166,9 +166,7 @@ public class ExampleServiceImpl extends RelativeRemoteServiceServlet implements 
 
     ArrayList<Stock> temp = new ArrayList<Stock>();
     ArrayList<Stock> remove = new ArrayList<Stock>();
-    for (Stock s : stocks) {
-      temp.add(s);
-    }
+      temp.addAll(stocks);
 
     if (config.getSortInfo().size() > 0) {
       SortInfo sort = config.getSortInfo().get(0);
