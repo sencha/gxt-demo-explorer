@@ -4,14 +4,14 @@
 
   <groupId>com.sencha.gxt</groupId>
   <artifactId>gxt-demo-explorer</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0.0</version>
   <packaging>war</packaging>
   <name>Sencha GXT Explorer Examples</name>
 
   <properties>
     <!-- GXT -->
     <!-- This is dependent on the Sencha Repository credentials and url -->
-    <gxt.version>4.2.0-SNAPSHOT</gxt.version>
+    <gxt.version>4.2.0</gxt.version>
 
     <!-- GWT -->
     <!--  <gwt.version>2.9.0</gwt.version>
