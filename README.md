@@ -1,3 +1,16 @@
+
+##  Before going to make a gxt-Demo Explorer build, Pls following these Steps.
+1. Go to below site
+   https://www.gwtproject.org/download.html
+2. Click on  "DOWNLOAD GWT SDK" button to download the GWT jar.
+3. It will download as zip folder.
+4. Unzip the folder and go inside the folder, run the below command on command prompt to install the jar.
+   mvn install:install-file -Dfile=gwt-dev.jar -DgroupId=com.google.gwt -DartifactId=gwt-dev -Dversion=2.11.0 -Dpackaging=jar
+   mvn install:install-file -Dfile=gwt-user.jar -DgroupId=com.google.gwt -DartifactId=gwt-user -Dversion=2.11.0 -Dpackaging=jar
+   mvn install:install-file -Dfile=requestfactory-apt.jar -DgroupId=com.google.web.bindery -DartifactId=requestfactory-apt -Dversion=2.11.0 -Dpackaging=jar
+   mvn install:install-file -Dfile=gwt-servlet.jar -DgroupId=com.google.gwt -DartifactId=gwt-servlet -Dversion=2.11.0 -Dpackaging=jar
+
+
 # GXT Examples Explorer
 
 <img src='./theapp.png' width='400px' />
