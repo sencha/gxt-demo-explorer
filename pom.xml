@@ -543,7 +543,7 @@
     <dependency>
       <groupId>org.senchalabs.gwt</groupId>
       <artifactId>gxt-driver</artifactId>
-      <version>0.0.1</version>
+      <version>0.0.1-SNAPSHOT</version>
       <exclusions>
         <exclusion>
           <groupId>org.json</groupId>
