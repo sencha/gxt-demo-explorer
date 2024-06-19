@@ -376,7 +376,7 @@
   <repositories>
     <repository>
       <id>sencha-myget</id>
-      <url>https://sencha.myget.org/F/maven/maven/</url>
+      <url>https://praveen.rondi:b40e1981-b259-4971-8e0b-44a26f7f77d1@sencha.myget.org/F/maven/maven/</url>
       <releases>
         <enabled>false</enabled>
       </releases>
@@ -490,7 +490,7 @@
     <!--<dependency>
       <groupId>org.json</groupId>
       <artifactId>json</artifactId>
-      <version>20171018</version>
+      <version>20230227</version>
       <scope>compile</scope>
     </dependency>-->
    <!-- <dependency>
@@ -528,16 +528,12 @@
     <!-- Simple javax.validation impl -->
     <dependency>
       <groupId>org.apache.bval</groupId>
-      <artifactId>bval-jsr303</artifactId>
-      <version>0.5</version>
+      <artifactId>bval-jsr</artifactId>
+      <version>3.0.0</version>
       <scope>runtime</scope>
     </dependency>
 
     <!-- Testing -->
-   <!-- <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.12</version>-->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -547,7 +543,7 @@
     <dependency>
       <groupId>org.senchalabs.gwt</groupId>
       <artifactId>gxt-driver</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
+      <version>0.0.1</version>
       <exclusions>
         <exclusion>
           <groupId>org.json</groupId>
