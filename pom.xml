@@ -153,7 +153,7 @@
       <plugin>
         <groupId>org.apache.openjpa</groupId>
         <artifactId>openjpa-maven-plugin</artifactId>
-        <version>3.8.1</version>
+        <version>4.0.0</version>
         <configuration>
           <includes>**/server/data/*.class</includes>
           <addDefaultConstructor>true</addDefaultConstructor>
@@ -446,8 +446,6 @@
           <artifactId>json</artifactId>
         </exclusion>
       </exclusions>
-      <scope>system</scope>
-      <systemPath>${basedir}\</systemPath>
     </dependency>
     <dependency>
       <groupId>com.sencha.gxt</groupId>
