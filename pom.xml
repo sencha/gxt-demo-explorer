@@ -408,7 +408,7 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>com.google.gwt</groupId>
+      <groupId>org.gwtproject</groupId>
       <artifactId>gwt-dev</artifactId>
       <version>${gwt.version}</version>
       <scope>provided</scope>
@@ -626,7 +626,7 @@
           <artifactId>selenium-java</artifactId>
         </exclusion>
         <exclusion>
-          <groupId>com.google.gwt</groupId>
+          <groupId>org.gwtproject</groupId>
           <artifactId>gwt-servlet</artifactId>
         </exclusion>
         <exclusion>
@@ -641,7 +641,7 @@
       <version>1.9.22</version>
     </dependency> -->
     <dependency>
-      <groupId>com.google.gwt</groupId>
+      <groupId>org.gwtproject</groupId>
       <artifactId>gwt-servlet</artifactId>
       <version>2.11.0</version>
     </dependency>
